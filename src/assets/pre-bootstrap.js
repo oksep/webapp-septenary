@@ -6,14 +6,6 @@ const startingTime = new Date().getTime();
 
 // angular框架启动回调
 function onBootstrap() {
-    // return;
-    var preBootstrapContainer = document.getElementById("pre-bootstrap-container");
-    var preBootstrap = document.getElementById("pre-bootstrap");
-    // Add the class-name to initiate the transitions.
-    preBootstrap.className = "loaded";
-    // Remove the bootstrap container after the transition has
-    // completed (based on the known transition time).
-
     const currentTime = new Date().getTime();
 
     var delay = 0;
@@ -23,10 +15,12 @@ function onBootstrap() {
 
     setTimeout(
         function removeLoadingScreen() {
-            preBootstrapContainer
-                .parentNode
-                .removeChild(preBootstrapContainer)
-            ;
+            var preBootstrapContainer = document.getElementById("pre-bootstrap-container");
+            var preBootstrap = document.getElementById("pre-bootstrap");
+            preBootstrap.className = "loaded";
+            setTimeout(function () {
+                preBootstrapContainer.parentNode.removeChild(preBootstrapContainer);
+            }, 300);
         },
         delay
     );
