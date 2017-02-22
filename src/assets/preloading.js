@@ -5,12 +5,13 @@
 const startingTime = new Date().getTime();
 
 // angular框架启动回调
-function onBootstrap() {
+function onBootstrap(maxDelay) {
     const currentTime = new Date().getTime();
+    maxDelay = maxDelay || 3000;
 
     var delay = 0;
-    if (currentTime - startingTime < 3 * 1000) {
-        delay = startingTime + 3 * 1000 - currentTime;
+    if (currentTime - startingTime < maxDelay) {
+        delay = startingTime + maxDelay - currentTime;
     }
 
     setTimeout(
