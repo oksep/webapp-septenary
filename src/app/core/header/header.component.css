@@ -1,14 +1,26 @@
+header {
+    /*margin-bottom: 200px;*/
+    height: 60px;
+    box-shadow: 0 2px 5px gray;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
 p::first-letter {
     color: white;
     padding: 0px 6px;
     border: 2px solid white;
     border-radius: 5px;
-    background-color: #2C3E50;
+    background-color: #373D41;
 }
+
 p {
     height: 60px;
-    color: #26B9C7;
+    color: #6077b2;
     padding: 0.35em;
-    background-color: #2C3E50;
+    background-color: #373D41;
     font-size: 30px;
 }
