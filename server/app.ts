@@ -26,6 +26,13 @@ app.use('/api/user', userRouter);
   app.use(express.static(path.join(__dirname, '/../client')));
 // }
 
+// issue: http://stackoverflow.com/questions/34847972/how-to-handle-angular2-route-path-in-nodejs
+// 404 catch
+app.all('*', (req: any, res: any) => {
+    console.log(`[TRACE] Server 404 request: ${req.originalUrl}`);
+    res.status(200).sendFile(path.join(__dirname, '/../client/index.html'));
+});
+
 // catch 404 and forward to error handler
 app.use(function(req: express.Request, res: express.Response, next) {
   let err = new Error('Not Found');
