@@ -5,7 +5,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 // fake backend
-import {backendFactory} from "./helper/mock-backend";
+import {MockBackendFactory} from "./helper/mock-backend";
 import {MockBackend} from "@angular/http/testing";
 import {BaseRequestOptions, Http} from "@angular/http";
 
@@ -43,7 +43,7 @@ import {AppRoutingModule} from './app-routing.module';
         {
             provide: Http,
             deps: [MockBackend, BaseRequestOptions],
-            useFactory: backendFactory
+            useFactory: MockBackendFactory.obtain
         }
     ],
     bootstrap: [AppComponent]
