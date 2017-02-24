@@ -1,18 +1,19 @@
 /* tslint:disable:member-ordering no-unused-variable */
-import {
-    ModuleWithProviders, NgModule,
-    Optional, SkipSelf
-}       from '@angular/core';
+import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 
-import {CommonModule}      from '@angular/common';
+import {CommonModule} from '@angular/common';
 
-import {FooterComponent}    from './footer/footer.component';
-import {HeaderComponent}    from './header/header.component';
+import {RouterModule} from '@angular/router';
+
+import {FooterComponent} from './footer/footer.component';
+import {HeaderComponent} from './header/header.component';
+import {AuthService} from './auth.service';
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, RouterModule],
     declarations: [FooterComponent, HeaderComponent],
-    exports: [FooterComponent, HeaderComponent]
+    exports: [FooterComponent, HeaderComponent],
+    providers: [AuthService]
 })
 export class CoreModule {
 

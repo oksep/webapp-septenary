@@ -1,0 +1,34 @@
+<div class="container">
+    <h3 class="text-center title">欢迎回来</h3>
+    <div class="alert" [ngClass]="setAlertClasses()" role="alert">
+        <strong>Strong Head. </strong>{{alert.message}}
+    </div>
+    <div class="alert alert-success" role="alert">
+        <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3 app-form-container">
+            <form (ngSubmit)="onLoginSubmit()" #loginForm="ngForm">
+                <div class="form-group">
+                    <label for="email" class="label"><i class="fa fa-id-card-o"></i> 邮箱</label>
+                    <input type="email" class="form-control" id="email" placeholder="email"
+                           required
+                           [(ngModel)]="loginUser.email" name="email"
+                           #name="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="label"><i class="fa fa-unlock"></i> 密码</label>
+                    <input type="password" class="form-control" id="password" placeholder="password"
+                           required
+                           [(ngModel)]="loginUser.password" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="isLogging || !loginForm.form.valid">
+                    登录 <i *ngIf="isLogging" class="fa fa-refresh fa-spin fa-fw"></i>
+                </button>
+                <button type="button" class="btn btn-secondary" style="float: right"
+                        (click)="loginForm.reset(); onRegistryClick()">注册
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

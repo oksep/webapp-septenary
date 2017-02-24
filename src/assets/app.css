@@ -1,12 +1,8 @@
-* {
-    padding: 0;
-    margin: 0;
-}
-
 html {
     background-color: #f0f0f0;
 }
 
-body {
-
+.app-body {
+    background: url(https://www.toptal.com/designers/subtlepatterns/patterns/furley_bg.png);
+    color: #475058;
 }

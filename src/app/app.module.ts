@@ -2,7 +2,6 @@ import './rxjs-extensions';
 
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
 
 // fake backend
 import {MockBackendFactory} from "./helper/mock-backend";
@@ -13,7 +12,7 @@ import {BaseRequestOptions, Http} from "@angular/http";
 import {AppComponent} from './app.component';
 
 // service
-import {AuthService} from './auth/auth.service';
+import {AuthService} from './core/auth.service';
 
 /* Feature Modules */
 import {HomeModule}    from './home/home.module';
@@ -21,6 +20,7 @@ import {CoreModule}       from './core/core.module';
 
 /* Routing Module */
 import {AppRoutingModule} from './app-routing.module';
+import {SharedModule}       from './shared/shared.module';
 
 
 @NgModule({
@@ -29,10 +29,10 @@ import {AppRoutingModule} from './app-routing.module';
     ],
     imports: [
         BrowserModule,
-        FormsModule,
         HomeModule,
         CoreModule,
-        AppRoutingModule
+        AppRoutingModule,
+        SharedModule
     ],
     providers: [
         AuthService,

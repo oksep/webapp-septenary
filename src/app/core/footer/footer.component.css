@@ -3,7 +3,6 @@
 footer {
     position: fixed;
     bottom: 0;
-    /*font: 34px/1.5 'Open Sans', Helvetica, sans-serif;*/
 }
 
 @media (max-height: 800px) {
@@ -13,13 +12,14 @@ footer {
 }
 
 .footer-distributed {
-    background-color: #373D41;
+    color: white;
+    background-color: #3661A2;
     box-sizing: border-box;
     width: 100%;
     text-align: left;
     font: bold 16px sans-serif;
-    padding: 38px 34px;
-    margin-top: 80px;
+    padding: 10px 34px;
+    /*margin-top: 80px;*/
 }
 
 .footer-distributed .footer-left,
@@ -36,21 +36,18 @@ footer {
 }
 
 /* The company logo */
-
-.footer-distributed h3 {
-    color: #f0f0f0;
-    font: normal 36px 'Cookie', cursive;
+.footer-distributed h5 {
+    font: normal 28px 'Cookie', cursive;
     margin: 0;
 }
 
-.footer-distributed h3 span {
+.footer-distributed h5 span {
     color: #5383d3;
 }
 
 /* Footer links */
 
 .footer-distributed .footer-links {
-    color: #f0f0f0;
     margin: 20px 0 12px;
     padding: 0;
 }
@@ -63,7 +60,6 @@ footer {
 }
 
 .footer-distributed .footer-company-name {
-    color: #8f9296;
     font-size: 14px;
     font-weight: normal;
     margin: 0;
@@ -76,8 +72,7 @@ footer {
 }
 
 .footer-distributed .footer-center i {
-    background-color: #6077b2;
-    color: #f0f0f0;
+    background-color: #244C88;
     font-size: 25px;
     width: 38px;
     height: 38px;
@@ -95,7 +90,6 @@ footer {
 
 .footer-distributed .footer-center p {
     display: inline-block;
-    color: #f0f0f0;
     vertical-align: middle;
     margin: 0;
 }
@@ -108,7 +102,7 @@ footer {
 }
 
 .footer-distributed .footer-center p a {
-    color: #6077b2;
+    color: #08D;
     text-decoration: none;;
 }
 
@@ -120,7 +114,6 @@ footer {
 
 .footer-distributed .footer-company-about {
     line-height: 20px;
-    color: #92999f;
     font-size: 13px;
     font-weight: normal;
     margin: 0;
@@ -128,7 +121,6 @@ footer {
 
 .footer-distributed .footer-company-about span {
     display: block;
-    color: #f0f0f0;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -143,7 +135,7 @@ footer {
     width: 35px;
     height: 35px;
     cursor: pointer;
-    background-color: #6077b2;
+    background-color: #244C88;
     border-radius: 2px;
 
     font-size: 20px;
@@ -153,6 +145,10 @@ footer {
 
     margin-right: 3px;
     margin-bottom: 5px;
+}
+
+.footer-distributed .footer-icons a:hover {
+    background-color: #22366e;
 }
 
 /* If you don't want the footer to be responsive, remove these media queries */

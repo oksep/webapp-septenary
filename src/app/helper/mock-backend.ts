@@ -34,6 +34,20 @@ export class MockBackendFactory {
             // wrap in timeout to simulate server api call
             setTimeout(() => {
 
+                if (connection.request.url.endsWith('/api/auth/login') && connection.request.method === RequestMethod.Post) {
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        status: 402,
+                        body: {
+                            success: false,
+                            description: '登录名或密码错误',
+                            data: {
+                                token: 'JWT asdjfklnajkndsfnin9812nkjlansdkjfkl',
+                            }
+                        }
+                    })));
+                    return;
+                }
+
                 // authenticate
                 if (connection.request.url.endsWith('/api/heroes') && connection.request.method === RequestMethod.Get) {
                     connection.mockRespond(new Response(new ResponseOptions({
@@ -150,7 +164,7 @@ export class MockBackendFactory {
                             connection.mockError(error);
                         });
 
-            }, 500);
+            }, 1500);
 
         });
 

@@ -7,6 +7,7 @@ import {AwesomePipe}         from './awesome.pipe';
 
 // directive
 import {HighlightDirective}  from './highlight.directive';
+import {GetEleDirective} from './get-el.directive';
 
 // component
 import {MDEditor} from './mdeditor.component';
@@ -16,11 +17,13 @@ import {MDEditor} from './mdeditor.component';
     declarations: [
         AwesomePipe,
         HighlightDirective,
+        GetEleDirective,
         MDEditor
     ],
     exports: [
         AwesomePipe,
         HighlightDirective,
+        GetEleDirective,
         MDEditor,
         CommonModule,
         FormsModule
