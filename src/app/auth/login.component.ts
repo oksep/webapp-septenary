@@ -33,14 +33,14 @@ class Alert {
 })
 export class LoginComponent implements OnInit {
     loginUser = new LoginUser();
-    alert = new Alert('info', "欢迎回来");
+    alertMessage = "欢迎回来";
     isLogging = false;
+    alertType = 'info';
 
     constructor(private mAuthService: AuthService, private mRouter: Router) {
     }
 
     ngOnInit() {
-
     }
 
     onLoginSubmit() {
@@ -50,8 +50,8 @@ export class LoginComponent implements OnInit {
             if (result.success) {
                 this.mRouter.navigate(['/home']);
             } else {
-                this.alert.type = 'danger';
-                this.alert.message = result.description;
+                this.alertType = 'danger';
+                this.alertMessage = result.description;
             }
         });
     }
@@ -62,9 +62,8 @@ export class LoginComponent implements OnInit {
 
     setAlertClasses(type) {
         return {
-            'alert-success': false,
-            'alert-danger': true,
-            special: false
+            'alert-danger': this.alertType == 'danger',
+            'alert-info': this.alertType != 'danger'
         };
     }
 

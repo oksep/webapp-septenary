@@ -1,13 +1,9 @@
 <div class="container">
-    <h3 class="text-center title">欢迎回来</h3>
-    <div class="alert" [ngClass]="setAlertClasses()" role="alert">
-        <strong>Strong Head. </strong>{{alert.message}}
-    </div>
-    <div class="alert alert-success" role="alert">
-        <strong>Well done!</strong> You successfully read this important alert message.
-    </div>
     <div class="row">
         <div class="col-md-6 offset-md-3 app-form-container">
+            <p class="alert text-center title alert-info" [ngClass]="setAlertClasses()" role="alert">
+                {{alertMessage}}
+            </p>
             <form (ngSubmit)="onLoginSubmit()" #loginForm="ngForm">
                 <div class="form-group">
                     <label for="email" class="label"><i class="fa fa-id-card-o"></i> 邮箱</label>

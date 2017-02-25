@@ -1,7 +1,6 @@
 .app-header {
     /*box-shadow: 0 2px 3px gray;*/
     background-color: transparent;
-    height: 4rem;
 }
 
 .app-header-primary {
@@ -20,16 +19,8 @@
 .app-brand {
     color: #475058;
     font-size: 26px;
+    text-align: center;
 }
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0;
-}
-
-/*.dropdown-toggle::after {*/
-/*display: none;*/
-/*}*/
 
 .app-header-login-ico {
     font-size: 1.75rem;
@@ -61,12 +52,22 @@
     color: #5BA2DD;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 991px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
     .navbar-nav {
         align-items: center;
     }
 
     .app-nav-link {
         padding: 0 1rem;
+    }
+}
+
+@media (max-width: 990px) {
+    .dropdown .dropdown-menu {
+        display: block;
     }
 }

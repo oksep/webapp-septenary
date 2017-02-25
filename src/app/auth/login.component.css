@@ -1,4 +1,6 @@
 .app-form-container {
+    margin-top: 3em;
+    margin-bottom: 3em;
     padding: 1.25em;
     box-shadow: 1px 2px 2px #bcbcbc;
     border: 1px solid #a6a4a4;
@@ -7,7 +9,7 @@
 }
 
 .title {
-    padding-top: 1em;
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
 
@@ -24,7 +26,7 @@
     color: #858585;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
+::-moz-placeholder { /* Firefox 19+ */
     color: #858585;
 }
 
