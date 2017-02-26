@@ -13,7 +13,16 @@ footer {
 
 .footer-distributed {
     color: white;
-    background-color: #3661A2;
+    /*background-color: #3661A2;*/
+    /*background: url("https://www.toptal.com/designers/subtlepatterns/patterns/grey_wash_wall.png");*/
+    /*background: url("https://www.toptal.com/designers/subtlepatterns/patterns/debut_dark.png");*/
+    /*background: url("https://www.toptal.com/designers/subtlepatterns/patterns/noisy_net.png");*/
+    /*background: url("https://www.toptal.com/designers/subtlepatterns/patterns/black_twill.png");*/
+    /*background: url("https://www.toptal.com/designers/subtlepatterns/patterns/use_your_illusion.png");*/
+    background: url("https://www.toptal.com/designers/subtlepatterns/patterns/low_contrast_linen.png");
+    /*background: url("https://www.toptal.com/designers/subtlepatterns/patterns/cartographer.png");*/
+    /*background: url("https://www.toptal.com/designers/subtlepatterns/patterns/black_thread.png");*/
+
     box-sizing: border-box;
     width: 100%;
     text-align: left;
@@ -135,7 +144,7 @@ footer {
     width: 35px;
     height: 35px;
     cursor: pointer;
-    background-color: #244C88;
+    background-color: rgba(0, 0, 0, 0.25);;
     border-radius: 2px;
 
     font-size: 20px;
@@ -148,7 +157,7 @@ footer {
 }
 
 .footer-distributed .footer-icons a:hover {
-    background-color: #22366e;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* If you don't want the footer to be responsive, remove these media queries */
