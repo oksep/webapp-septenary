@@ -6,7 +6,7 @@ const JWT_TOKEN_KEY = "@jwt-token";
 
 @Injectable()
 export class AuthService {
-    isLogin: boolean;
+    isLogin: boolean = false;
 
     constructor(private http: Http) {
     }
@@ -24,7 +24,9 @@ export class AuthService {
             .post('/api/auth/login', loginUser)
             .map(response => response.json())
             .map(result => {
+                console.warn('登录成功:', result.data.token);
                 if (result.success && result.data) {
+                    this.isLogin = true;
                     localStorage.setItem(JWT_TOKEN_KEY, result.data.token);
                 } else {
                     localStorage.removeItem(JWT_TOKEN_KEY);

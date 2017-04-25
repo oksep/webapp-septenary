@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.msg = this.mAuthService.getMsg()
+        this.msg = '当前登录状态是：' + this.mAuthService.isLoginUser();
     }
 
 }
