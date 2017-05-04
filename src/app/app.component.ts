@@ -17,7 +17,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     ngOnInit(): void {
         onBootstrap(1000);
-        // this.isLogin = this.userService.isLoginUser()
     }
 
     ngAfterViewInit(): void {
@@ -28,10 +27,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         return this.authService.getLoggedIn();
     }
 
-    onLogButtonClick() {
+    onLogoutClick() {
         let loggedIn = this.authService.getLoggedIn();
         if (loggedIn) {
             this.authService.logout();
+            this.router.navigateByUrl('');
         } else {
             this.router.navigateByUrl('/user/login');
         }

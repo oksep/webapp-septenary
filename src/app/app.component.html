@@ -13,17 +13,30 @@
                     <a class="nav-link" routerLink="/post">发现</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"
-                       (click)="onLogButtonClick()">{{getLoggedIn()?'退登':'登录'}}</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link disabled" href="/">Disable</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <ul class="navbar-nav">
+                <li *ngIf="false" class="nav-item">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+                    </form>
+                </li>
+                <li *ngIf="!getLoggedIn()" class="nav-item">
+                    <a class="nav-link" routerLink="/user/login">登录</a>
+                </li>
+                <li *ngIf="getLoggedIn()" class="nav-item dropdown">
+                    <span class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        欢迎
+                    </span>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" routerLink="/user/me">个人中心</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="javascript:void(0);" (click)="onLogoutClick()">登出</a>
+                    </div>
+                </li>
+            </ul>
         </div>
     </nav>
 
