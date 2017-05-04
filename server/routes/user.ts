@@ -1,34 +1,24 @@
-import { Router, Response, Request } from "express";
+import {Request, Response, Router} from "express";
+import * as Auth from "../auth/auth";
+import Result from "./result";
+
+import User from "../model/user";
 
 const userRouter: Router = Router();
 
-const user = {
-  "id": 1,
-  "name": "Leanne Graham",
-  "username": "Bret",
-  "email": "Sincere@april.biz",
-  "address": {
-    "street": "Kulas Light",
-    "suite": "Apt. 556",
-    "city": "Gwenborough",
-    "zipcode": "92998-3874",
-    "geo": {
-      "lat": "-37.3159",
-      "lng": "81.1496"
+userRouter.get(
+    "/list",
+    Auth.authenticateJWT(),
+    Auth.authenticateAdmin(),
+    (request: Request, response: Response) => {
+        response.json(Result.success({
+            list: User.listAllUsers()
+        }));
     }
-  },
-  "phone": "1-770-736-8031 x56442",
-  "website": "hildegard.org",
-  "company": {
-    "name": "Romaguera-Crona",
-    "catchPhrase": "Multi-layered client-server neural-net",
-    "bs": "harness real-time e-markets"
-  }
-};
+);
 
-userRouter.get("/", (request: Request, response: Response) => {
-
-  response.json(user);
+userRouter.post('/login', (request: Request, response: Response) => {
+    response.redirect('/api/auth/login');
 });
 
-export { userRouter };
+export {userRouter};
