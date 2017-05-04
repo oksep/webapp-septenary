@@ -1,31 +1,43 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from "@angular/core";
+import {AuthService} from "./auth/auth.service";
+import {Router} from "@angular/router";
 
 const $ = jQuery;
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, AfterViewInit {
-    headerAndContentMinHeight = 300;
-    footerHeight = 0;
 
-    constructor() {
+    constructor(private authService: AuthService, private router: Router) {
         $(window).resize(() => this.onWindowSizeChange());
     }
 
     ngOnInit(): void {
         onBootstrap(1000);
+        // this.isLogin = this.userService.isLoginUser()
     }
 
     ngAfterViewInit(): void {
-        setTimeout(() => {
-            this.onWindowSizeChange();
-        });
+
+    }
+
+    getLoggedIn() {
+        return this.authService.getLoggedIn();
+    }
+
+    onLogButtonClick() {
+        let loggedIn = this.authService.getLoggedIn();
+        if (loggedIn) {
+            this.authService.logout();
+        } else {
+            this.router.navigateByUrl('/user/login');
+        }
     }
 
     onWindowSizeChange() {
-        let h = $(window).height() - document.getElementById("app-footer").offsetHeight;
-        this.headerAndContentMinHeight = h > 0 ? h : 0;
+
     }
 }

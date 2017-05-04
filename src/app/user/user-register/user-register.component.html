@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3 app-form-container">
+        <p class="alert text-center title alert-info" [ngClass]="setAlertClasses()" role="alert">
+            {{alertMessage}}
+        </p>
+        <form (ngSubmit)="onRegisterSubmit()" #registerForm="ngForm">
+            <div class="form-group">
+                <label for="name" class="label"><i class="fa fa-id-card-o"></i> 名称</label>
+                <input type="email" class="form-control" id="name" placeholder="name"
+                       required
+                       [(ngModel)]="credentials.name" name="name"
+                       #name="ngModel">
+            </div>
+            <div class="form-group">
+                <label for="email" class="label"><i class="fa fa-id-card-o"></i> 邮箱</label>
+                <input type="email" class="form-control" id="email" placeholder="email"
+                       required
+                       [(ngModel)]="credentials.email" name="email"
+                       #name="ngModel">
+            </div>
+            <div class="form-group">
+                <label for="password" class="label"><i class="fa fa-unlock"></i> 密码</label>
+                <input type="password" class="form-control" id="password" placeholder="password"
+                       required
+                       [(ngModel)]="credentials.password" name="password">
+            </div>
+            <button type="submit" class="btn btn-secondary" style="float: right" [disabled]="!registerForm.form.valid">
+                确认注册
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,7 +1,2 @@
-/* SystemJS module definition */
-declare var module: NodeModule;
-interface NodeModule {
-    id: string;
-}
-declare var jQuery: any;
-declare var onBootstrap: any;
+declare let jQuery: any;
+declare let onBootstrap: any;

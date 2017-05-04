@@ -17,6 +17,16 @@ userRouter.get(
     }
 );
 
+userRouter.get(
+    "/me",
+    Auth.authenticateJWT(),
+    (request: Request, response: Response) => {
+        response.json(Result.success({
+            me: request.user
+        }));
+    }
+);
+
 userRouter.post('/login', (request: Request, response: Response) => {
     response.redirect('/api/auth/login');
 });

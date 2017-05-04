@@ -1,0 +1,35 @@
+.app-form-container {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding: 1.25em;
+    box-shadow: 1px 2px 2px #bcbcbc;
+    border: 1px solid #a6a4a4;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.title {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.label {
+    font-size: 20px;
+    line-height: 1.5em;
+}
+
+::-webkit-input-placeholder {
+    color: #858585;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #858585;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: #858585;
+}
+
+:-ms-input-placeholder {
+    color: #858585;
+}
