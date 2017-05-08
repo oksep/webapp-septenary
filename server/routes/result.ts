@@ -1,8 +1,8 @@
 // 接口响应体
 export default class Result {
     success: boolean;
-    error: object;
-    data: object;
+    error: any;
+    data: any;
 
     constructor(success, data, error) {
         this.success = success;

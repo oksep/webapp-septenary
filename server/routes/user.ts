@@ -22,7 +22,7 @@ userRouter.get(
     Auth.authenticateJWT(),
     (request: Request, response: Response) => {
         response.json(Result.success({
-            me: request.user
+            profile: request.user
         }));
     }
 );

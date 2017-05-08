@@ -19,12 +19,19 @@ authRouter.post('/login', (request: Request, response: Response) => {
     if (user) {
         const payload = {
             id: user.id,
-            admin: user.role == 'admin',
+            role: user.role,
             iat: moment().unix(),
             exp: moment().add(30, 'minute').unix()
+            // iss: jwt签发者
+            // sub: jwt所面向的用户
+            // aud: 接收jwt的一方
+            // exp: jwt的过期时间，这个过期时间必须要大于签发时间
+            // nbf: 定义在什么时间之前，该jwt都是不可用的.
+            // iat: jwt的签发时间
+            // jti: jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击。
         };
         response.json(Result.success({
-            token: JWT.encode(payload, Config.JWTSecret)
+            token: JWT.encode(payload, Config.JWTSecret) // jwt 签发
         }));
     } else {
         response.status(401);

@@ -10,8 +10,8 @@ interface PayLoad {
 }
 
 const OPTION: StrategyOptions = {
-    secretOrKey: Config.JWTSecret, // the JWT secret key.
-    jwtFromRequest: JWT.ExtractJwt.fromAuthHeaderWithScheme('Bearer'), // defines where the tokens will be sent in the response
+    secretOrKey: Config.JWTSecret, // 密钥
+    jwtFromRequest: JWT.ExtractJwt.fromAuthHeaderWithScheme('Bearer'), // 指定 jwt 从请求头中取
     passReqToCallback: true
 };
 
@@ -40,7 +40,7 @@ export function authenticateJWT() {
 // 角色验证
 export function authenticateAdmin() {
     return function (req, res, next) {
-        if (!req.user.admin) {
+        if (!req.user.isAdmin()) {
             return res.sendStatus(401);
         } else {
             next();

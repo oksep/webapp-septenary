@@ -1,16 +1,27 @@
+// 用户
 export default class User {
-    id: string;
-    email: string;
-    password: string;
-    role: string;
-    admin: boolean;
+    id: number; // 用户 ID
+    name: string; // 昵称
+    email: string; // 邮箱
+    password: string; // 密钥
+    avatar: string; // 头像
+    createdTime: string; // 注册时间
+    lastLoginTime: string; // 最近登录时间
+    role: string = 'normal'; // 角色
 
-    constructor(id, email, password, role) {
+    constructor(id?, name?, email?, password?, avatar?, createdTime?, lastLoginTime?, role?) {
         this.id = id;
+        this.name = name;
         this.email = email;
         this.password = password;
-        this.role = role;
-        this.admin = this.role == 'admin';
+        this.avatar = avatar;
+        this.createdTime = createdTime;
+        this.lastLoginTime = lastLoginTime;
+        this.role = role || 'normal';
+    }
+
+    isAdmin(): boolean {
+        return this.role == 'admin';
     }
 
     static add(email, password) {
@@ -51,6 +62,6 @@ export default class User {
 }
 
 const USERS: Array<User> = [
-    new User(1, "seven__up@sina.cn", '123456', 'admin'),
-    new User(2, "ryfthink@gmail.com", '654321', 'normal')
+    new User(1, 'Septenary', 'seven__up@sina.cn', '123456', 'http://localhost:5200/src/assets/avatar.jpg', '2016-05-06', '2017-05-03', 'admin'),
+    new User(2, 'Ryfthink', 'ryfthink@gmail.com', '654321', 'http://localhost:5200/src/assets/avatar2.jpg', '2017-01-14', '2017-03-21', null),
 ];
