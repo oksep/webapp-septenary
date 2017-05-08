@@ -1,12 +1,10 @@
 import { Component, ElementRef, ViewChild, Input, AfterViewInit } from '@angular/core';
 
-declare var SimpleMDE : any;
-
 @Component({
     selector: 'mdeditor',
     template: '<textarea #simplemde>{{text}}</textarea>',
 })
-export class MDEditor implements AfterViewInit {
+export class MarkdownComponent implements AfterViewInit {
     @ViewChild('simplemde') textarea : ElementRef;
 
     @Input() text: string;

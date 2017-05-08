@@ -4,6 +4,8 @@ import {Http} from "@angular/http";
 
 import {tokenNotExpired} from "./angular-jwt.module";
 
+import {Credentials} from "../model/credentials";
+
 export const TOKEN_NAME = "@jwt-token";
 
 @Injectable()
@@ -11,7 +13,7 @@ export class AuthService {
     loggedIn: boolean = false;
 
     constructor(private http: Http) {
-        this.checkLoggedIn();
+        this.ensureLoggedIn();
     }
 
     // static validateToken(token) {
@@ -26,7 +28,7 @@ export class AuthService {
     // }
 
     // 登录
-    login(credentials: any) {
+    login(credentials: Credentials) {
         return this.http
             .post('/api/auth/login', credentials)
             .map(response => response.json())
@@ -51,7 +53,7 @@ export class AuthService {
     }
 
     // 检查登录是否过期
-    checkLoggedIn(): boolean {
+    ensureLoggedIn(): boolean {
         this.loggedIn = tokenNotExpired(TOKEN_NAME);
         return this.loggedIn;
     }

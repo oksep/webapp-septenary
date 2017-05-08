@@ -9,6 +9,7 @@ import {UserMeComponent} from "./user-me/user-me.component";
 import {UserService} from "./user.service";
 
 import {UserRoutingModule} from "./user.routing";
+import {AuthGuard} from "../auth/auth.guard";
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import {UserRoutingModule} from "./user.routing";
         UserRegisterComponent
     ],
     providers: [
-        UserService
+        UserService,
+        AuthGuard
     ]
 })
 export class UserModule {

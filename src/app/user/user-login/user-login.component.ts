@@ -1,17 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
+import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterState, RouterStateSnapshot} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {UserService} from "../user.service";
-
-class Credentials {
-    email: string;
-    password: string;
-
-    constructor() {
-        this.email = 'seven__up@sina.cn';
-        this.password = '123456';
-    }
-}
+import {Credentials} from "../../model/credentials";
+import Result from "../../model/result";
+import User from "../../model/user";
 
 class Alert {
     type: string;
@@ -28,20 +21,32 @@ class Alert {
 })
 export class UserLoginComponent implements OnInit {
 
-    credentials = new Credentials(); // 凭证
+    credentials = new Credentials('seven__up@sina.cn', '123456'); // 凭证
     alertMessage = "欢迎回来";
     isLogging = false;
     alertType = 'info';
 
     constructor(private authService: AuthService,
                 private userService: UserService,
-                private router: Router) {
+                private router: Router,
+                public activeRoute: ActivatedRoute) {
     }
 
     ngOnInit() {
         // this.userService.getMyProfile().subscribe(result => {
         //     console.log('AAAAA', result);
         // });
+        // this.activeRoute.params.subscribe(params => {
+        //     // 这里可以从路由里面获取URL参数
+        //     console.log('Route:', params);
+        // });
+        let activatedRouteSnapshot: ActivatedRouteSnapshot = this.activeRoute.snapshot;
+        let routerState: RouterState = this.router.routerState;
+        let routerStateSnapshot: RouterStateSnapshot = routerState.snapshot;
+
+        console.log('111', activatedRouteSnapshot);
+        console.log('222', routerState);
+        console.log('333', routerStateSnapshot);
     }
 
     onLoginSubmit() {
@@ -50,7 +55,7 @@ export class UserLoginComponent implements OnInit {
             this.isLogging = false;
             if (result.success) {
                 this.router.navigate(['']);
-                this.listUsers();
+                this.getProfile();
             } else {
                 this.alertType = 'danger';
                 this.alertMessage = result.description;
@@ -58,10 +63,15 @@ export class UserLoginComponent implements OnInit {
         });
     }
 
-    listUsers() {
-        // this.userService.listUsers().subscribe(result => {
-        //     console.warn('AAAA', result);
-        // });
+    getProfile() {
+        this.userService.getMyProfile().subscribe((result: Result) => {
+            if (result.success) {
+                if (result.data.profile) {
+                    let myProfile = User.wrap(result.data.profile);
+                    console.log('Profile', myProfile);
+                }
+            }
+        });
     }
 
     onRegistryClick() {

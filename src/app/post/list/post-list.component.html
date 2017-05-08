@@ -1,14 +1,48 @@
-<div *ngFor="let hero of heroes" class="card mb-3">
-    <img class="card-img-top img-fluid"
-         src="/src/assets/aaa.jpg"
-         alt="Card image alt">
-    <div class="card-block">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        <p class="card-text">
-            <small class="text-muted">Last updated 5 mins ago</small>
-        </p>
+<p>{{message}}</p>
+
+<div class="row">
+    <div class="col-lg-9 col-md-12">
+        <!--<router-outlet></router-outlet>-->
+        <div *ngFor="let post of posts" class="card mb-3">
+            <!--<img class="card-img-top img-fluid"-->
+                 <!--src="/src/assets/aaa.jpg"-->
+                 <!--alt="Card image alt">-->
+            <div class="card-block">
+                <h4 class="card-title">Card title {{post.id}}</h4>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer.</p>
+                <p class="card-text">
+                    <small class="text-muted">Last updated 5 mins ago</small>
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">
+                            <span>&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <span>&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
     </div>
+
+    <div class="col-lg-3 col-md-12">
+        <widget-statics></widget-statics>
+        <widget-tags></widget-tags>
+    </div>
+
 </div>
 
