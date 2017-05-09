@@ -62,6 +62,6 @@ export default class User {
 }
 
 const USERS: Array<User> = [
-    new User(1, 'Septenary', 'seven__up@sina.cn', '123456', 'http://localhost:5200/src/assets/avatar.jpg', '2016-05-06', '2017-05-03', 'admin'),
-    new User(2, 'Ryfthink', 'ryfthink@gmail.com', '654321', 'http://localhost:5200/src/assets/avatar2.jpg', '2017-01-14', '2017-03-21', null),
+    new User(100, 'Septenary', 'seven__up@sina.cn', '123456', 'http://localhost:5200/src/assets/avatar.jpg', '2016-05-06', '2017-05-03', 'admin'),
+    new User(210, 'Ryfthink', 'ryfthink@gmail.com', '654321', 'http://localhost:5200/src/assets/avatar2.jpg', '2017-01-14', '2017-03-21', null),
 ];

@@ -60,7 +60,7 @@ export class Post {
 const POSTS = [];
 
 {
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 1; i++) {
         POSTS.push(new Post(
             i,
             'ES 集群管理工具 elasticsearch-head',
