@@ -1,3 +1,13 @@
-/*img {*/
-    /*max-width: 100%;*/
+/*@import "../../../../node_modules/ng2-tag-input/dist/modules/core/styles/core/_core.scss";*/
+
+/*$foundation-theme: (*/
+  /*container-border-bottom: 1px solid red*/
+/*);*/
+
+/*/deep/ .ng2-tag-input.foundation-theme {*/
+  /*@include tag-input-theme($foundation-theme);*/
 /*}*/
+
+.flatpickr-input {
+    background-color: white;
+}

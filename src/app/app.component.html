@@ -26,14 +26,14 @@
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
                             </form>
                         </li>
-                        <li *ngIf="!getLoggedIn()" class="nav-item">
+                        <li *ngIf="!loggedIn" class="nav-item">
                             <a class="nav-link" routerLink="/user/login">
                                 <i class="fa fa-user" aria-hidden="true"></i> 登录
                             </a>
                         </li>
-                        <li *ngIf="getLoggedIn()" class="nav-item dropdown">
+                        <li *ngIf="loggedIn" class="nav-item dropdown">
                         <span class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-user-o" aria-hidden="true"></i> 欢迎
+                            <i class="fa fa-user-o" aria-hidden="true"></i>  {{authName}}
                         </span>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" routerLink="/user/me"><i class="fa fa-cogs"
@@ -61,7 +61,7 @@
 
     </div>
 
-    <div style="position: relative">
+    <div style="position: relative; margin-top: 40px">
         <div id="particles">
         </div>
         <div style="position: absolute; left: 0; right: 0; top: 0;">

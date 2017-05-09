@@ -1,3 +1,48 @@
-<button class="btn btn-outline-success btn-lg" (click)="onPublishClick()">发布</button>
+<div style="background-color: #fefefe; padding: 20px; border: 1px solid #1FA48D; border-radius: 10px">
 
-<textarea #simplemde title="markdown-editor">{{text}}</textarea>
+    <form>
+        <div class="form-group">
+            <label for="title">标题</label>
+            <input name="title" id="title" class="form-control" type="text" placeholder="文章标题"
+                   [(ngModel)]="post.title"
+            >
+        </div>
+        <div class="form-group">
+            <label for="tags">分类</label>
+            <input name="category" id="category" class="form-control" type="text" placeholder="文章分类"
+                   [(ngModel)]="post.category">
+        </div>
+        <div class="form-group">
+            <!--https://github.com/gbuomprisco/ng2-tag-input-->
+            <label for="tags">标签</label>
+            <div style="border: 1px solid #D8D8D8; border-radius: 3px;">
+                <tag-input [(ngModel)]="post.tags" modelAsStrings="true" theme="minimal" name="tags"
+                           id="tags"></tag-input>
+            </div>
+        </div>
+        <div class="form-group">
+            <!--https://chmln.github.io/flatpickr/-->
+            <label>时间</label>
+            <input id="flatpickr" class="flatpickr flatpickr-input form-control" type="text" placeholder="文章创建时间"
+                   readonly="readonly" [(ngModel)]="post.createdTime" name="createdTime">
+        </div>
+        <div *ngIf="false" class="form-group">
+            <label for="exampleInputFile">插图</label>
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+            <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the
+                above
+                input. It's a bit lighter and easily wraps to a new line.
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea">正文</label>
+            <textarea id="exampleTextarea" #simplemde title="markdown-editor">{{post.content}}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-outline-success" (click)="onPublishClick()">发布</button>
+
+    </form>
+
+
+</div>

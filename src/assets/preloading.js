@@ -26,9 +26,3 @@ function onBootstrap(maxDelay) {
         delay
     );
 }
-
-
-function sayHello(msg) {
-    console.log('SayHello', msg);
-    onBootstrap();
-}

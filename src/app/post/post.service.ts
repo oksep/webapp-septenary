@@ -6,7 +6,6 @@ import {Http} from "@angular/http";
 export class PostService {
 
     constructor(private http: Http, private authHttp: AuthHttp) {
-
     }
 
     createPost(post: object) {

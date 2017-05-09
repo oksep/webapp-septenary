@@ -15,8 +15,8 @@ export class MarkdownComponent implements AfterViewInit {
             showIcons: ["code", "table"]
         });
 
-        setTimeout(()=>{
-            console.log('Value', mde.value());
-        },2000);
+        // setTimeout(()=>{
+        //     console.log('Value', mde.value());
+        // },2000);
     }
 }

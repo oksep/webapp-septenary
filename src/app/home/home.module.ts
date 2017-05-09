@@ -11,10 +11,15 @@ import {PostService} from "../post/post.service";
 import {AuthGuard} from "../auth/auth.guard";
 import {PostGuard} from '../post/post.guard';
 
+import { TagInputModule } from 'ng2-tag-input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
     imports: [
         SharedModule,
-        HomeRoutingModule
+        HomeRoutingModule,
+        TagInputModule,
+        BrowserAnimationsModule
     ],
     declarations: [
         HomeComponent,

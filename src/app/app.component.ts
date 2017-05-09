@@ -39,8 +39,12 @@ export class AppComponent implements OnInit, AfterViewInit {
         });
     }
 
-    getLoggedIn() {
+    get loggedIn() {
         return this.authService.getLoggedIn();
+    }
+
+    get authName() {
+        return this.authService.getAuthName();
     }
 
     onLogoutClick() {

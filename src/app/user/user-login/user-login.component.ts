@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterState, RouterStateSnapshot} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {UserService} from "../user.service";
 import {Credentials} from "../../model/credentials";
@@ -33,20 +33,6 @@ export class UserLoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.userService.getMyProfile().subscribe(result => {
-        //     console.log('AAAAA', result);
-        // });
-        // this.activeRoute.params.subscribe(params => {
-        //     // 这里可以从路由里面获取URL参数
-        //     console.log('Route:', params);
-        // });
-        let activatedRouteSnapshot: ActivatedRouteSnapshot = this.activeRoute.snapshot;
-        let routerState: RouterState = this.router.routerState;
-        let routerStateSnapshot: RouterStateSnapshot = routerState.snapshot;
-
-        console.log('111', activatedRouteSnapshot);
-        console.log('222', routerState);
-        console.log('333', routerStateSnapshot);
     }
 
     onLoginSubmit() {
@@ -68,7 +54,6 @@ export class UserLoginComponent implements OnInit {
             if (result.success) {
                 if (result.data.profile) {
                     let myProfile = User.wrap(result.data.profile);
-                    console.log('Profile', myProfile);
                 }
             }
         });
