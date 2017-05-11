@@ -1,67 +1,46 @@
-// 用户
-export default class User {
-    id: number; // 用户 ID
-    name: string; // 昵称
-    email: string; // 邮箱
-    password: string; // 密钥
-    avatar: string; // 头像
-    createdTime: string; // 注册时间
-    lastLoginTime: string; // 最近登录时间
-    role: string = 'normal'; // 角色
+import mongoose, {AutoIncrement} from "../dbconnection";
+import Schema = mongoose.Schema;
+import Types = mongoose.Types;
+import ObjectId = Types.ObjectId;
 
-    constructor(id?, name?, email?, password?, avatar?, createdTime?, lastLoginTime?, role?) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.avatar = avatar;
-        this.createdTime = createdTime;
-        this.lastLoginTime = lastLoginTime;
-        this.role = role || 'normal';
-    }
-
-    isAdmin(): boolean {
-        return this.role == 'admin';
-    }
-
-    static add(email, password) {
-        USERS.push(new User(USERS.length + 1, email, password, 'normal'));
-    }
-
-    static exist(email) {
-        for (let usr of USERS) {
-            if (usr.email === email) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    static find(email, password) {
-        console.log('AAA', email, password);
-        for (let usr of USERS) {
-            if (usr.email === email && usr.password == password) {
-                return usr;
-            }
-        }
-        return null;
-    }
-
-    static findByID(id) {
-        for (let usr of USERS) {
-            if (usr.id == id) {
-                return usr;
-            }
-        }
-        return null;
-    }
-
-    static listAllUsers() {
-        return USERS;
-    }
+interface IUser extends mongoose.Document {
+    uid: number,
+    name: string,  // 昵称
+    email: string,  // 邮箱
+    password: string,  // 密钥
+    avatar: string,  // 头像
+    createdTime: Date,  // 注册时间
+    lastLoginTime: Date,  // 最近登录时间
+    role: string, // 角色
 }
 
-const USERS: Array<User> = [
-    new User(100, 'Septenary', 'seven__up@sina.cn', '123456', 'http://localhost:5200/src/assets/avatar.jpg', '2016-05-06', '2017-05-03', 'admin'),
-    new User(210, 'Ryfthink', 'ryfthink@gmail.com', '654321', 'http://localhost:5200/src/assets/avatar2.jpg', '2017-01-14', '2017-03-21', null),
-];
+interface IUserModel extends mongoose.Model<IUser> {
+
+}
+
+const UserSchema = new Schema({
+    uid: {type: Number, unique: true},
+    name: {type: String, required: true},  // 昵称
+    email: {type: String, required: true, unique: true},  // 邮箱
+    password: {type: String, required: true},  // 密钥
+    avatar: String,  // 头像
+    createdTime: {type: Date, default: Date.now},  // 注册时间
+    lastLoginTime: Date,  // 最近登录时间
+    role: {type: String, default: 'normal'}, // 角色
+});
+
+UserSchema.pre('save', false, function (next) {
+    User.findOne({email: this.email}, function (err, doc) {
+        if (!doc) {
+            next();
+        } else {
+            next(new Error("账户已存在!"));
+        }
+    });
+});
+
+UserSchema.plugin(AutoIncrement, {inc_field: 'uid'});
+
+const User = <IUserModel>mongoose.model('User', UserSchema);
+
+export default User;

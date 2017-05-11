@@ -1,0 +1,16 @@
+use blog
+show tables
+db.users.insert({
+    name: 'Septenary',
+    email: 'seven__up@sina.cn',
+    password: '123456',
+    avatar: 'https://img3.taptapdada.com/avatars/6eeadde3a165d11c57731b3f3bec00c2.gif?imageView2/1/w/300/q/80/format/jpg/interlace/1/ignore-error/1',
+    createdTime: ISODate("2016-06-19T00:00:00Z"),
+    lastLoginTime: ISODate("2016-06-19T00:00:00Z"),
+    role: 'admin'
+})
+db.counters.insert({
+    "id" : "uid",
+    "reference_value" : null,
+    "seq" : 1
+})
