@@ -1,25 +1,25 @@
 import {Component, OnInit} from "@angular/core";
-import {PostService} from "../post.service";
-import {Post} from "../../model/post";
+import {ArticleService} from "../article.service";
+import {Article} from "../../model/article";
 
 import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterState, RouterStateSnapshot} from "@angular/router";
 
 @Component({
-    selector: 'app-post-list',
-    templateUrl: './post-list.component.html',
-    styleUrls: ['./post-list.component.css']
+    selector: 'app-article-list',
+    templateUrl: './article-list.component.html',
+    styleUrls: ['./article-list.component.css']
 })
-export class PostListComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
     heroes = [
         {name: 'AAA'},
         {name: 'AAA'}
     ];
 
-    posts: Post[];
+    articles: Article[];
 
     msg: object = null;
 
-    constructor(private postService: PostService,
+    constructor(private articleService: ArticleService,
                 private router: Router,
                 public activeRoute: ActivatedRoute) {
     }
@@ -36,9 +36,9 @@ export class PostListComponent implements OnInit {
 
         this.activeRoute.params.subscribe(params => {
             let page = params.page || 1;
-            this.postService.getPosts(page).subscribe(result => {
-                console.log('Posts:', result);
-                this.posts = result.data.list
+            this.articleService.listArticles(page).subscribe(result => {
+                console.log('Articles:', result);
+                this.articles = result.data.list
             });
         });
     }

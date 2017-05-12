@@ -1,7 +1,7 @@
 // 文章
 import User from "./user";
-export class Post {
-    id: number; // id
+export class Article {
+    articleID: number; // id
     title: string; // 标题
     tags: string[]; // 标签
     category: string; // 分类

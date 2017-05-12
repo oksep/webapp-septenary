@@ -1,0 +1,13 @@
+<p>
+    article-detail works!
+</p>
+
+<div class="container">
+    <p *ngIf="article">
+        {{article.title}}
+    </p>
+    <!--<textarea id="exampleTextarea" #simplemde title="markdown-editor">{{article? article.content : ''}}</textarea>-->
+    <p>
+        {{article? article.content : ''}}
+    </p>
+</div>

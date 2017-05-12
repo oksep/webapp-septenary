@@ -3,8 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {UserService} from "../user.service";
 import {Credentials} from "../../model/credentials";
-import Result from "../../model/result";
-import User from "../../model/user";
 
 class Alert {
     type: string;
@@ -37,26 +35,18 @@ export class UserLoginComponent implements OnInit {
 
     onLoginSubmit() {
         this.isLogging = true;
-        this.authService.login(this.credentials).subscribe((result) => {
-            this.isLogging = false;
-            if (result.success) {
-                this.router.navigate(['']);
-                this.getProfile();
-            } else {
-                this.alertType = 'danger';
-                this.alertMessage = result.description;
-            }
-        });
-    }
-
-    getProfile() {
-        this.userService.getMyProfile().subscribe((result: Result) => {
-            if (result.success) {
-                if (result.data.profile) {
-                    let myProfile = User.wrap(result.data.profile);
-                }
-            }
-        });
+        this.authService
+            .login(this.credentials)
+            .subscribe(
+                (result: any) => {
+                    this.isLogging = false;
+                    if (result.success) {
+                        this.router.navigate(['/user/me']);
+                    } else {
+                        this.alertType = 'danger';
+                        this.alertMessage = result.error.message;
+                    }
+                });
     }
 
     onRegistryClick() {

@@ -6,6 +6,7 @@ import {tokenNotExpired} from "./angular-jwt.module";
 
 import {Credentials} from "../model/credentials";
 import JwtHelper from "../util/angular-jwt";
+import {Observable} from "rxjs/Observable";
 
 export const TOKEN_NAME = "@jwt-token";
 
@@ -47,8 +48,8 @@ export class AuthService {
     login(credentials: Credentials) {
         return this.http
             .post('/api/auth/login', credentials)
-            .map(response => response.json())
-            .map(result => {
+            .map(res => {
+                const result = res.json();
                 this.loggedIn = true;
                 if (result.success && result.data) {
                     console.log('登录成功', this.loggedIn);
@@ -56,6 +57,9 @@ export class AuthService {
                     this.ensureTokenPayload();
                 }
                 return result;
+            })
+            .catch((err) => {
+                return Observable.of(err.json());
             });
     }
 
@@ -64,8 +68,8 @@ export class AuthService {
         return this.http
             .post('/api/auth/register', credentials)
             .map(response => response.json())
-            .map(result => {
-                return result;
+            .catch((err) => {
+                return Observable.of(err.json());
             });
     }
 

@@ -13,12 +13,12 @@
 }
 
 .navbar-brand {
-    color: #938dff;
+    color: #373D49;
     transition: all 0.35s;
 }
 
 .navbar-brand:hover {
-    color: #08D;
+    color: #373D49;
 }
 
 @media (min-width: 991px) {
@@ -44,7 +44,7 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #ffffff;
+    background-color: #373D49;
     visibility: hidden;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);

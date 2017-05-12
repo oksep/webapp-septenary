@@ -1,6 +1,6 @@
 // 用户
 export default class User {
-    id: number;
+    uid: number;
     name: string; // 昵称
     email: string; // 邮箱
     avatar: string; // 头像

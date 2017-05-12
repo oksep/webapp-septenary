@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {UserService} from "../user.service";
+import User from "../../model/user";
 
 
 @Component({
@@ -11,8 +12,7 @@ import {UserService} from "../user.service";
 })
 export class UserMeComponent implements OnInit {
 
-    profile: string = "profile";
-    users: any;
+    profile: User;
 
     constructor(private authService: AuthService,
                 private userService: UserService,
@@ -26,14 +26,13 @@ export class UserMeComponent implements OnInit {
 
     getProfile() {
         this.userService.getMyProfile().subscribe(result => {
-            this.profile = JSON.stringify(result)
+            this.profile = result.data;
+            console.log(this.profile);
         });
     }
 
     getUsers() {
-        this.userService.listUsers().subscribe(result => {
-            this.users = JSON.stringify(result)
-        });
+
     }
 
 

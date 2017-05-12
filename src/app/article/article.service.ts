@@ -1,29 +1,35 @@
 import {Injectable} from "@angular/core";
-
-import {Http} from "@angular/http";
-
 import {AuthHttp} from "../auth/angular-jwt.module";
+import {Http} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 
-
 @Injectable()
-export class UserService {
+export class ArticleService {
 
     constructor(private http: Http, private authHttp: AuthHttp) {
     }
 
-    getMyProfile() {
+    createArticle(article: object) {
         return this.authHttp
-            .get('/api/user/me')
+            .post('/api/article/create', article)
             .map(response => response.json())
             .catch((err) => {
                 return Observable.of(err.json());
             });
     }
 
-    listUsers() {
+    getArticleDetail(id: number) {
         return this.authHttp
-            .get('/api/user/list')
+            .get(`/api/article/detail/${id}`)
+            .map(response => response.json())
+            .catch((err) => {
+                return Observable.of(err.json());
+            });
+    }
+
+    listArticles(page: number) {
+        return this.http
+            .get(`/api/article/page/${page}`)
             .map(response => response.json())
             .catch((err) => {
                 return Observable.of(err.json());

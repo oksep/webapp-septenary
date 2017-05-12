@@ -2,21 +2,21 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 
 import {HomeComponent} from "./home.component";
-import {PostWriteComponent} from "../post/write/post-write.component";
-import {PostDetailComponent} from "../post/detail/post-detail.component";
-import {PostListComponent} from "../post/list/post-list.component";
+import {ArticleWriteComponent} from "../article/write/article-write.component";
+import {ArticleDetailComponent} from "../article/detail/article-detail.component";
+import {ArticleListComponent} from "../article/list/article-list.component";
 
 import {PageNotFoundComponent} from "../shared/component/404.component";
 
 import {AuthGuard} from "../auth/auth.guard";
-import {PostGuard} from '../post/post.guard';
+import {ArticleGuard} from "../article/article.guard";
 
 const routes: Routes = [
-    // {path: '', redirectTo: 'post', pathMatch: 'full'},
+    // {path: '', redirectTo: 'article', pathMatch: 'full'},
     {path: '', component: HomeComponent},
-    {path: 'page/:page', component: PostListComponent, canActivate: [PostGuard]},
-    {path: 'write', component: PostWriteComponent, canActivate: [AuthGuard]},
-    {path: 'detail/:id', component: PostDetailComponent},
+    {path: 'page/:page', component: ArticleListComponent, canActivate: [ArticleGuard]},
+    {path: 'write', component: ArticleWriteComponent, canActivate: [AuthGuard]},
+    {path: 'article/:id', component: ArticleDetailComponent},
     {path: '**', component: PageNotFoundComponent}
 ];
 

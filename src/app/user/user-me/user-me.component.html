@@ -1,9 +1,41 @@
-<p>
-    {{profile}}
-</p>
+<div class="container app-border">
+    <div *ngIf="profile" class="row">
+        <div class="col-lg-3 col-sm-6">
 
-<p>
-    {{users}}
-</p>
+            <div class="card hovercard">
+                <div class="cardheader">
 
-<a class="btn btn-outline-success btn-lg" routerLink="/write"><i class="fa fa-edit" aria-hidden="true"></i> 写文章</a>
+                </div>
+                <div class="avatar">
+                    <img alt="" [src]="profile.avatar">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="/">{{profile.name}}</a>
+                    </div>
+                    <div class="desc">知识有重量，<br>但成就有光泽。<br>有人感觉到知识的力量，<br>但更多的人只看到成就的光泽。</div>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm icon" href="/">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm icon" rel="publisher" href="/">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm icon" rel="publisher" href="/">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm icon" rel="publisher" href="/">
+                        <i class="fa fa-behance"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-9 col-sm-6">
+
+        </div>
+
+    </div>
+</div>

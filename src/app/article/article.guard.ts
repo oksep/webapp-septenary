@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
-export class PostGuard implements CanActivate {
+export class ArticleGuard implements CanActivate {
 
     constructor(private router: Router) {
     }

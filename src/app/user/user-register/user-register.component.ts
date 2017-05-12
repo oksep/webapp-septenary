@@ -35,7 +35,7 @@ export class UserRegisterComponent implements OnInit {
                 this.alertType = 'info';
                 setTimeout(
                     () => this.router.navigate(['/user/login'])
-                    , 1000
+                    , 750
                 );
             } else {
                 this.alertMessage = result.error.message;

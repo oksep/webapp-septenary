@@ -3,13 +3,13 @@ import {SharedModule} from "../shared/shared.module";
 
 import {HomeComponent} from "./home.component";
 import {HomeRoutingModule} from "./home.routing";
-import {PostWriteComponent} from "../post/write/post-write.component";
-import {PostDetailComponent} from "../post/detail/post-detail.component";
-import {PostListComponent} from "../post/list/post-list.component";
-import {PostService} from "../post/post.service";
+import {ArticleWriteComponent} from "../article/write/article-write.component";
+import {ArticleDetailComponent} from "../article/detail/article-detail.component";
+import {ArticleListComponent} from "../article/list/article-list.component";
+import {ArticleService} from "../article/article.service";
 
 import {AuthGuard} from "../auth/auth.guard";
-import {PostGuard} from '../post/post.guard';
+import {ArticleGuard} from '../article/article.guard';
 
 import { TagInputModule } from 'ng2-tag-input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,14 +23,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ],
     declarations: [
         HomeComponent,
-        PostDetailComponent,
-        PostListComponent,
-        PostWriteComponent
+        ArticleDetailComponent,
+        ArticleListComponent,
+        ArticleWriteComponent
     ],
     providers: [
-        PostService,
+        ArticleService,
         AuthGuard,
-        PostGuard
+        ArticleGuard
     ]
 })
 export class HomeModule {
