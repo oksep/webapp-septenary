@@ -1,5 +1,6 @@
-import mongoose, {AutoIncrement} from "../dbconnection";
-
+import mongoose from "../dbconnection";
+import {IPaginate, MongoosePaginate} from "./plugins/paginate";
+import {AutoIncrement} from "./plugins/mongoose-sequence";
 import Schema = mongoose.Schema;
 import Types = mongoose.Types;
 import ObjectId = Types.ObjectId;
@@ -19,7 +20,7 @@ interface IArticle extends mongoose.Document {
     log(): void
 }
 
-interface IArticleModel extends mongoose.Model<IArticle> {
+interface IArticleModel extends mongoose.Model<IArticle>, IPaginate {
     staticMethod(): void
 }
 
@@ -36,12 +37,18 @@ const ArticleSchema = new Schema({
     authorID: {type: Number, required: true} // 作者
 });
 
-ArticleSchema.plugin(AutoIncrement, {inc_field: 'articleID'});
-
+// 日志 实例方法
 ArticleSchema.methods.log = () => {
     console.log('InstanceMethod....')
 };
 
+// 加载自增 id 插件
+ArticleSchema.plugin(AutoIncrement, {inc_field: 'articleID'});
+
+// 翻页实现
+ArticleSchema.statics.paginate = MongoosePaginate.paginate;
+
+// 静态方法
 ArticleSchema.statics.staticMethod = () => {
     console.log('StaticMethod....')
 };

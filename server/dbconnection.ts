@@ -1,8 +1,6 @@
-import * as mongoose from "mongoose";
 import {DBConfig} from "./config";
+import * as mongoose from "mongoose";
 (<any>mongoose).Promise = global.Promise;
-
-import * as AutoIncrement from "mongoose-sequence";
 
 function connectDB(onDBConnected: Function) {
     const connection = mongoose.connect(DBConfig.host, {server: {socketOptions: {keepAlive: 1}}}).connection;
@@ -20,6 +18,5 @@ function onError(error) {
 export default mongoose
 
 export {
-    AutoIncrement,
     connectDB
 }

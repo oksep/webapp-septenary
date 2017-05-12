@@ -1,4 +1,6 @@
-import mongoose, {AutoIncrement} from "../dbconnection";
+import mongoose from "../dbconnection";
+import {IPaginate, MongoosePaginate} from "./plugins/paginate";
+import {AutoIncrement} from "./plugins/mongoose-sequence";
 import Schema = mongoose.Schema;
 import Types = mongoose.Types;
 import ObjectId = Types.ObjectId;
@@ -14,7 +16,7 @@ interface IUser extends mongoose.Document {
     role: string, // 角色
 }
 
-interface IUserModel extends mongoose.Model<IUser> {
+interface IUserModel extends mongoose.Model<IUser>, IPaginate {
 
 }
 
@@ -29,6 +31,7 @@ const UserSchema = new Schema({
     role: {type: String, default: 'normal'}, // 角色
 });
 
+// hook: 存储前检查是否已经存在
 UserSchema.pre('save', false, function (next) {
     User.findOne({email: this.email}, function (err, doc) {
         if (!doc) {
@@ -39,7 +42,11 @@ UserSchema.pre('save', false, function (next) {
     });
 });
 
+// 加载自增 id 插件
 UserSchema.plugin(AutoIncrement, {inc_field: 'uid'});
+
+// 翻页查询实现
+UserSchema.statics.paginate = MongoosePaginate.paginate;
 
 const User = <IUserModel>mongoose.model('User', UserSchema);
 
