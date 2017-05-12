@@ -36,12 +36,12 @@ export function updateArticle(request: Request, response: Response) {
 
 // 按页查询
 export function paginateArticle(request: Request, response: Response) {
-    const LIMIT = 2;
+    const LIMIT = 8;
     let page = request.params.page;
     Article
         .paginate({}, {offset: LIMIT * page - LIMIT, limit: LIMIT})
         .then(result => {
-            response.send(result);
+            response.json(Result.success(result));
         })
         .catch(err => {
             response.status(404);
