@@ -11,4 +11,10 @@ export class Article {
     createdTime: string; // 创建时间
     updatedTime: string; // 更新时间
     author: User; // 作者
+    routerLink = '/article/1';
+
+    // get routerLink() {
+    //     // return `/article/${this.articleID}`;
+    //     return '/article/1'
+    // }
 }

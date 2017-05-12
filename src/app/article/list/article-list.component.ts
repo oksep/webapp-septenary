@@ -4,6 +4,13 @@ import {Article} from "../../model/article";
 
 import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterState, RouterStateSnapshot} from "@angular/router";
 
+class Pagination {
+    limit: number;
+    offset: number;
+    total: number;
+    pages: number[];
+}
+
 @Component({
     selector: 'app-article-list',
     templateUrl: './article-list.component.html',
@@ -15,37 +22,42 @@ export class ArticleListComponent implements OnInit {
         {name: 'AAA'}
     ];
 
+    pagination: Pagination;
     articles: Article[];
+    currentPage: number = 1;
 
-    msg: object = null;
-
-    constructor(private articleService: ArticleService,
-                private router: Router,
-                public activeRoute: ActivatedRoute) {
+    constructor(private articleService: ArticleService, private router: Router, public activeRoute: ActivatedRoute) {
     }
 
     ngOnInit() {
-
+        window.scrollTo(0, 0);
         let activatedRouteSnapshot: ActivatedRouteSnapshot = this.activeRoute.snapshot;
         let routerState: RouterState = this.router.routerState;
         let routerStateSnapshot: RouterStateSnapshot = routerState.snapshot;
 
-        console.log('111', activatedRouteSnapshot);
-        console.log('222', routerState);
-        console.log('333', routerStateSnapshot);
+        console.log(activatedRouteSnapshot, routerState, routerStateSnapshot);
 
         this.activeRoute.params.subscribe(params => {
-            let page = params.page || 1;
-            this.articleService.listArticles(page).subscribe(result => {
-                console.log('Articles:', result);
-                this.articles = result.data.list
+            this.currentPage = params.page || 1;
+            this.articleService.listArticles(this.currentPage).subscribe(result => {
+                let data = result.data;
+                this.articles = data.docs;
+                delete data.docs;
+                this.pagination = new Pagination();
+                Object.assign(this.pagination, data);
+                this.pagination.pages = Array.from(Array(Math.ceil(this.pagination.total / this.pagination.limit)).keys()).map(page => page + 1);
+                console.log('Articles:', this.pagination);
             });
         });
     }
 
 
     get message() {
-        return JSON.stringify(this.msg)
+        return JSON.stringify(this.articles)
     }
+
+    // articleLinker(article: Article) {
+    //     return `/article/${article.articleID}`;
+    // }
 
 }
