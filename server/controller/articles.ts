@@ -20,7 +20,7 @@ export function createArticle(request: Request, response: Response) {
 
 }
 
-export function getArticleDetail(request: Request, response: Response) {
+export function findArticle(request: Request, response: Response) {
     let id = request.params.id;
     Article.findOne({articleID: id}).then(doc => {
         response.json(Result.success(doc));
@@ -34,9 +34,17 @@ export function updateArticle(request: Request, response: Response) {
     response.send('TODO');
 }
 
-export function listArticle(request: Request, response: Response) {
+// 按页查询
+export function paginateArticle(request: Request, response: Response) {
+    const LIMIT = 2;
     let page = request.params.page;
-    let result = Article.find();
-    // response.json(Result.success(result));
-    response.send('TODO');
+    Article
+        .paginate({}, {offset: LIMIT * page - LIMIT, limit: LIMIT})
+        .then(result => {
+            response.send(result);
+        })
+        .catch(err => {
+            response.status(404);
+            response.json(Result.failed(err.message));
+        });
 }

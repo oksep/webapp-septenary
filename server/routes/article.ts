@@ -8,8 +8,8 @@ articleRouter.post('/create', Auth.authenticateJWT(), ArticleController.createAr
 
 articleRouter.post('/update', Auth.authenticateJWT(), ArticleController.updateArticle);
 
-articleRouter.get('/page/:page', ArticleController.listArticle);
+articleRouter.get('/page/:page', ArticleController.paginateArticle);
 
-articleRouter.get('/detail/:id', ArticleController.getArticleDetail);
+articleRouter.get('/detail/:id', ArticleController.findArticle);
 
 export {articleRouter};
