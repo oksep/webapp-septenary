@@ -1,4 +1,4 @@
-import {AfterViewInit, Component} from "@angular/core";
+import {AfterViewInit, Component, Input} from "@angular/core";
 
 @Component({
     selector: 'color-picker-span',
@@ -7,17 +7,19 @@ import {AfterViewInit, Component} from "@angular/core";
               [cpPosition]="'bottom'"
               [style.color]="color"
               [cpPositionOffset]="'50%'"
-              [cpPositionRelativeToArrow]="true">ColorPicker!</span>
+              [cpPositionRelativeToArrow]="true">{{text}}</span>
     `,
 })
 export class ColorPickerSpanComponent implements AfterViewInit {
 
-    color = '#FFF';
+    color = '#0F5246';
 
-    ngAfterViewInit(): void {
-    }
+    @Input()
+    text: string;
 
     constructor() {
+    }
 
+    ngAfterViewInit(): void {
     }
 }
