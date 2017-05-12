@@ -14,7 +14,7 @@ export default class Result {
         return new Result(true, data, null);
     }
 
-    static failed(data: object) {
-        return new Result(false, null, data);
+    static failed(message: string) {
+        return new Result(false, null, {message: message});
     }
 }

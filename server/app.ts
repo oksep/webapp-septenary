@@ -53,9 +53,7 @@ app.use(function (req: express.Request, res: express.Response, next) {
 app.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
 
     res.status(err.status || 500);
-    res.json(Result.failed({
-        message: err.message
-    }))
+    res.json(Result.failed(err.message));
 });
 
 export {app}

@@ -30,7 +30,7 @@ const ArticleSchema = new Schema({
     category: String, // 分类
     content: String, // 正文
     summary: String, // 摘要
-    views: Number, // 浏览数
+    views: {type: Number, default: 0}, // 浏览数
     createdTime: {type: Date, default: Date.now}, // 创建时间
     updatedTime: {type: Date, default: Date.now}, // 更新时间
     authorID: {type: Number, required: true} // 作者

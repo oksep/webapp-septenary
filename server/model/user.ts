@@ -34,7 +34,7 @@ UserSchema.pre('save', false, function (next) {
         if (!doc) {
             next();
         } else {
-            next(new Error("账户已存在!"));
+            next(new Error("账号已存在!"));
         }
     });
 });

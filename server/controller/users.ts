@@ -37,12 +37,12 @@ export function login(request: Request, response: Response, next: NextFunction) 
                 }));
             } else {
                 response.status(401);
-                next(new Error('帐号或密码错误'));
+                response.json(Result.failed('帐号或密码错误'));
             }
         })
         .catch(err => {
             response.status(404);
-            next(new Error('帐号不存在'));
+            response.json(Result.failed('帐号或密码错误'));
         });
 }
 
@@ -51,10 +51,10 @@ export function createUser(request: Request, response: Response, next: NextFunct
     let user = new User(request.body);
     user.save()
         .then(doc => {
-            response.json(doc);
+            response.json(Result.success(doc));
         })
         .catch(err => {
-            err.status = 401;
+            err.status = 200;
             next(err);
         });
 }
@@ -68,11 +68,10 @@ export function listUsers(request: Request, response: Response) {
 
 // 查询用户 profile
 export function getProfile(request: Request, response: Response, next: NextFunction) {
-    User.findOne({'uid': request.user.uid})
+    User.findOne({uid: request.user.uid})
+    // User.findById('59148a5bd524b0c5ded620b4')
         .then(doc => {
-            response.json(Result.success({
-                doc: doc
-            }));
+            response.json(Result.success(doc));
         })
         .catch(err => {
             err.status = 404;

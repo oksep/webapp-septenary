@@ -1,4 +1,3 @@
-import ArticleModel from "../model/article";
 import Article from "../model/article";
 import {Request, Response} from "express";
 import Result from "./result";
@@ -8,21 +7,27 @@ export function createArticle(request: Request, response: Response) {
 
     body.updatedTime && (body.updatedTime = new Date(body.updatedTime));
     body.createdTime && (body.createdTime = new Date(body.createdTime));
+    body.authorID = request.user.uid;
 
-    console.log('AAA', request.user);
-
-    let article = new ArticleModel(body);
+    let article = new Article(body);
 
     article.save().then(doc => {
-        response.json(Result.success({
-            message: '创建成功',
-            doc: doc
-        }));
+        response.json(Result.success(doc));
     }).catch(err => {
         console.log(err);
-        response.json(Result.failed({message: err.message}));
+        response.json(Result.failed(err.message));
     });
 
+}
+
+export function getArticleDetail(request: Request, response: Response) {
+    let id = request.params.id;
+    Article.findOne({articleID: id}).then(doc => {
+        response.json(Result.success(doc));
+    }).catch(err => {
+        response.status(404);
+        response.json(Result.failed(err.message));
+    });
 }
 
 export function updateArticle(request: Request, response: Response) {

@@ -11,9 +11,8 @@ const OPTION: StrategyOptions = {
 };
 
 const JWTStrategy = new JWT.Strategy(OPTION, function (req, payload, done: Function) {
-        let user = {id: payload.id};
-        if (user) {
-            return done(null, user);
+        if (payload) {
+            return done(null, payload);
         } else {
             return done(new Error("User not found"), null);
         }
