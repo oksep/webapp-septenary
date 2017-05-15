@@ -1,38 +1,29 @@
 import {Injectable} from "@angular/core";
 import {AuthHttp} from "../auth/angular-jwt.module";
 import {Http} from "@angular/http";
-import {Observable} from "rxjs/Observable";
+import BaseHttpService from "../util/base.server";
 
 @Injectable()
-export class ArticleService {
+export class ArticleService extends BaseHttpService {
 
-    constructor(private http: Http, private authHttp: AuthHttp) {
+    constructor(http: Http, authHttp: AuthHttp) {
+        super(http, authHttp);
     }
 
     createArticle(article: object) {
-        return this.authHttp
-            .post('/api/article/create', article)
-            .map(response => response.json())
-            .catch((err) => {
-                return Observable.of(err.json());
-            });
+        return this.authHttpPost('/api/article/create', article);
     }
 
     getArticleDetail(id: number) {
-        return this.authHttp
-            .get(`/api/article/detail/${id}`)
-            .map(response => response.json())
-            .catch((err) => {
-                return Observable.of(err.json());
-            });
+        return this.httpGet(`/api/article/detail/${id}`);
     }
 
     listArticles(page: number) {
-        return this.http
-            .get(`/api/article/page/${page}`)
-            .map(response => response.json())
-            .catch((err) => {
-                return Observable.of(err.json());
-            });
+        return this.httpGet(`/api/article/page/${page}`);
     }
+
+    getTags() {
+        return this.httpGet('/api/article/tags');
+    }
+
 }

@@ -3,30 +3,21 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 
 import {AuthHttp} from "../auth/angular-jwt.module";
-import {Observable} from "rxjs/Observable";
+import BaseHttpService from "../util/base.server";
 
 
 @Injectable()
-export class UserService {
+export class UserService extends BaseHttpService {
 
-    constructor(private http: Http, private authHttp: AuthHttp) {
+    constructor(http: Http, authHttp: AuthHttp) {
+        super(http, authHttp);
     }
 
     getMyProfile() {
-        return this.authHttp
-            .get('/api/user/me')
-            .map(response => response.json())
-            .catch((err) => {
-                return Observable.of(err.json());
-            });
+        return this.authHttpGet('/api/user/me');
     }
 
     listUsers() {
-        return this.authHttp
-            .get('/api/user/list')
-            .map(response => response.json())
-            .catch((err) => {
-                return Observable.of(err.json());
-            });
+        return this.authHttpGet('/api/user/list');
     }
 }

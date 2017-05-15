@@ -9,17 +9,22 @@ import {SharedModule} from "./shared/shared.module";
 
 import {HomeModule} from "./home/home.module";
 
-import {AppRoutingModule} from './app.routing';
-
+import {AppRoutingModule} from "./app.routing";
 // module
 import {AuthModule} from "./auth/auth.module";
-
 // component
 import {AppComponent} from "./app.component";
+import {HeaderComponent} from "./header/header.component";
+import {HeaderService} from "./header/header.service";
+import {FooterComponent} from "./footer/footer.component";
+
+// service
 
 @NgModule({
     declarations: [
         AppComponent,
+        HeaderComponent,
+        FooterComponent
     ],
     imports: [
         AppRoutingModule,
@@ -28,6 +33,9 @@ import {AppComponent} from "./app.component";
         HttpModule,
         HomeModule,
         AuthModule
+    ],
+    providers: [
+        HeaderService
     ],
     bootstrap: [AppComponent]
 })

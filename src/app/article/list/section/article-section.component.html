@@ -1,0 +1,15 @@
+<section class="article-section" (click)="onSectionClick()">
+    <!--<a class="card-title" [routerLink]="'/article/' + article.articleID"></a>-->
+    <div class="content">
+        <h2 class="article-section-title">{{article.title}}</h2>
+        <div class="markdown" *ngIf="article.summary" Markdown [data]="article.summary | summarycutter"></div>
+    </div>
+    <div class="bottom">
+        <small class="text-muted">
+            <i class="fa fa-calendar"></i> {{ article.createdTime | articledate | date:'yyyy年MM月dd日 HH:mm'}}
+        </small>
+        <div style="display: inline; margin-left: 10px">
+            <a *ngFor="let tag of article.tags" class="tag" [routerLink]="'/article/' + article.articleID">{{tag}}</a>
+        </div>
+    </div>
+</section>

@@ -16,7 +16,7 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 
     private markdownEditor: any; // md 编辑器
 
-    private article = new Article(); // 文章
+    article = new Article(); // 文章
 
     constructor(private articleService: ArticleService, private router: Router) {
         this.article.title = '暗影诗章';

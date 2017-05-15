@@ -1,6 +1,5 @@
+<article-header [article]="article"></article-header>
+
 <div *ngIf="article" class="container">
-    <p>
-        {{article.title}}
-    </p>
     <div Markdown [data]="article.content"></div>
 </div>

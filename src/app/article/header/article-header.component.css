@@ -1,0 +1,18 @@
+.app-header {
+    /*background-image: url(http://callfiles.ueibo.com/hexo-theme-laughing/page_background.jpg);*/
+    background-image: url(http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg);
+    /*background-image: url(/src/assets/expertise.jpg);*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 450px;
+}
+
+.app-header:before {
+    position: absolute;
+    content: '';
+    background: rgba(0, 0, 0, 0.23);
+    width: 100%;
+    height: 450px;
+    pointer-events: none;
+}

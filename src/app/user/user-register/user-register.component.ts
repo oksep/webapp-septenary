@@ -5,10 +5,12 @@ import {Router} from "@angular/router";
 class Credentials {
     email: string;
     password: string;
+    name: string;
 
     constructor() {
         this.email = 'seven__up@sina.cn';
         this.password = '123456';
+        this.name = "Septenary";
     }
 }
 
@@ -19,8 +21,6 @@ class Credentials {
 })
 export class UserRegisterComponent implements OnInit {
     credentials = new Credentials(); // 凭证
-    alertMessage = "新用户注册";
-    alertType = 'info';
 
     constructor(private authService: AuthService, private router: Router) {
     }
@@ -31,23 +31,14 @@ export class UserRegisterComponent implements OnInit {
     onRegisterSubmit() {
         this.authService.register(this.credentials).subscribe((result) => {
             if (result.success) {
-                this.alertMessage = '注册成功';
-                this.alertType = 'info';
                 setTimeout(
                     () => this.router.navigate(['/user/login'])
                     , 750
                 );
             } else {
-                this.alertMessage = result.error.message;
-                this.alertType = 'danger';
+                // TODO
             }
         });
     }
 
-    setAlertClasses(type) {
-        return {
-            'alert-danger': this.alertType == 'danger',
-            'alert-info': this.alertType != 'danger'
-        };
-    }
 }

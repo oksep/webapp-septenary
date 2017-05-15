@@ -1,31 +1,25 @@
-<div class="row">
+<!--<article-header></article-header>-->
 
-    <div class="col-lg-9 col-md-12">
-        <div *ngFor="let article of articles" class="card mb-3">
-            <!--<img class="card-img-top img-fluid" src="/src/assets/aaa.jpg" alt="Card image alt">-->
-            <div class="card-block">
-                <a [routerLink]="'/article/' + article.articleID"><h4 class="card-title">{{article.title}}</h4></a>
-                <p class="card-text">{{article.content}}</p>
-                <p class="card-text">
-                    <small class="text-muted">{{article.updatedTime}}</small>
-                </p>
-            </div>
+<div class="container">
+    <div class="row justify-content-md-center">
+
+        <div class="col-lg-10 col-md-12">
+            <app-article-section *ngFor="let article of articles" [article]="article"></app-article-section>
+            <nav *ngIf="pagination" style="margin-top: 40px">
+                <ul class="pagination justify-content-center">
+                    <li *ngFor="let page of pagination.pages" class="page-item" [class.active]="currentPage == page">
+                        <a class="page-link" [routerLink]="'/page/' + page">{{page}}</a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
 
-        <nav *ngIf="pagination">
-            <ul class="pagination justify-content-center">
-                <li *ngFor="let page of pagination.pages" class="page-item" [class.active]="currentPage == page">
-                    <a class="page-link" [routerLink]="'/page/' + page">{{page}}</a>
-                </li>
-            </ul>
-        </nav>
+        <div *ngIf="false" class="col-lg-3 col-md-12">
+            <widget-statics></widget-statics>
+            <widget-tags></widget-tags>
+        </div>
 
     </div>
-
-    <div class="col-lg-3 col-md-12">
-        <widget-statics></widget-statics>
-        <widget-tags></widget-tags>
-    </div>
-
 </div>
 

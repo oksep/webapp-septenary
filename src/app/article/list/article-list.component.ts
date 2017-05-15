@@ -3,6 +3,7 @@ import {ArticleService} from "../article.service";
 import {Article} from "../../model/article";
 
 import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterState, RouterStateSnapshot} from "@angular/router";
+import {HeaderService} from "../../header/header.service";
 
 class Pagination {
     limit: number;
@@ -17,16 +18,12 @@ class Pagination {
     styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements OnInit {
-    heroes = [
-        {name: 'AAA'},
-        {name: 'AAA'}
-    ];
 
     pagination: Pagination;
     articles: Article[];
     currentPage: number = 1;
 
-    constructor(private articleService: ArticleService, private router: Router, public activeRoute: ActivatedRoute) {
+    constructor(private headerService: HeaderService, private articleService: ArticleService, private router: Router, public activeRoute: ActivatedRoute) {
     }
 
     ngOnInit() {

@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleService} from "../article.service";
 import {Article} from "../../model/article";
+import {HeaderService} from "../../header/header.service";
 
 @Component({
     selector: 'app-article-detail',
@@ -16,21 +17,28 @@ export class ArticleDetailComponent implements OnInit {
 
     article: Article;
 
-    constructor(private articleService: ArticleService,
+    constructor(private headerService: HeaderService,
+                private articleService: ArticleService,
                 private router: Router,
                 public activeRoute: ActivatedRoute) {
     }
 
     ngOnInit() {
-        // this.initMarkdownEditor();
+        this.headerService.changeHeaderAbsolute(true);
         this.activeRoute.params.subscribe(params => {
             let id = params.id;
             this.articleService.getArticleDetail(id).subscribe(result => {
                 if (result.success) {
-                    // result.data.content =  result.data.content;
                     this.article = result.data;
                 }
             });
+            this.articleService.debug(this.articleService.getTags());
         });
     }
+
+    ngOnDestroy() {
+        this.headerService.changeHeaderAbsolute(false);
+    }
+
+
 }

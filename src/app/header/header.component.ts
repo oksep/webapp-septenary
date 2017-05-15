@@ -1,22 +1,27 @@
 import {AfterViewInit, Component, OnInit} from "@angular/core";
-import {AuthService} from "./auth/auth.service";
+import {AuthService} from "../auth/auth.service";
 import {Router} from "@angular/router";
+import {HeaderEvent, HeaderService} from "./header.service";
 
 const $ = jQuery;
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
-    constructor(private authService: AuthService, private router: Router) {
+    headerAbsolute: boolean;
+
+    constructor(private headerService: HeaderService, private authService: AuthService, private router: Router) {
         $(window).resize(() => this.onWindowSizeChange());
     }
 
     ngOnInit(): void {
-        onBootstrap(1000);
+        this.headerService.events.subscribe((event: HeaderEvent) => {
+            this.headerAbsolute = event.isAbsolute;
+        });
     }
 
     ngAfterViewInit(): void {

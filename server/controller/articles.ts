@@ -2,6 +2,8 @@ import Article from "../model/article";
 import {Request, Response} from "express";
 import Result from "./result";
 
+const MORE_TAG = '<!--more-->';
+
 export function createArticle(request: Request, response: Response) {
     const body = request.body;
 
@@ -10,6 +12,10 @@ export function createArticle(request: Request, response: Response) {
     body.authorID = request.user.uid;
 
     let article = new Article(body);
+    const index = article.content.indexOf(MORE_TAG);
+    if (index > 0) {
+        article.summary = article.content.substring(0, index);
+    }
 
     article.save().then(doc => {
         response.json(Result.success(doc));
@@ -47,4 +53,26 @@ export function paginateArticle(request: Request, response: Response) {
             response.status(404);
             response.json(Result.failed(err.message));
         });
+}
+
+// 标签聚合
+export function aggregateTags(request: Request, response: Response) {
+    Article
+        .aggregate(
+            {
+                $unwind: "$tags"
+            },
+            {
+                $group: {
+                    _id: "$tags",
+                    count: {$sum: 1}
+                }
+            }
+        )
+        .then(doc => {
+            response.json(Result.success(doc));
+        })
+        .catch(err => {
+            response.json(Result.failed(err.message));
+        })
 }

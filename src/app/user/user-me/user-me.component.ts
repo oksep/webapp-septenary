@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {UserService} from "../user.service";
 import User from "../../model/user";
+import {HeaderService} from "../../header/header.service";
 
 
 @Component({
@@ -14,7 +15,8 @@ export class UserMeComponent implements OnInit {
 
     profile: User;
 
-    constructor(private authService: AuthService,
+    constructor(private headerService: HeaderService,
+                private authService: AuthService,
                 private userService: UserService,
                 private router: Router) {
     }

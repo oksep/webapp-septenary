@@ -6,6 +6,7 @@ import * as compression from "compression";
 import {userRouter} from "./routes/user";
 import {authRouter} from "./routes/auth";
 import {articleRouter} from "./routes/article";
+import {adminRouter} from "./routes/admin";
 
 import * as Auth from "./auth/auth";
 import Result from "./controller/result";
@@ -24,6 +25,7 @@ app.use(Auth.initial());
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/article', articleRouter);
+app.use('/api/admin', adminRouter);
 
 // if (app.get('env') === 'production') {
 

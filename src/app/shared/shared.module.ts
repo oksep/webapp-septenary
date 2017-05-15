@@ -2,7 +2,6 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 // module
-import {ColorPickerModule} from "./module/color-picker/color-picker.module";
 // pipe
 import {AwesomePipe} from "./pipe/awesome.pipe";
 // directive
@@ -13,7 +12,8 @@ import {MarkdownComponent} from "./component/mdeditor.component";
 import {PageNotFoundComponent} from "./component/404.component";
 import {StaticsComponent} from "../widget/statics/statics.component";
 import {TagsComponent} from "../widget/tags/tags.component";
-import {ColorPickerSpanComponent} from "./component/color-picker-span.component";
+import {SummaryPipe} from "./pipe/summary.pipe";
+import {ArticleDatePipe} from "./pipe/date.pipe";
 
 // service
 // import {UserService} from "../user/user.service";
@@ -21,26 +21,28 @@ import {ColorPickerSpanComponent} from "./component/color-picker-span.component"
 @NgModule({
     imports: [
         CommonModule,
-        ColorPickerModule,
+        // ColorPickerModule,
     ],
     declarations: [
         AwesomePipe,
+        SummaryPipe,
+        ArticleDatePipe,
         HighlightDirective,
         GetEleDirective,
         MarkdownComponent,
         StaticsComponent,
         TagsComponent,
         PageNotFoundComponent,
-        ColorPickerSpanComponent
     ],
     exports: [
         AwesomePipe,
+        SummaryPipe,
+        ArticleDatePipe,
         HighlightDirective,
         GetEleDirective,
         MarkdownComponent,
         CommonModule,
         FormsModule,
-        ColorPickerSpanComponent,
         StaticsComponent,
         TagsComponent,
     ],
