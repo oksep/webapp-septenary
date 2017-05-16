@@ -8,5 +8,7 @@ npm start
 2.for production
 ```shell
 npm run build
-node ./dist/server/bin/www
+
+# use pm2 to manage the service 
+pm2 start ./dist/server/bin/www
 ```
