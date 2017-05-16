@@ -40,5 +40,4 @@ export class ArticleDetailComponent implements OnInit {
         this.headerService.changeHeaderAbsolute(false);
     }
 
-
 }

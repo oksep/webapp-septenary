@@ -14,6 +14,7 @@ import {StaticsComponent} from "../widget/statics/statics.component";
 import {TagsComponent} from "../widget/tags/tags.component";
 import {SummaryPipe} from "./pipe/summary.pipe";
 import {ArticleDatePipe} from "./pipe/date.pipe";
+import {HashDirective} from "./directive/hash.directive";
 
 // service
 // import {UserService} from "../user/user.service";
@@ -28,6 +29,7 @@ import {ArticleDatePipe} from "./pipe/date.pipe";
         SummaryPipe,
         ArticleDatePipe,
         HighlightDirective,
+        HashDirective,
         GetEleDirective,
         MarkdownComponent,
         StaticsComponent,
@@ -39,6 +41,7 @@ import {ArticleDatePipe} from "./pipe/date.pipe";
         SummaryPipe,
         ArticleDatePipe,
         HighlightDirective,
+        HashDirective,
         GetEleDirective,
         MarkdownComponent,
         CommonModule,

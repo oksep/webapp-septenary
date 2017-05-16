@@ -5,10 +5,10 @@
         <div class="markdown" *ngIf="article.summary" Markdown [data]="article.summary | summarycutter"></div>
     </div>
     <div class="bottom">
-        <small class="text-muted">
+        <small class="text-muted" style="margin-right: 10px">
             <i class="fa fa-calendar"></i> {{ article.createdTime | articledate | date:'yyyy年MM月dd日 HH:mm'}}
         </small>
-        <div style="display: inline; margin-left: 10px">
+        <div style="display: inline">
             <a *ngFor="let tag of article.tags" class="tag" [routerLink]="'/article/' + article.articleID">{{tag}}</a>
         </div>
     </div>
