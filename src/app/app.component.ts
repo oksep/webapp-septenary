@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from "@angular/core";
 import {AuthService} from "./auth/auth.service";
-import {Router} from "@angular/router";
+import {NavigationEnd, NavigationStart, Router} from "@angular/router";
 
 const $ = jQuery;
 
@@ -13,6 +13,15 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     constructor(private authService: AuthService, private router: Router) {
         $(window).resize(() => this.onWindowSizeChange());
+        router.events.subscribe((event: any)=>{
+            if (event instanceof NavigationEnd) {
+                window.scrollTo(0, 0);
+            }
+            // NavigationEnd
+            // NavigationCancel
+            // NavigationError
+            // RoutesRecognized
+        });
     }
 
     ngOnInit(): void {

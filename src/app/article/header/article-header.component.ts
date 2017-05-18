@@ -10,14 +10,9 @@ const $ = jQuery;
 })
 export class ArticleComponent implements OnInit, AfterViewInit {
 
-    _article: Article;
+    @Input() article: Article;
 
     constructor() {
-    }
-
-    @Input()
-    set article(article: Article) {
-        this._article = article;
     }
 
     ngOnInit(): void {

@@ -25,7 +25,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-
+        const nav = jQuery('.nav-header');
+        jQuery(document).scroll(function () {
+            nav.toggleClass('pinned', $(this).scrollTop() > nav.height());
+        });
     }
 
     get loggedIn() {

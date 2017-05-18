@@ -6,13 +6,21 @@
     background-repeat: no-repeat;
     background-position: center center;
     height: 450px;
+    position: relative;
 }
 
 .app-header:before {
     position: absolute;
     content: '';
-    background: rgba(0, 0, 0, 0.23);
+    background: rgba(0, 0, 0, 0.35);
     width: 100%;
     height: 450px;
     pointer-events: none;
+}
+
+.time {
+    display: inline;
+    font-size: .75em;
+    line-height: 17px;
+    margin-right: 10px
 }

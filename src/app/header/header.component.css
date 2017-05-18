@@ -1,15 +1,55 @@
-
-.navbar {
-    background-color: transparent;
+.navbar{
+    transition: all 0.35s;
+    border-bottom: 1px #46bca3 solid;
+    background-color: white;
 }
 
-.navbar-brand {
-    color: #373D49;
+.navbar .navbar-brand {
+    color: #46bca3;
+    transition: all 0.35s;
+    font-weight: bold;
+}
+
+.navbar .navbar-brand:hover {
+    color: #306cbc;
+}
+
+.special.navbar{
+    background-color: transparent;
+    transition: all 0.35s;
+    border-bottom-width: 0;
+}
+
+.special.navbar .navbar-brand {
+    color: #fff;
+    transition: all 0.35s;
+    font-weight: bold;
+}
+
+.special.navbar .navbar-brand:hover {
+    color: #bc4b34;
+}
+
+/*.special > */
+.nav-link {
+    /*background-color: red;*/
+}
+
+.pinned.navbar{
+    background-color: #46bca3;
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .15);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .15);
+    border-bottom-width: 0;
     transition: all 0.35s;
 }
 
-.navbar-brand:hover {
-    color: #373D49;
+.pinned.navbar .navbar-brand {
+    color: white;
+}
+
+.pinned.navbar .navbar-brand:hover {
+    color: green;
 }
 
 @media (min-width: 991px) {
@@ -20,7 +60,7 @@
 
 .underline-anim {
     position: relative;
-    /*color: #000;*/
+    /*color: #46bca3;*/
     text-decoration: none;
 }
 
@@ -35,7 +75,7 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #373D49;
+    background-color: #46bca3;
     visibility: hidden;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
@@ -49,21 +89,6 @@
     transform: scaleX(1);
 }
 
-.header {
-    margin-bottom: 40px;
-}
-
-.header-absolute {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999
-}
-
-.header-normal {
-    background-color: #46bca3;
-    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, .15);
-    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .15);
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, .15);
+.header-space {
+    height: 90px;
 }

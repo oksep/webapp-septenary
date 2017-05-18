@@ -27,7 +27,6 @@ export class ArticleListComponent implements OnInit {
     }
 
     ngOnInit() {
-        window.scrollTo(0, 0);
         let activatedRouteSnapshot: ActivatedRouteSnapshot = this.activeRoute.snapshot;
         let routerState: RouterState = this.router.routerState;
         let routerStateSnapshot: RouterStateSnapshot = routerState.snapshot;

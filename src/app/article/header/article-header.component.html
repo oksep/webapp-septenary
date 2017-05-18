@@ -1,11 +1,12 @@
 <div class="app-header">
-    <div class="container">
-        <div class="row align-items-center" style="height: 400px; color: white;">
-            <div *ngIf="_article" class="col align-self-center">
-                <h1 class="text-center">{{_article.title}}</h1><br>
-                <p class="text-center">{{_article.createdTime}}
-                    <span *ngFor="let tag of _article.tags">#{{tag}}</span>
-                </p>
+    <div *ngIf="article" class="container" style="height: 100%">
+        <div class="row" style="height: 100%; color: white">
+            <div class="col align-self-center">
+                <h1 class="text-center">{{article.title}}</h1>
+                <div class="text-center">
+                    <p class="time">{{article.createdTime | articledate | date:'yyyy年MM月dd'}}</p>
+                    <article-tag *ngFor="let tag of article.tags" [light]="true" [tag]="tag"></article-tag>
+                </div>
             </div>
         </div>
     </div>

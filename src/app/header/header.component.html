@@ -1,53 +1,54 @@
-<div class="header" [class.header-absolute]="headerAbsolute" [class.header-normal]="!headerAbsolute">
-    <div class="container">
-        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    data-target="#navbar" aria-controls="navbar" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand underline-anim" routerLink="">Septenary</a>
-            <div class="collapse navbar-collapse" id="navbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link underline-anim" routerLink="/tags">TAGS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="/">Disable</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li *ngIf="false" class="nav-item">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索
-                            </button>
-                        </form>
-                    </li>
-                    <li *ngIf="!loggedIn" class="nav-item">
-                        <a class="nav-link" routerLink="/user/login">
-                            <i class="fa fa-user" aria-hidden="true"></i> 登录
-                        </a>
-                    </li>
-                    <li *ngIf="loggedIn" class="nav-item dropdown">
+<nav id="nav-header"
+     class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top nav-header"
+     [class.special]="headerAbsolute"
+>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbar" aria-controls="navbar" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand underline-anim" routerLink="">Septenary</a>
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link underline-anim" routerLink="/tags">TAGS</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link disabled" href="/">Disable</a>-->
+            <!--</li>-->
+        </ul>
+        <ul class="navbar-nav">
+            <li *ngIf="false" class="nav-item">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索
+                    </button>
+                </form>
+            </li>
+            <li *ngIf="!loggedIn" class="nav-item">
+                <a class="nav-link" routerLink="/user/login">
+                    <i class="fa fa-user" aria-hidden="true"></i> 登录
+                </a>
+            </li>
+            <li *ngIf="loggedIn" class="nav-item dropdown">
                             <span class="nav-link dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-user-o" aria-hidden="true"></i>  {{authName}}
                             </span>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" routerLink="/user/me"><i class="fa fa-cogs"
-                                                                              aria-hidden="true"></i>
-                                个人中心</a>
-                            <a class="dropdown-item" routerLink="/write"><i class="fa fa-edit"
-                                                                            aria-hidden="true"></i>
-                                写文章</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0);"
-                               (click)="onLogoutClick()"><i
-                                    class="fa fa-power-off" aria-hidden="true"></i> 登出</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" routerLink="/user/me"><i class="fa fa-cogs"
+                                                                      aria-hidden="true"></i>
+                        个人中心</a>
+                    <a class="dropdown-item" routerLink="/write"><i class="fa fa-edit"
+                                                                    aria-hidden="true"></i>
+                        写文章</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:void(0);"
+                       (click)="onLogoutClick()"><i
+                            class="fa fa-power-off" aria-hidden="true"></i> 登出</a>
+                </div>
+            </li>
+        </ul>
     </div>
+</nav>
+<div [class.header-space]="!headerAbsolute">
 </div>

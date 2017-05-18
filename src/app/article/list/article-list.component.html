@@ -1,9 +1,9 @@
 <!--<article-header></article-header>-->
 
 <div class="container">
-    <div class="row justify-content-md-center">
+    <div class="row">
 
-        <div class="col-lg-10 col-md-12">
+        <div class="col-lg-9 col-md-12">
             <app-article-section *ngFor="let article of articles" [article]="article"></app-article-section>
             <nav *ngIf="pagination" style="margin-top: 40px">
                 <ul class="pagination justify-content-center">
@@ -15,7 +15,7 @@
 
         </div>
 
-        <div *ngIf="false" class="col-lg-3 col-md-12">
+        <div class="col-lg-3 col-md-12">
             <widget-statics></widget-statics>
             <widget-tags></widget-tags>
         </div>

@@ -16,6 +16,7 @@ import {ArticleService} from "./article.service";
 import {ArticleGuard} from "./article.guard";
 import {ArticleComponent} from "./header/article-header.component";
 import {ArticleSectionComponent} from "./list/section/article-section.component";
+import {ArticleTagComponent} from "./tag/article-tag.component";
 
 @NgModule({
     imports: [
@@ -30,14 +31,16 @@ import {ArticleSectionComponent} from "./list/section/article-section.component"
         ArticleListComponent,
         ArticleWriteComponent,
         ArticleComponent,
-        ArticleSectionComponent
+        ArticleSectionComponent,
+        ArticleTagComponent
     ],
     exports: [
         ArticleDetailComponent,
         ArticleListComponent,
         ArticleWriteComponent,
         ArticleComponent,
-        ArticleSectionComponent
+        ArticleSectionComponent,
+        ArticleTagComponent
     ],
     providers: [
         ArticleService,

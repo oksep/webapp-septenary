@@ -27,6 +27,7 @@ export function createArticle(request: Request, response: Response) {
 }
 
 export function findArticle(request: Request, response: Response) {
+    // var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
     let id = request.params.id;
     Article.findOne({articleID: id}).then(doc => {
         response.json(Result.success(doc));
