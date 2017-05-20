@@ -45,8 +45,10 @@ export function updateArticle(request: Request, response: Response) {
 export function paginateArticle(request: Request, response: Response) {
     const LIMIT = 8;
     let page = request.params.page;
+    let offset = LIMIT * page - LIMIT; 
+    let sort = {createdTime: 'desc'}; // 按时间倒排
     Article
-        .paginate({}, {offset: LIMIT * page - LIMIT, limit: LIMIT})
+        .paginate({}, {offset: offset, limit: LIMIT, sort: sort})
         .then(result => {
             response.json(Result.success(result));
         })
