@@ -5,51 +5,18 @@
     <div class="row">
         <div class="col-lg-9 col-md-12">
             <div *ngIf="article">
-                <div Markdown [data]="article.content"></div>
+                <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-12">
-            <ol style="border-left: 1px #bbb solid; margin-top: 30px">
-                <li>第一章
-                    <ol>
-                        <li>第一节</li>
-                        <li>第二节</li>
-                        <li>第三节</li>
-                    </ol>
-                </li>
-                <li>第二章
-                    <ol>
-                        <li>第一节</li>
-                        <li>第二节</li>
-                        <li>第三节</li>
-                    </ol>
-                </li>
-                <li>第三章
-                    <ol>
-                        <li>第一节</li>
-                        <li>第二节</li>
-                        <li>第三节</li>
-                    </ol>
-                </li>
-                <li>第四章
-                    <ol>
-                        <li>第一节</li>
-                        <li>第二节</li>
-                        <li>第三节</li>
-                    </ol>
-                </li>
-            </ol>
-
-            <div style="border-left: 1px #bbb solid; padding-left: 30px; margin-top: 30px; height: 300px;">
-                <p>相关文章</p>
-                <a href="/">全栈手册</a><br>
-                <a href="/">全栈手册</a><br>
-                <a href="/">全栈手册</a><br>
-                <a href="/">全栈手册</a><br>
-                <a href="/">全栈手册</a><br>
+        <div class="col-lg-3 hidden-md-down">
+            <div class="sticky-top" style="top: 70px;">
+                <div class="widget">
+                    <app-article-toc [toc]="toc"></app-article-toc>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
 

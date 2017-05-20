@@ -1,0 +1,18 @@
+<strong class="tag-content" (click)="onTagContentClick()">
+    <i class="fa fa-anchor"></i> Contents
+</strong>
+
+<div style="margin-top: 8px">
+    <a *ngFor="let t of toc"
+       pageScroll
+       [pageScrollDuration]="250"
+       [pageScrollOffset]="70"
+       [href]="t.anchor"
+       href=""
+       class="toc"
+       [style.margin-left]="30 * (t.level -1) + 'px'"
+    >
+        <!--[className]="'toc-h' + t.level"-->
+        {{t.text}}
+    </a>
+</div>

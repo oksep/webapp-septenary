@@ -1,8 +1,9 @@
-import {Component, OnInit, ViewEncapsulation} from "@angular/core";
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleService} from "../article.service";
 import {Article} from "../../model/article";
 import {HeaderService} from "../../header/header.service";
+import {Toc, TocEvent} from "../../markdown/markdown.component";
 
 @Component({
     selector: 'app-article-detail',
@@ -13,9 +14,10 @@ import {HeaderService} from "../../header/header.service";
     ],
     encapsulation: ViewEncapsulation.None // 很重要，使对 marked 渲染的 innerHtml 的 css 生效
 })
-export class ArticleDetailComponent implements OnInit {
+export class ArticleDetailComponent implements OnInit, OnDestroy {
 
     article: Article;
+    toc: Toc[];
 
     constructor(private headerService: HeaderService,
                 private articleService: ArticleService,
@@ -38,6 +40,15 @@ export class ArticleDetailComponent implements OnInit {
 
     ngOnDestroy() {
         this.headerService.changeHeaderAbsolute(false);
+    }
+
+    onTocUpdate(tocEvent: TocEvent) {
+        if (tocEvent.tocFrom == 'content-data') {
+            setTimeout(() => {
+                this.toc = tocEvent.toc;
+                console.log('AAA', this.toc)
+            }, 0);
+        }
     }
 
 }
