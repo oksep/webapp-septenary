@@ -12,7 +12,7 @@ const $ = jQuery;
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
 
-    headerAbsolute: boolean;
+    headerIsHollow: boolean;
 
     constructor(private headerService: HeaderService, private authService: AuthService, private router: Router) {
         $(window).resize(() => this.onWindowSizeChange());
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     ngOnInit(): void {
         this.headerService.events.subscribe((event: HeaderEvent) => {
-            this.headerAbsolute = event.isAbsolute;
+            this.headerIsHollow = event.isHollow;
         });
     }
 

@@ -11,7 +11,6 @@ import {GetEleDirective} from "./directive/get-el.directive";
 import {MarkdownComponent} from "./component/mdeditor.component";
 import {PageNotFoundComponent} from "./component/404.component";
 import {StaticsComponent} from "../widget/statics/statics.component";
-import {TagsComponent} from "../widget/tags/tags.component";
 import {SummaryPipe} from "./pipe/summary.pipe";
 import {ArticleDatePipe} from "./pipe/date.pipe";
 import {HashDirective} from "./directive/hash.directive";
@@ -33,7 +32,6 @@ import {HashDirective} from "./directive/hash.directive";
         GetEleDirective,
         MarkdownComponent,
         StaticsComponent,
-        TagsComponent,
         PageNotFoundComponent,
     ],
     exports: [
@@ -47,7 +45,6 @@ import {HashDirective} from "./directive/hash.directive";
         CommonModule,
         FormsModule,
         StaticsComponent,
-        TagsComponent,
     ],
     providers: [
         // UserService

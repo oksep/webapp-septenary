@@ -4,10 +4,10 @@ import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 
 export class HeaderEvent {
-    isAbsolute: boolean;
+    isHollow: boolean;
 
-    constructor(isAbsolute: boolean) {
-        this.isAbsolute = isAbsolute;
+    constructor(isHollow: boolean) {
+        this.isHollow = isHollow;
     }
 }
 
@@ -21,8 +21,8 @@ export class HeaderService {
 
     }
 
-    changeHeaderAbsolute(isAbsolute: boolean) {
-        this.eventSource.next(new HeaderEvent(isAbsolute));
+    changeHeaderHollow(isHollow: boolean) {
+        this.eventSource.next(new HeaderEvent(isHollow));
     }
 
 }

@@ -1,6 +1,6 @@
 <nav id="nav-header"
      class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top nav-header"
-     [class.special]="headerAbsolute"
+     [class.special]="headerIsHollow"
 >
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbar" aria-controls="navbar" aria-expanded="false"
@@ -27,28 +27,32 @@
             </li>
             <li *ngIf="!loggedIn" class="nav-item">
                 <a class="nav-link" routerLink="/user/login">
-                    <i class="fa fa-user" aria-hidden="true"></i> 登录
+                    <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;登录
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item dropdown">
                             <span class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-user-o" aria-hidden="true"></i>  {{authName}}
+                                <i class="fa fa-user-o"></i>&nbsp;&nbsp;{{authName}}
                             </span>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" routerLink="/user/me"><i class="fa fa-cogs"
-                                                                      aria-hidden="true"></i>
-                        个人中心</a>
-                    <a class="dropdown-item" routerLink="/write"><i class="fa fa-edit"
-                                                                    aria-hidden="true"></i>
-                        写文章</a>
+                    <a class="dropdown-item" routerLink="/user/me">
+                        <i class="fa fa-cogs"></i>
+                        &nbsp;个人中心
+                    </a>
+                    <a class="dropdown-item" routerLink="/write">
+                        <i class="fa fa-edit"></i>
+                        &nbsp;写文章
+                    </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="javascript:void(0);"
-                       (click)="onLogoutClick()"><i
-                            class="fa fa-power-off" aria-hidden="true"></i> 登出</a>
+                       (click)="onLogoutClick()">
+                        <i class="fa fa-power-off"></i>
+                        &nbsp;登出
+                    </a>
                 </div>
             </li>
         </ul>
     </div>
 </nav>
-<div [class.header-space]="!headerAbsolute">
+<div [class.header-space]="!headerIsHollow">
 </div>

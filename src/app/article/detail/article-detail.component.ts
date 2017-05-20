@@ -26,7 +26,7 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.headerService.changeHeaderAbsolute(true);
+        this.headerService.changeHeaderHollow(true);
         this.activeRoute.params.subscribe(params => {
             let id = params.id;
             this.articleService.getArticleDetail(id).subscribe(result => {
@@ -34,12 +34,11 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
                     this.article = result.data;
                 }
             });
-            this.articleService.debug(this.articleService.getTags());
         });
     }
 
     ngOnDestroy() {
-        this.headerService.changeHeaderAbsolute(false);
+        this.headerService.changeHeaderHollow(false);
     }
 
     onTocUpdate(tocEvent: TocEvent) {

@@ -18,6 +18,7 @@ import {ArticleComponent} from "./header/article-header.component";
 import {ArticleSectionComponent} from "./list/section/article-section.component";
 import {ArticleTagComponent} from "./tag/article-tag.component";
 import {ArticleTocComponent} from "./detail/toc/toc.component";
+import {TagsComponent} from "./tag-cloud/tag-cloud.component";
 
 // service
 import {ArticleService} from "./article.service";
@@ -42,7 +43,8 @@ import {ArticleGuard} from "./article.guard";
         ArticleComponent,
         ArticleSectionComponent,
         ArticleTocComponent,
-        ArticleTagComponent
+        ArticleTagComponent,
+        TagsComponent
     ],
     exports: [
         ArticleDetailComponent,
@@ -51,7 +53,8 @@ import {ArticleGuard} from "./article.guard";
         ArticleComponent,
         ArticleTocComponent,
         ArticleSectionComponent,
-        ArticleTagComponent
+        ArticleTagComponent,
+        TagsComponent
     ],
     providers: [
         ArticleService,

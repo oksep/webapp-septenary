@@ -28,7 +28,6 @@ export default class BaseHttpService {
     }
 
     debug(fun: Observable<any>) {
-        if (fun) return;
         fun.subscribe(result => {
             let debugElement = document.getElementById('debug-element');
             if (debugElement) {
