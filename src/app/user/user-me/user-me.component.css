@@ -40,7 +40,7 @@
 }
 
 .card.hovercard .cardheader {
-    background: url("http://localhost:4200/src/assets/profile_card_bg.jpg");
+    background: url("/src/assets/profile_card_bg.jpg");
     background-size: cover;
     height: 135px;
 }

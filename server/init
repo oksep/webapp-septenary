@@ -5,7 +5,7 @@ db.users.insert({
     name: 'Septenary',
     email: 'seven__up@sina.cn',
     password: '123456',
-    avatar: 'http://localhost:4200/src/assets/avatar.jpg',
+    avatar: '/assets/avatar.jpg',
     createdTime: ISODate("2016-06-19T00:00:00Z"),
     lastLoginTime: ISODate("2016-06-19T00:00:00Z"),
     role: 'admin'
