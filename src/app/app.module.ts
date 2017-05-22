@@ -17,6 +17,7 @@ import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./header/header.component";
 import {HeaderService} from "./header/header.service";
 import {FooterComponent} from "./footer/footer.component";
+import {SimpleNotificationsModule} from "./notification/simple-notifications.module";
 
 // service
 
@@ -32,7 +33,8 @@ import {FooterComponent} from "./footer/footer.component";
         SharedModule,
         HttpModule,
         HomeModule,
-        AuthModule
+        AuthModule,
+        SimpleNotificationsModule.forRoot()
     ],
     providers: [
         HeaderService

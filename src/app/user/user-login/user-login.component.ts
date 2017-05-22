@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {UserService} from "../user.service";
 import {Credentials} from "../../model/credentials";
+import {NotificationsService} from "app/notification/simple-notifications.module";
 
 @Component({
     selector: 'app-user-login',
@@ -17,7 +18,8 @@ export class UserLoginComponent implements OnInit {
     constructor(private authService: AuthService,
                 private userService: UserService,
                 private router: Router,
-                public activeRoute: ActivatedRoute) {
+                private activeRoute: ActivatedRoute,
+                private notification: NotificationsService) {
     }
 
     ngOnInit() {
@@ -31,9 +33,10 @@ export class UserLoginComponent implements OnInit {
                 (result: any) => {
                     this.isLogging = false;
                     if (result.success) {
+                        this.notification.success('提示', '欢迎回来' + this.authService.getAuthName());
                         this.router.navigate(['/user/me']);
                     } else {
-
+                        this.notification.error('提示', JSON.stringify(result.error));
                     }
                 });
     }
