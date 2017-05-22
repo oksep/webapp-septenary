@@ -17,6 +17,7 @@ import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./header/header.component";
 import {HeaderService} from "./header/header.service";
 import {FooterComponent} from "./footer/footer.component";
+import {NotificationsService} from "./notification/simple-notifications/services/notifications.service";
 import {SimpleNotificationsModule} from "./notification/simple-notifications.module";
 
 // service
@@ -25,7 +26,7 @@ import {SimpleNotificationsModule} from "./notification/simple-notifications.mod
     declarations: [
         AppComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -37,7 +38,8 @@ import {SimpleNotificationsModule} from "./notification/simple-notifications.mod
         SimpleNotificationsModule.forRoot()
     ],
     providers: [
-        HeaderService
+        HeaderService,
+        NotificationsService
     ],
     bootstrap: [AppComponent]
 })

@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {UserService} from "../user.service";
 import {Credentials} from "../../model/credentials";
-import {NotificationsService} from "app/notification/simple-notifications.module";
+import {NotificationsService} from "../../notification/simple-notifications/services/notifications.service";
 
 @Component({
     selector: 'app-user-login',

@@ -4,6 +4,7 @@ import {SimpleNotificationsComponent} from "./simple-notifications/components/si
 import {NotificationComponent} from "./simple-notifications/components/notification.component";
 import {MaxPipe} from "./simple-notifications/pipes/max.pipe";
 import {NotificationsService} from "./simple-notifications/services/notifications.service";
+// import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 // Type
 export * from './simple-notifications/interfaces/notification.type';
