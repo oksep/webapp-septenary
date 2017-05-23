@@ -11,7 +11,7 @@ export class HighlightDirective {
     constructor(private renderer: Renderer2, private el: ElementRef) {
         renderer.setStyle(this.el.nativeElement, 'background-color', 'red');
         // renderer.setElementStyle(el.nativeElement, 'background-color', 'lightgray');
-        console.log(`* Shared highlight called for ${el.nativeElement.tagName}`);
+        // console.log(`* Shared highlight called for ${el.nativeElement.tagName}`);
     }
 
     @Input('highlight') highlightColor: string;

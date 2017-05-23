@@ -14,6 +14,7 @@ import {StaticsComponent} from "../widget/statics/statics.component";
 import {SummaryPipe} from "./pipe/summary.pipe";
 import {ArticleDatePipe} from "./pipe/date.pipe";
 import {HashDirective} from "./directive/hash.directive";
+import {ToStringPipe} from "./pipe/tostring.pipe";
 
 // service
 // import {UserService} from "../user/user.service";
@@ -27,6 +28,7 @@ import {HashDirective} from "./directive/hash.directive";
         AwesomePipe,
         SummaryPipe,
         ArticleDatePipe,
+        ToStringPipe,
         HighlightDirective,
         HashDirective,
         GetEleDirective,
@@ -37,6 +39,7 @@ import {HashDirective} from "./directive/hash.directive";
     exports: [
         AwesomePipe,
         SummaryPipe,
+        ToStringPipe,
         ArticleDatePipe,
         HighlightDirective,
         HashDirective,
