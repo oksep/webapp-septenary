@@ -1,6 +1,8 @@
 import Article from "../model/article";
 import {Request, Response} from "express";
 import Result from "./result";
+import {toObjectId} from "../model/util";
+
 
 const MORE_TAG = '<!--more-->';
 
@@ -10,6 +12,7 @@ export function createArticle(request: Request, response: Response) {
     body.updatedTime && (body.updatedTime = new Date(body.updatedTime));
     body.createdTime && (body.createdTime = new Date(body.createdTime));
     body.authorID = request.user.uid;
+    body.author = toObjectId(request.user._id);
 
     let article = new Article(body);
     const index = article.content.indexOf(MORE_TAG);
@@ -29,12 +32,15 @@ export function createArticle(request: Request, response: Response) {
 export function findArticle(request: Request, response: Response) {
     // var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
     let id = request.params.id;
-    Article.findOne({articleID: id}).then(doc => {
-        response.json(Result.success(doc));
-    }).catch(err => {
-        response.status(404);
-        response.json(Result.failed(err.message));
-    });
+    Article.findOne({articleID: id})
+        .populate('author', 'uid name avatar')
+        .then(doc => {
+            response.json(Result.success(doc));
+        })
+        .catch(err => {
+            response.status(404);
+            response.json(Result.failed(err.message));
+        });
 }
 
 export function updateArticle(request: Request, response: Response) {
@@ -48,7 +54,14 @@ export function paginateArticle(request: Request, response: Response) {
     let offset = LIMIT * page - LIMIT;
     let sort = {createdTime: 'desc'}; // 按时间倒排
     Article
-        .paginate({}, {offset: offset, limit: LIMIT, sort: sort})
+        .paginate({}, {
+            offset: offset,
+            limit: LIMIT,
+            sort: sort,
+            populate: [
+                {path: 'author', select: "uid name avatar"}
+            ]
+        })
         .then(result => {
             response.json(Result.success(result));
         })

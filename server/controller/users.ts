@@ -6,6 +6,7 @@ import * as moment from "moment";
 import * as JWT from "jwt-simple";
 
 class Payload {
+    _id: string;
     uid: number; // 用户ID
     name: string; // 用户名称
     role: string; // 用户角色
@@ -28,6 +29,7 @@ export function login(request: Request, response: Response, next: NextFunction) 
             if (password = doc.email) {
                 const payload = new Payload();
                 payload.uid = doc.uid;
+                payload._id = doc._id;
                 payload.name = doc.name;
                 payload.role = doc.role;
                 payload.iat = moment().unix();
