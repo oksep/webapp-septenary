@@ -19,6 +19,7 @@ import {HeaderService} from "./header/header.service";
 import {FooterComponent} from "./footer/footer.component";
 import {NotificationsService} from "./notification/simple-notifications/services/notifications.service";
 import {SimpleNotificationsModule} from "./notification/simple-notifications.module";
+import {SlimLoadingBarModule} from "./loading/slim-loading-bar.module";
 
 // service
 
@@ -35,7 +36,8 @@ import {SimpleNotificationsModule} from "./notification/simple-notifications.mod
         HttpModule,
         HomeModule,
         AuthModule,
-        SimpleNotificationsModule.forRoot()
+        SimpleNotificationsModule.forRoot(),
+        SlimLoadingBarModule.forRoot()
     ],
     providers: [
         HeaderService,

@@ -4,6 +4,7 @@ import {ArticleService} from "../article.service";
 import {Article} from "../../model/article";
 import {HeaderService} from "../../header/header.service";
 import {Toc, TocEvent} from "../../markdown/markdown.component";
+import {SlimLoadingBarService} from "../../loading/slim-loading-bar.service";
 
 @Component({
     selector: 'app-article-detail',
@@ -22,16 +23,22 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
     constructor(private headerService: HeaderService,
                 private articleService: ArticleService,
                 private router: Router,
-                public activeRoute: ActivatedRoute) {
+                private activeRoute: ActivatedRoute,
+                private slimLoadingService: SlimLoadingBarService) {
     }
 
     ngOnInit() {
+        this.slimLoadingService.start();
+        this.slimLoadingService.progress = 25;
         this.headerService.changeHeaderHollow(true);
         this.activeRoute.params.subscribe(params => {
             let id = params.id;
             this.articleService.getArticleDetail(id).subscribe(result => {
                 if (result.success) {
                     this.article = result.data;
+                    setTimeout(() => {
+                        this.slimLoadingService.complete();
+                    }, 1500);
                 }
             });
         });
