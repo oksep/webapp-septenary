@@ -52,7 +52,6 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
         if (tocEvent.tocFrom == 'content-data') {
             setTimeout(() => {
                 this.toc = tocEvent.toc;
-                console.log('AAA', this.toc)
             }, 0);
         }
     }

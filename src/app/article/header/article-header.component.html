@@ -7,6 +7,9 @@
                     <p class="time">{{article.createdTime | articledate | date:'yyyy年MM月dd'}}</p>
                     <article-tag *ngFor="let tag of article.tags" [light]="true" [tag]="tag"></article-tag>
                 </div>
+                <p>
+                    {{article.author | tostring}}
+                </p>
             </div>
         </div>
     </div>

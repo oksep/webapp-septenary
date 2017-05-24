@@ -11,5 +11,8 @@
         <div style="display: inline">
             <article-tag *ngFor="let tag of article.tags" [tag]="tag"></article-tag>
         </div>
+        <div>
+            {{article.author | tostring}}
+        </div>
     </div>
 </section>

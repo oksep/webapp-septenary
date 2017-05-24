@@ -75,6 +75,6 @@ function handleError(err) {
     } else {
         error = {error: err.message};
     }
-    console.warn(error);
+    console.error(error);
     return Observable.of(error);
 }

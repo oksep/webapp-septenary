@@ -11,7 +11,8 @@ import {Observable} from "rxjs/Observable";
 export const TOKEN_NAME = "@jwt-token";
 
 class Payload {
-    id: number; // 用户ID
+    _id: string;
+    uid: number; // 用户ID
     name: string; // 用户名称
     role: string; // 用户角色
     iat: number; // jwt的签发时间
@@ -52,7 +53,6 @@ export class AuthService {
                 const result = res.json();
                 this.loggedIn = true;
                 if (result.success && result.data) {
-                    console.log('登录成功', this.loggedIn);
                     localStorage.setItem(TOKEN_NAME, result.data.token);
                     this.ensureTokenPayload();
                 }
@@ -92,7 +92,7 @@ export class AuthService {
     }
 
     getAuthId() {
-        return this.tokenPayload ? this.tokenPayload.id : null;
+        return this.tokenPayload ? this.tokenPayload.uid : null;
     }
 
     // 是否是 管理员
@@ -118,6 +118,5 @@ export class AuthService {
         this.loggedIn = false;
         this.tokenPayload = null;
         localStorage.removeItem(TOKEN_NAME);
-        console.log('退出登录');
     }
 }

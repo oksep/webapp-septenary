@@ -29,7 +29,7 @@ export class UserMeComponent implements OnInit {
     getProfile() {
         this.userService.getMyProfile().subscribe(result => {
             this.profile = result.data;
-            console.log(this.profile);
+            // console.log(this.profile);
         });
     }
 

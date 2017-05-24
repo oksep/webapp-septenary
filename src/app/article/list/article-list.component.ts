@@ -31,7 +31,7 @@ export class ArticleListComponent implements OnInit {
         let routerState: RouterState = this.router.routerState;
         let routerStateSnapshot: RouterStateSnapshot = routerState.snapshot;
 
-        console.log(activatedRouteSnapshot, routerState, routerStateSnapshot);
+        // console.log(activatedRouteSnapshot, routerState, routerStateSnapshot);
 
         this.activeRoute.params.subscribe(params => {
             this.currentPage = params.page || 1;
@@ -42,7 +42,7 @@ export class ArticleListComponent implements OnInit {
                 this.pagination = new Pagination();
                 Object.assign(this.pagination, data);
                 this.pagination.pages = Array.from(Array(Math.ceil(this.pagination.total / this.pagination.limit)).keys()).map(page => page + 1);
-                console.log('Articles:', this.pagination);
+                // console.log('Articles:', this.pagination);
             });
         });
     }
