@@ -52,8 +52,4 @@ export class ArticleListComponent implements OnInit {
         return JSON.stringify(this.articles)
     }
 
-    // articleLinker(article: Article) {
-    //     return `/article/${article.articleID}`;
-    // }
-
 }

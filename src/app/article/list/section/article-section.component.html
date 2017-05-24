@@ -1,5 +1,4 @@
 <section class="article-section" (click)="onSectionClick()">
-    <!--<a class="card-title" [routerLink]="'/article/' + article.articleID"></a>-->
     <div class="content">
         <h2 class="article-section-title">{{article.title}}</h2>
         <div class="markdown-preview" *ngIf="article.summary" Markdown [data]="article.summary | summarycutter"></div>

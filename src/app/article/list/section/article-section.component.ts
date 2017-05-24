@@ -22,7 +22,7 @@ export class ArticleSectionComponent implements OnInit {
     }
 
     onSectionClick() {
-        this.router.navigateByUrl('/article/' + this.article.articleID);
+        this.router.navigateByUrl('/article/' + this.article._id);
     }
 
 }

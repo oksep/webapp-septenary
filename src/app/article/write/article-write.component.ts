@@ -59,7 +59,7 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
                 .createArticle(this.article)
                 .subscribe(result => {
                     if (result.success) {
-                        this.router.navigateByUrl(`/article/${result.data.articleID}`)
+                        this.router.navigateByUrl(`/article/${result.data._id}`)
                     } else {
                         console.warn(result);
                     }

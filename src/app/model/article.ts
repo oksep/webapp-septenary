@@ -1,7 +1,7 @@
 // 文章
 import User from "./user";
 export class Article {
-    articleID: number; // id
+    _id: number; // id
     title: string; // 标题
     tags: string[]; // 标签
     category: string; // 分类
@@ -11,10 +11,4 @@ export class Article {
     createdTime: string; // 创建时间
     updatedTime: string; // 更新时间
     author: User; // 作者
-    routerLink = '/article/1';
-
-    // get routerLink() {
-    //     // return `/article/${this.articleID}`;
-    //     return '/article/1'
-    // }
 }
