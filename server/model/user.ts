@@ -1,6 +1,6 @@
 import mongoose from "../dbconnection";
 import {IPaginate, MongoosePaginate} from "./plugins/paginate";
-import {AutoIncrement} from "./plugins/mongoose-sequence";
+import autoIncrementPlugin from "./plugins/identity-counter";
 import Schema = mongoose.Schema;
 import Types = mongoose.Types;
 import ObjectId = Types.ObjectId;
@@ -21,7 +21,6 @@ interface IUserModel extends mongoose.Model<IUser>, IPaginate {
 }
 
 const UserSchema = new Schema({
-    uid: {type: Number, unique: true},
     name: {type: String, required: true},  // 昵称
     email: {type: String, required: true, unique: true},  // 邮箱
     password: {type: String, required: true},  // 密钥
@@ -43,7 +42,7 @@ UserSchema.pre('save', false, function (next) {
 });
 
 // 加载自增 id 插件
-UserSchema.plugin(AutoIncrement, {inc_field: 'uid'});
+UserSchema.plugin(autoIncrementPlugin, 'User');
 
 // 翻页查询实现
 UserSchema.statics.paginate = MongoosePaginate.paginate;

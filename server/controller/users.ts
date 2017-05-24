@@ -7,7 +7,6 @@ import * as JWT from "jwt-simple";
 
 class Payload {
     _id: string;
-    uid: number; // 用户ID
     name: string; // 用户名称
     role: string; // 用户角色
     iat: number; // jwt的签发时间
@@ -28,7 +27,6 @@ export function login(request: Request, response: Response, next: NextFunction) 
         .then(doc => {
             if (password = doc.email) {
                 const payload = new Payload();
-                payload.uid = doc.uid;
                 payload._id = doc._id;
                 payload.name = doc.name;
                 payload.role = doc.role;
@@ -70,8 +68,7 @@ export function listUsers(request: Request, response: Response) {
 
 // 查询用户 profile
 export function getProfile(request: Request, response: Response, next: NextFunction) {
-    User.findOne({uid: request.user.uid})
-    // User.findById('59148a5bd524b0c5ded620b4')
+    User.findById(request.user._id)
         .then(doc => {
             response.json(Result.success(doc));
         })
@@ -79,5 +76,4 @@ export function getProfile(request: Request, response: Response, next: NextFunct
             err.status = 404;
             next(err);
         });
-
 }

@@ -1,18 +1,15 @@
 import Article from "../model/article";
 import {Request, Response} from "express";
 import Result from "./result";
-import {toObjectId} from "../model/util";
 
 
 const MORE_TAG = '<!--more-->';
 
 export function createArticle(request: Request, response: Response) {
     const body = request.body;
-
     body.updatedTime && (body.updatedTime = new Date(body.updatedTime));
     body.createdTime && (body.createdTime = new Date(body.createdTime));
-    body.authorID = request.user.uid;
-    body.author = toObjectId(request.user._id);
+    body.author = request.user._id; // //toObjectId(request.user._id);
 
     let article = new Article(body);
     const index = article.content.indexOf(MORE_TAG);
@@ -31,9 +28,9 @@ export function createArticle(request: Request, response: Response) {
 
 export function findArticle(request: Request, response: Response) {
     // var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
-    let id = request.params.id;
-    Article.findOne({articleID: id})
-        .populate('author', 'uid name avatar')
+    console.log(request.params);
+    Article.findById(request.params._id)
+        .populate('author', '_id name avatar')
         .then(doc => {
             response.json(Result.success(doc));
         })
@@ -59,7 +56,7 @@ export function paginateArticle(request: Request, response: Response) {
             limit: LIMIT,
             sort: sort,
             populate: [
-                {path: 'author', select: "uid name avatar"}
+                {path: 'author', select: "_id name avatar"}
             ]
         })
         .then(result => {

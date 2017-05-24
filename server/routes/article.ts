@@ -10,7 +10,7 @@ articleRouter.post('/update', Auth.authenticateJWT(), ArticleController.updateAr
 
 articleRouter.get('/page/:page', ArticleController.paginateArticle);
 
-articleRouter.get('/detail/:id', ArticleController.findArticle);
+articleRouter.get('/detail/:_id', ArticleController.findArticle);
 
 articleRouter.get('/tags', ArticleController.aggregateTags);
 
