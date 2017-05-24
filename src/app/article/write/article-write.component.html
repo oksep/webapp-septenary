@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="app-border">
+    <div class="app-border col-9 m-auto">
 
         <form>
             <div class="form-group">
@@ -9,9 +9,10 @@
                 >
             </div>
             <div class="form-group">
-                <label for="tags">分类</label>
-                <input name="category" id="category" class="form-control" type="text" placeholder="文章分类"
-                       [(ngModel)]="article.category">
+                <label for="category">文章分类</label>
+                <select class="form-control" id="category" name="category" [(ngModel)]="article.category" required>
+                    <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+                </select>
             </div>
             <div class="form-group">
                 <!--https://github.com/gbuomprisco/ng2-tag-input-->

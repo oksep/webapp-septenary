@@ -1,3 +1,12 @@
 .flatpickr-input {
     background-color: white;
 }
+
+label {
+    border-left-color: #1fc08e;
+    border-left-width: 3px;
+    border-left-style: solid;
+    padding-left: 10px;
+    color: #1fc08e;
+    margin-top: 10px;
+}

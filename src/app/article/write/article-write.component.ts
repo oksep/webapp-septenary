@@ -14,14 +14,16 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 
     @ViewChild('simplemde') textarea: ElementRef;
 
-    private markdownEditor: any; // md 编辑器
+    markdownEditor: any; // md 编辑器
 
     article = new Article(); // 文章
+
+    powers = ['Elastic', 'iOS', 'Android', 'Web', 'Server'];
 
     constructor(private articleService: ArticleService, private router: Router) {
         this.article.title = '暗影诗章';
         this.article.tags = ['Shadowverse', 'RPG'];
-        this.article.category = '游戏'
+        this.article.category = this.powers[0];
     }
 
     ngOnInit() {
