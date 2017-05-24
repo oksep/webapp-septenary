@@ -6,7 +6,6 @@ import Types = mongoose.Types;
 import ObjectId = Types.ObjectId;
 
 interface IUser extends mongoose.Document {
-    uid: number,
     name: string,  // 昵称
     email: string,  // 邮箱
     password: string,  // 密钥
