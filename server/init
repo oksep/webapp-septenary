@@ -1,7 +1,7 @@
 use blog
 show tables
 db.users.insert({
-    uid: 1,
+    _id: 1,
     name: 'Septenary',
     email: 'seven__up@sina.cn',
     password: '123456',
@@ -10,8 +10,14 @@ db.users.insert({
     lastLoginTime: ISODate("2016-06-19T00:00:00Z"),
     role: 'admin'
 })
-db.counters.insert({
-    "id" : "uid",
-    "reference_value" : null,
-    "seq" : 1
+db.identitycounters.insert({
+    "_model" : "Article",
+    "field" : "_id",
+    "count" : 1
+})
+
+db.identitycounters.insert({
+    "_model" : "User",
+    "field" : "_id",
+    "count" : 1
 })
