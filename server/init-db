@@ -1,0 +1,43 @@
+use blog
+show tables
+
+db.users.findAndModify({
+    query: { _id: 1 },
+    update: {
+        $setOnInsert: {
+            name: 'SeptenaryAAAAA',
+            email: 'seven__up@sina.cn',
+            password: '123456',
+            avatar: '/assets/avatar.jpg',
+            createdTime: ISODate("2016-06-19T00:00:00Z"),
+            lastLoginTime: ISODate("2016-06-19T00:00:00Z"),
+            role: 'admin'
+        }
+    },
+    new: true,
+    upsert: true
+})
+
+db.identitycounters.findAndModify({
+    query: { _model: 'Article' },
+    update: {
+        $setOnInsert: {
+            field: '_id',
+            count: 1
+        }
+    },
+    new: true,
+    upsert: true
+})
+
+db.identitycounters.findAndModify({
+    query: { _model: 'User' },
+    update: {
+        $setOnInsert: {
+            field: '_id',
+            count: 1
+        }
+    },
+    new: true,
+    upsert: true
+})
