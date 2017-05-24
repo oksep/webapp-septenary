@@ -1,11 +1,13 @@
 use blog
 show tables
 
+db.dropDatabase()
+
 db.users.findAndModify({
     query: { _id: 1 },
     update: {
         $setOnInsert: {
-            name: 'SeptenaryAAAAA',
+            name: 'Septenary',
             email: 'seven__up@sina.cn',
             password: '123456',
             avatar: '/assets/avatar.jpg',
