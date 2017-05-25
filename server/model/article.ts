@@ -39,7 +39,12 @@ ArticleSchema.methods.log = () => {
 };
 
 // 加载自增 id 插件
-ArticleSchema.plugin(autoIncrementPlugin, 'Article');
+ArticleSchema.plugin(autoIncrementPlugin, {
+    model: 'Article',
+    field: '_id',
+    startAt: 1,
+    incrementBy: 1
+});
 
 // 翻页实现
 ArticleSchema.statics.paginate = MongoosePaginate.paginate;

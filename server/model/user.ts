@@ -41,7 +41,12 @@ UserSchema.pre('save', false, function (next) {
 });
 
 // 加载自增 id 插件
-UserSchema.plugin(autoIncrementPlugin, 'User');
+UserSchema.plugin(autoIncrementPlugin, {
+    model: 'User',
+    field: '_id',
+    startAt: 1,
+    incrementBy: 1
+});
 
 // 翻页查询实现
 UserSchema.statics.paginate = MongoosePaginate.paginate;
