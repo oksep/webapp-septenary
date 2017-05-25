@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6 offset-md-3 app-form-container">
+    <div class="col-md-4 offset-md-4 app-border">
         <form (ngSubmit)="onLoginSubmit()" #loginForm="ngForm">
             <div class="form-group">
                 <label for="email" class="label"><i class="fa fa-id-card-o"></i> 邮箱</label>
@@ -14,7 +14,7 @@
                        required
                        [(ngModel)]="credentials.password" name="password">
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="isLogging || !loginForm.form.valid">
+            <button type="submit" class="btn btn-outline-success" [disabled]="isLogging || !loginForm.form.valid">
                 登录 <i *ngIf="isLogging" class="fa fa-refresh fa-spin fa-fw"></i>
             </button>
             <button type="button" class="btn btn-secondary" style="float: right"
