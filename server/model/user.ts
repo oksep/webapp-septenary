@@ -42,9 +42,9 @@ UserSchema.pre('save', false, function (next) {
 
 // 加载自增 id 插件
 UserSchema.plugin(autoIncrementPlugin, {
-    model: 'User',
+    _model: 'User',
     field: '_id',
-    startAt: 1,
+    startAt: 2,
     incrementBy: 1
 });
 

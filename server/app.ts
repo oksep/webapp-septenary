@@ -7,6 +7,7 @@ import {userRouter} from "./routes/user";
 import {authRouter} from "./routes/auth";
 import {articleRouter} from "./routes/article";
 import {adminRouter} from "./routes/admin";
+import {qiniuRouter} from "./routes/qiniu";
 
 import * as Auth from "./auth/auth";
 import Result from "./controller/result";
@@ -26,6 +27,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/article', articleRouter);
 app.use('/api/admin', adminRouter);
+app.use('/api/qiniu', qiniuRouter);
 
 // if (app.get('env') === 'production') {
 

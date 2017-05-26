@@ -19,27 +19,3 @@ db.users.findAndModify({
     new: true,
     upsert: true
 })
-
-db.identitycounters.findAndModify({
-    query: { _model: 'Article' },
-    update: {
-        $setOnInsert: {
-            field: '_id',
-            count: 1
-        }
-    },
-    new: true,
-    upsert: true
-})
-
-db.identitycounters.findAndModify({
-    query: { _model: 'User' },
-    update: {
-        $setOnInsert: {
-            field: '_id',
-            count: 1
-        }
-    },
-    new: true,
-    upsert: true
-})

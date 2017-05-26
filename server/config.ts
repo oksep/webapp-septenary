@@ -13,3 +13,9 @@ export const AuthConfig = {
 export const DBConfig = {
     host: 'mongodb://localhost:27017/blog'
 };
+
+export const QiniuConfig = {
+    ACCESS_KEY: 'i7tA1tYs5KYuN6-nwpsPbUAN2JmI4viHPoNWxUNr',
+    SECRET_KEY: 'LD5TqXn0gleXDsmU6fiZA6Ias54Wa0To0183LHkA',
+    BUCKET_NAME: 'assets'
+};

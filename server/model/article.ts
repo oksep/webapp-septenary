@@ -40,7 +40,7 @@ ArticleSchema.methods.log = () => {
 
 // 加载自增 id 插件
 ArticleSchema.plugin(autoIncrementPlugin, {
-    model: 'Article',
+    _model: 'Article',
     field: '_id',
     startAt: 1,
     incrementBy: 1

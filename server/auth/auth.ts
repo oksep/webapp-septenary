@@ -34,7 +34,7 @@ export function authenticateJWT() {
 // 管理员验证
 export function authenticateAdmin() {
     return function (req, res, next) {
-        if (!req.user.isAdmin()) {
+        if (req.user.role !== 'admin') {
             return res.sendStatus(401);
         } else {
             next();
