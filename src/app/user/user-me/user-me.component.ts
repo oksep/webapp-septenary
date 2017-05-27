@@ -31,6 +31,7 @@ export class UserMeComponent implements OnInit {
             this.profile = result.data;
             // console.log(this.profile);
         });
+        // this.userService.getProfileById(this.authService.getAuthId());
     }
 
     getUsers() {

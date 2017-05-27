@@ -11,7 +11,7 @@ import {Observable} from "rxjs/Observable";
 export const TOKEN_NAME = "@jwt-token";
 
 class Payload {
-    _id: string;
+    _id: number;
     name: string; // 用户名称
     role: string; // 用户角色
     iat: number; // jwt的签发时间

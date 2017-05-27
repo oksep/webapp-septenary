@@ -18,7 +18,7 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 
     article = new Article(); // 文章
 
-    powers = ['Elastic', 'iOS', 'Android', 'Web', 'Server'];
+    powers = ['App', 'Web', 'Server', 'Elastic'];
 
     constructor(private articleService: ArticleService, private router: Router) {
         this.article.title = '暗影诗章';

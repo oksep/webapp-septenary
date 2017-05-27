@@ -20,4 +20,8 @@ export class UserService extends BaseHttpService {
     listUsers() {
         return this.authHttpGet('/api/user/list');
     }
+
+    getProfileById(id: number) {
+        return this.httpGet(`/api/user/profile/${id}`);
+    }
 }

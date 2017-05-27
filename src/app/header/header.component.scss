@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
+
 .navbar {
     transition: all 0.35s;
     background-color: #46bca3;
@@ -8,11 +11,14 @@
     color: white;
     transition: all 0.35s;
     font-weight: bold;
-    font-family: "Times New Roman", Times, serif;
+    //font-family: "Times New Roman", Times, serif;
+    //font-family: 'Pacifico', cursive;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.5em;
 }
 
 .navbar .navbar-brand:hover {
-    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 128);
 }
 
 .hollow.navbar {
