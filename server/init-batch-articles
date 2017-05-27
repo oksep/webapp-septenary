@@ -1,0 +1,261 @@
+use blog
+
+db.articles.insert({
+  "_id": 1,
+  "title": "待办事项-1",
+  "category": "Server",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "todo",
+    "article",
+    "learning"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 2,
+  "title": "待办事项-2",
+  "category": "Web",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "Angular",
+    "html",
+    "css"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 3,
+  "title": "待办事项-3",
+  "category": "Server",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "mongo",
+    "mongoose"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 4,
+  "title": "待办事项-4",
+  "category": "Server",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "Angular",
+    "NodeJS"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 5,
+  "title": "待办事项-5",
+  "category": "Elastic",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "google",
+    "search"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 6,
+  "title": "待办事项-6",
+  "category": "Elastic",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "elasticsearch"
+  ],
+  "__v": 0
+})
+
+
+db.articles.insert({
+  "_id": 7,
+  "title": "待办事项-7",
+  "category": "Elastic",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "elasticsearch",
+    "logstash",
+    "kibana"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 8,
+  "title": "待办事项-8",
+  "category": "Android",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "view",
+    "log"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 9,
+  "title": "待办事项-9",
+  "category": "Android",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "view",
+    "log"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 10,
+  "title": "待办事项-10",
+  "category": "Android",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "view",
+    "log"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 11,
+  "title": "待办事项-12",
+  "category": "Android",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "view",
+    "log"
+  ],
+  "__v": 0
+})
+
+
+db.articles.insert({
+  "_id": 12,
+  "title": "待办事项-12",
+  "category": "Android",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "view",
+    "log"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 14,
+  "title": "待办事项-14",
+  "category": "Android",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "view",
+    "log"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 15,
+  "title": "待办事项-15",
+  "category": "Android",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "view",
+    "log"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 16,
+  "title": "待办事项-16",
+  "category": "Android",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "view",
+    "log"
+  ],
+  "__v": 0
+})
+
+db.articles.insert({
+  "_id": 17,
+  "title": "待办事项-17",
+  "category": "Android",
+  "content": "# 待办事项(网站)\n\n- [ ] 评论系统  \n- [ ] 七牛图床接入  \n- [ ] 标签页\n- [ ] 分类页\n- [ ] 搜索页\n- [ ] 统计接口\n- [ ] 后台管理页\n- [ ] https 支持\n\n\n# 待办事项(开发)\n\n- [ ] Tushare\n- [ ] Dou Ban FM API\n- [ ] Chrome Plugin\n- [ ] Blog website\n\n\n# 待办事项(学习)\n\n- [x] angular2\n- [x] express + passport\n- [x] jwt\n- [ ] kotlin入门\n\n\n# 待办事项(整理)\n\n- [ ] react native: gallery(double tap, gif support)\n- [ ] react native: FadeableNavigationBar\n- [ ] Swift版 FadingNavigationController\n- [ ] mi-KeepDebug\n- [ ] publish HelloJni on github\n- [ ] xposed hook adb\n- [ ] WeChat 红包外挂 [link](https://github.com/lendylongli/qianghongbao)\n- [ ] Android ShadowView\n- [ ] TV gridview(leanback-support)\n- [ ] childDrawingOrder(巧妙实现)\n\n\n",
+  "author": 1,
+  "updatedTime": ISODate("2017-05-27T11:20:18.144Z"),
+  "createdTime": ISODate("2017-03-18T05:47:31.144Z"),
+  "views": 0,
+  "tags": [
+    "view",
+    "log"
+  ],
+  "__v": 0
+})

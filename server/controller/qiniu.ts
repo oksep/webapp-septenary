@@ -16,5 +16,5 @@ export function getUptoken(request: Request, response: Response, next: NextFunct
     response.header("Expires", '0');
     response.json(Result.success({
         uptoken: token
-    }))
+    }));
 }
