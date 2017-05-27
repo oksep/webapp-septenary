@@ -3,6 +3,7 @@ import User from "./user";
 export class Article {
     _id: number; // id
     title: string; // 标题
+    banner: string; // 横幅
     tags: string[]; // 标签
     category: string; // 分类
     content: string; // 正文

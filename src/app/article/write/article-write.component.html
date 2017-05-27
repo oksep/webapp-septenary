@@ -1,22 +1,30 @@
 <div class="container">
-    <div class="app-border col-9 m-auto">
+    <div class="app-border col-lg-9 m-auto">
+
+        <div class="form-group">
+
+            <label class="label">Banner</label>
+
+            <app-upload-form></app-upload-form>
+
+        </div>
 
         <form>
             <div class="form-group">
-                <label for="title">标题</label>
+                <label class="label" for="title">标题</label>
                 <input name="title" id="title" class="form-control" type="text" placeholder="文章标题"
                        [(ngModel)]="article.title"
                 >
             </div>
             <div class="form-group">
-                <label for="category">文章分类</label>
+                <label class="label" for="category">文章分类</label>
                 <select class="form-control" id="category" name="category" [(ngModel)]="article.category" required>
                     <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <!--https://github.com/gbuomprisco/ng2-tag-input-->
-                <label for="tags">标签</label>
+                <label class="label" for="tags">标签</label>
                 <div style="border: 1px solid #D8D8D8; border-radius: 3px;">
                     <tag-input [(ngModel)]="article.tags" modelAsStrings="true" theme="minimal" name="tags"
                                id="tags"></tag-input>
@@ -24,12 +32,12 @@
             </div>
             <div class="form-group">
                 <!--https://chmln.github.io/flatpickr/-->
-                <label>时间</label>
+                <label class="label">时间</label>
                 <input id="flatpickr" class="flatpickr flatpickr-input form-control" type="text" placeholder="文章创建时间"
                        readonly="readonly" [(ngModel)]="article.createdTime" name="createdTime">
             </div>
             <div *ngIf="false" class="form-group">
-                <label for="exampleInputFile">插图</label>
+                <label class="label" for="exampleInputFile">插图</label>
                 <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
                 <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the
                     above
@@ -37,7 +45,7 @@
                 </small>
             </div>
             <div class="form-group">
-                <label for="exampleTextarea">正文</label>
+                <label class="label" for="exampleTextarea">正文</label>
                 <textarea id="exampleTextarea" #simplemde title="markdown-editor">{{article.content}}</textarea>
             </div>
 

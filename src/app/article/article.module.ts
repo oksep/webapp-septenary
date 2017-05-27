@@ -25,6 +25,7 @@ import {ArticleService} from "./article.service";
 
 // guard
 import {ArticleGuard} from "./article.guard";
+import {UploadModule} from "../upload/upload.module";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {ArticleGuard} from "./article.guard";
         SharedModule,
         TagInputModule,
         BrowserAnimationsModule,
+        UploadModule,
         MarkdownModule.forRoot(),
         Ng2PageScrollModule.forRoot()
     ],
