@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from "@angular/
 import {ArticleService} from "../article.service";
 import {Article} from "../../model/article";
 import {Router} from "@angular/router";
+import {UploadComponent} from "../../upload/upload.component";
 
 const MORE_TAG = '<!--more-->';
 
@@ -12,7 +13,8 @@ const MORE_TAG = '<!--more-->';
 })
 export class ArticleWriteComponent implements OnInit, AfterViewInit {
 
-    @ViewChild('simplemde') textarea: ElementRef;
+    @ViewChild('markdownEditor') simpleMDE: ElementRef;
+    @ViewChild('bannerForm') bannerForm: UploadComponent;
 
     markdownEditor: any; // md 编辑器
 
@@ -33,7 +35,7 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 
         // 初始化 markdown 编辑器
         this.markdownEditor = new SimpleMDE({
-            element: this.textarea.nativeElement,
+            element: this.simpleMDE.nativeElement,
             // showIcons: ["code", "table"]
         });
 
@@ -47,6 +49,10 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 
 
     onPublishClick() {
+        if (this.bannerForm) {
+            this.bannerForm.doUpload(null);
+            return;
+        }
         let available = this.article.content
             && this.article.title
             && this.article.category
@@ -67,6 +73,10 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
                     }
                 });
         }
+    }
+
+    onSelectFile(file: File) {
+        console.warn('Onselec', file)
     }
 
 }

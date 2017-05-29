@@ -5,7 +5,11 @@
 
             <label class="label">Banner</label>
 
-            <app-upload-form></app-upload-form>
+            <app-upload-form
+                    #bannerForm
+                    (onSelectFile)="onSelectFile($event)"
+                    [autoUpload]="false">
+            </app-upload-form>
 
         </div>
 
@@ -46,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label class="label" for="exampleTextarea">正文</label>
-                <textarea id="exampleTextarea" #simplemde title="markdown-editor">{{article.content}}</textarea>
+                <textarea id="exampleTextarea" #markdownEditor title="markdown-editor">{{article.content}}</textarea>
             </div>
 
             <button class="btn btn-outline-success" (click)="onPublishClick()">发布</button>

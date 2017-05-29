@@ -1,11 +1,17 @@
 import {Injectable} from "@angular/core";
 
-import {Http} from "@angular/http";
+import {Headers, Http, RequestOptions} from "@angular/http";
 
 import {AuthHttp} from "../auth/angular-jwt.module";
 import BaseHttpService from "../util/base.server";
+import {Observable} from "rxjs/Observable";
 
-import * as Qiniu from 'qiniu-js';
+export interface OnUploadCallback {
+    onUploadProgress(percent: number): void;
+    onUploadError(err: Error);
+    onUploadComplete();
+    onLoaded(result: object);
+}
 
 
 @Injectable()
@@ -15,73 +21,90 @@ export class UploadService extends BaseHttpService {
         super(http, authHttp);
     }
 
-    getUptoken() {
-        return this.authHttpGet('/api/upload/uptoken');
+    // 上传token
+    getToken(key: string) {
+        return this.authHttpPost('/api/qiniu/uptoken', {key: key});
     }
 
-    uploadImage() {
-        //引入Plupload 、upload.js后
-        var uploader = Qiniu.uploader({
-            runtimes: 'html5,flash,html4',    //上传模式,依次退化
-            browse_button: 'pickfiles',       //上传选择的点选按钮，**必需**
-            uptoken_url: '/api/upload/uptoken',//Ajax请求upToken的Url，**强烈建议设置**（服务端提供）
-            // uptoken : '', //若未指定uptoken_url,则必须指定 uptoken ,uptoken由其他程序生成
-            // unique_names: true, // 默认 false，key为文件名。若开启该选项，SDK为自动生成上传成功后的key（文件名）。
-            // save_key: true,   // 默认 false。若在服务端生成uptoken的上传策略中指定了 `sava_key`，则开启，SDK会忽略对key的处理
-            domain: 'http://upload-plupload.qiniudn.com/',   //bucket 域名，下载资源时用到，**必需**
-            get_new_uptoken: false,  //设置上传文件的时候是否每次都重新获取新的token
-            container: 'container',           //上传区域DOM ID，默认是browser_button的父元素，
-            max_file_size: '100mb',           //最大文件体积限制
-            flash_swf_url: 'js/plupload/Moxie.swf',  //引入flash,相对路径
-            max_retries: 3,                   //上传失败最大重试次数
-            dragdrop: true,                   //开启可拖曳上传
-            drop_element: 'container',        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
-            chunk_size: '4mb',                //分块上传时，每片的体积
-            auto_start: false,                 //选择文件后自动上传，若关闭需要自己绑定事件触发上传
-            init: {
-                'FilesAdded': function (up, files) {
-                    // plupload.each(files, function (file) {
-                    //     // 文件添加进队列后,处理相关的事情
-                    // });
-                },
-                'BeforeUpload': function (up, file) {
-                    // 每个文件上传前,处理相关的事情
-                },
-                'UploadProgress': function (up, file) {
-                    // 每个文件上传时,处理相关的事情
-                },
-                'FileUploaded': function (up, file, info) {
-                    // 每个文件上传成功后,处理相关的事情
-                    // 其中 info 是文件上传成功后，服务端返回的json，形式如
-                    // {
-                    //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-                    //    "key": "gogopher.jpg"
-                    //  }
-                    // 参考http://developer.upload.com/docs/v6/api/overview/up/response/simple-response.html
-
-                    // var domain = up.getOption('domain');
-                    // var res = parseJSON(info);
-                    // var sourceLink = domain + res.key; 获取上传成功后的文件的Url
-                },
-                'Error': function (up, err, errTip) {
-                    //上传出错时,处理相关的事情
-                },
-                'UploadComplete': function () {
-                    //队列文件处理完毕后,处理相关的事情
-                },
-                'Key': function (up, file) {
-                    // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-                    // 该配置必须要在 unique_names: false , save_key: false 时才生效
-
-                    var key = "";
-                    // do something with key here
-                    return key
+    // 上传文件
+    uploadFile(key: string, file: File, callback: OnUploadCallback) {
+        this.getToken(key)
+            .subscribe(result => {
+                if (result.success) {
+                    this.uploadToQiniu(file, result.data.uptoken, key, callback);
+                } else {
+                    callback.onUploadError(new Error());
                 }
-            }
-        });
+            });
+    }
 
-        // domain 为七牛空间（bucket)对应的域名，选择某个空间后，可通过"空间设置->基本设置->域名设置"查看获取
+    // 上传文件至七牛
+    private uploadToQiniu(file: File, token: string, key: string, callback: OnUploadCallback) {
 
-        // uploader 为一个plupload对象，继承了所有plupload的方法，参考http://plupload.com/docs
+        let formData = new FormData();
+        formData.append('file', file, key);
+        formData.append('token', token);
+        formData.append('key', key);
+
+        const request = new XMLHttpRequest();
+
+        if (callback) {
+            request.upload.addEventListener("progress", (evt) => {
+                if (evt.lengthComputable) {
+                    let percentComplete = evt.loaded / evt.total;
+                    callback.onUploadProgress(percentComplete);
+                } else {
+                    // Unable to compute progress information since the total size is unknown
+                }
+            }, false);
+            request.upload.addEventListener("load", () => callback.onUploadComplete(), false);
+            request.upload.addEventListener("error", (evt) => callback.onUploadError(new Error('Upload error')), false);
+            request.upload.addEventListener("abort", (evt) => callback.onUploadError(new Error('Abort error')), false);
+            request.onload = (e) => callback.onLoaded(request.response ? JSON.parse(request.response) : null);
+            request.onerror = (e) => callback.onUploadError(new Error('Request error'));
+        }
+
+        request.open('POST', 'http://upload.qiniu.com/', true);
+        request.setRequestHeader('Accept', 'application/json');
+        request.send(formData);
+    }
+
+    // unused
+    private uploadNoProgress(file: File, token: string, key: string) {
+        let formData: FormData = new FormData();
+        let name = '七七弑神.jpg';
+        formData.append('file', file, name);
+        formData.append('token', token);
+        formData.append('key', name);
+
+        let headers = new Headers();
+        headers.append('Content-Type', 'multipart/form-data');
+        headers.append('Accept', 'application/json');
+
+        let options = new RequestOptions({headers: headers});
+
+        this.http.post('http://upload.qiniu.com/', formData)//, options)
+            .map(res => res.json())
+            .catch(error => Observable.throw(error))
+            .subscribe(
+                data => console.log('success', data),
+                error => console.log(error)
+            );
+    }
+
+    generateKey() {
+        // let key = Math.random().toString(36).substr(2) + this.file.name.match(/\.?[^.\/]+$/);
+        // return key;
+    }
+
+    guid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
     }
 }

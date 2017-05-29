@@ -1,26 +1,21 @@
-<!-- Document：https://developer.qiniu.com/kodo/manual/form-upload -->
-<form id="testform" method="post" enctype="multipart/form-data">
-    <input name="key" id="key" value=""><br>
-    <input name="token" value="i7tA1tYs5KYuN6-nwpsPbUAN2JmI4viHPoNWxUNr:w5eHScmi0paGHxhjGtuMUNgwxlI=:eyJzY29wZSI6ImFzc2V0cyIsImRlYWRsaW5lIjoxNDk1ODgxODkzfQ=="><br>
-    <!--<input id="userfile" name="file" type="file"/>-->
+<form>
+    <label class="uploader" ondragover="return false;"
+           [class.dragging]="dragging"
+           (dragenter)="handleDragEnter()"
+           (dragleave)="handleDragLeave()"
+           (drop)="handleDrop($event)">
 
-    <!-- take photo with phone -->
-    <input id="userfile" name="file" accept="image/*" type="file"/><br>
-
-    <!-- take video with phone -->
-    <!-- <input id="userfile" name="file" type="file" accept="video/*"/> -->
-
-    <!--<input name="accept"/><br>-->
+        <input type="file" name="file" accept="image/*" (change)="handleInputChange($event)">
+        <i class="fa fa-upload icon"></i>
+        <span></span>
+        <img [src]="imageSrc"
+             (load)="handleImageLoad()"
+             [class.loaded]="imageLoaded"/>
+    </label>
+    <div *ngIf="uploading" class="progress-bar-container progress">
+        <div class="progress-bar progress-bar-striped bg-info"
+             [class.progress-bar-animated]="uploading"
+             [style.width.%]="uploadProgress">
+        </div>
+    </div>
 </form>
-
-<!-- add file -->
-<!--<label class="label" for="userfile">Banner</label>-->
-<div class="banner-upload">
-    <span></span>
-    <label for="userfile"></label>
-</div>
-
-<!-- upload info -->
-<div class="selected-file"></div>
-<div class="progress"></div>
-<div class="uploaded-result"></div>

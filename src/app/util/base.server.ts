@@ -3,8 +3,8 @@ import {Http, RequestOptionsArgs} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 
 export default class BaseHttpService {
-    private http: Http;
-    private authHttp: AuthHttp;
+    protected http: Http;
+    protected authHttp: AuthHttp;
 
     constructor(http: Http, authHttp: AuthHttp) {
         this.http = http;
