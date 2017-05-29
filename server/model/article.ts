@@ -5,6 +5,7 @@ import Schema = mongoose.Schema;
 
 interface IArticle extends mongoose.Document {
     title: string; // 标题
+    banner: string; // 横幅
     tags: string[]; // 标签
     category: string; // 分类
     content: string; // 正文
@@ -23,6 +24,7 @@ interface IArticleModel extends mongoose.Model<IArticle>, IPaginate {
 
 const ArticleSchema = new Schema({
     title: {type: String, required: true}, // 标题
+    banner: String, // 横幅
     tags: [String], // 标签
     category: String, // 分类
     content: String, // 正文

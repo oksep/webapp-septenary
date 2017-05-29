@@ -28,7 +28,6 @@ export function createArticle(request: Request, response: Response) {
 
 export function findArticle(request: Request, response: Response) {
     // var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
-    console.log(request.params);
     Article.findById(request.params._id)
         .populate('author', '_id name avatar')
         .then(doc => {
