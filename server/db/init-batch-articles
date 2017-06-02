@@ -259,3 +259,15 @@ db.articles.insert({
   ],
   "__v": 0
 })
+
+db.identitycounters.findAndModify({
+    query: { _model: 'Article' },
+    update: {
+        $setOnInsert: {
+            field: '_id',
+            count: 17
+        }
+    },
+    new: true,
+    upsert: true
+})
