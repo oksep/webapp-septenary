@@ -10,7 +10,7 @@ export default class Result {
         this.data = data;
     }
 
-    static success(data: object) {
+    static success(data?: object) {
         return new Result(true, data, null);
     }
 

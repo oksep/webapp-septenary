@@ -48,7 +48,7 @@ export function updateArticle(request: Request, response: Response) {
             "new": true
         })
         .then((result) => {
-            response.json(result);
+            response.json(Result.success());
         })
         .catch((error: Error) => {
             response.status(404);
