@@ -14,7 +14,7 @@ export default class Result {
         return new Result(true, data, null);
     }
 
-    static failed(message: string) {
-        return new Result(false, null, {message: message});
+    static failed(message: string | Error) {
+        return new Result(false, null, {message: message instanceof String ? message : JSON.stringify(message)});
     }
 }

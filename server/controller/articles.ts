@@ -40,7 +40,20 @@ export function findArticle(request: Request, response: Response) {
 }
 
 export function updateArticle(request: Request, response: Response) {
-    response.send('TODO');
+    let body = request.body;
+    body.updatedTime && (body.updatedTime = new Date(body.updatedTime));
+    body.createdTime && (body.createdTime = new Date(body.createdTime));
+    Article
+        .findByIdAndUpdate(body._id, body, {
+            "new": true
+        })
+        .then((result) => {
+            response.json(result);
+        })
+        .catch((error: Error) => {
+            response.status(404);
+            response.json(Result.failed(error));
+        })
 }
 
 // 按页查询
