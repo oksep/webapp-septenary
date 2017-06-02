@@ -2,7 +2,7 @@
 /**
  * Module dependencies.
  */
-import {connectDB} from "../dbconnection";
+import {connectDB} from "../db/dbconnection";
 import * as config from "../config";
 import * as http from "http";
 import {app} from "../app";

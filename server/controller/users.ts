@@ -1,5 +1,5 @@
-import {NextFunction, Request, Response} from "express";
-import Result from "./result";
+import {NextFunction} from "express";
+import {Request, Response} from "../middleware/result";
 import User from "../model/user";
 import {AuthConfig} from "../config";
 import * as moment from "moment";
@@ -32,17 +32,17 @@ export function login(request: Request, response: Response, next: NextFunction) 
                 payload.role = doc.role;
                 payload.iat = moment().unix();
                 payload.exp = moment().add(AuthConfig.JWTExpiration, 'minute').unix();
-                response.json(Result.success({
+                response.success({
                     token: JWT.encode(payload, AuthConfig.JWTSecret) // jwt 签发
-                }));
+                });
             } else {
                 response.status(401);
-                response.json(Result.failed('帐号或密码错误'));
+                response.failed('帐号或密码错误');
             }
         })
         .catch(err => {
             response.status(404);
-            response.json(Result.failed('帐号或密码错误'));
+            response.failed('帐号或密码错误');
         });
 }
 
@@ -51,29 +51,29 @@ export function createUser(request: Request, response: Response, next: NextFunct
     let user = new User(request.body);
     user.save()
         .then(doc => {
-            response.json(Result.success(doc));
+            response.success(doc);
         })
         .catch(err => {
-            err.status = 200;
-            next(err);
+            response.status(200);
+            response.failed(err);
         });
 }
 
 // 列出用户列表
 export function listUsers(request: Request, response: Response) {
-    response.json(Result.success({
+    response.success({
         message: 'ok'
-    }));
+    });
 }
 
 // 查询用户 profile
 export function getProfile(request: Request, response: Response, next: NextFunction) {
     User.findById(request.user._id)
         .then(doc => {
-            response.json(Result.success(doc));
+            response.success(doc);
         })
         .catch(err => {
-            err.status = 404;
-            next(err);
+            response.status(200);
+            response.failed(err);
         });
 }

@@ -1,4 +1,4 @@
-import {DBConfig} from "./config";
+import {DBConfig} from "../config";
 import * as mongoose from "mongoose";
 (<any>mongoose).Promise = global.Promise;
 

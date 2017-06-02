@@ -1,7 +1,5 @@
 import Article from "../model/article";
-import {Request, Response} from "express";
-import Result from "./result";
-
+import {Request, Response} from "../middleware/result";
 
 const MORE_TAG = '<!--more-->';
 
@@ -18,10 +16,9 @@ export function createArticle(request: Request, response: Response) {
     }
 
     article.save().then(doc => {
-        response.json(Result.success(doc));
+        response.success(doc);
     }).catch(err => {
-        console.log(err);
-        response.json(Result.failed(err.message));
+        response.failed(err.message);
     });
 
 }
@@ -31,11 +28,11 @@ export function findArticle(request: Request, response: Response) {
     Article.findById(request.params._id)
         .populate('author', '_id name avatar')
         .then(doc => {
-            response.json(Result.success(doc));
+            response.success(doc);
         })
         .catch(err => {
             response.status(404);
-            response.json(Result.failed(err.message));
+            response.failed(err.message);
         });
 }
 
@@ -48,11 +45,11 @@ export function updateArticle(request: Request, response: Response) {
             "new": true
         })
         .then((result) => {
-            response.json(Result.success());
+            response.success();
         })
         .catch((error: Error) => {
             response.status(404);
-            response.json(Result.failed(error));
+            response.failed(error);
         })
 }
 
@@ -72,11 +69,11 @@ export function paginateArticle(request: Request, response: Response) {
             ]
         })
         .then(result => {
-            response.json(Result.success(result));
+            response.success(result);
         })
         .catch(err => {
             response.status(404);
-            response.json(Result.failed(err.message));
+            response.failed(err.message);
         });
 }
 
@@ -95,9 +92,9 @@ export function aggregateTags(request: Request, response: Response) {
             }
         )
         .then(doc => {
-            response.json(Result.success(doc));
+            response.success(doc);
         })
         .catch(err => {
-            response.json(Result.failed(err.message));
+            response.failed(err.message);
         })
 }

@@ -1,4 +1,4 @@
-import mongoose from "../../dbconnection";
+import mongoose from "../dbconnection";
 import * as extend from "extend";
 import Schema = mongoose.Schema;
 

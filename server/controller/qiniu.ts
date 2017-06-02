@@ -1,6 +1,6 @@
-import {NextFunction, Request, Response} from "express";
-import Result from "./result";
+import {NextFunction} from "express";
 import {QiniuConfig} from "../config";
+import {Request, Response} from "../middleware/result";
 const Qiniu = require('qiniu');
 
 Qiniu.conf.ACCESS_KEY = QiniuConfig.ACCESS_KEY;
@@ -13,7 +13,7 @@ export function getUptoken(request: Request, response: Response, next: NextFunct
     response.header("Cache-Control", "max-age=0, private, must-revalidate");
     response.header("Pragma", "no-cache");
     response.header("Expires", '0');
-    response.json(Result.success({
+    response.success({
         uptoken: Uptoken.token()
-    }));
+    });
 }

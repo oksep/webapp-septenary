@@ -10,11 +10,13 @@ import {adminRouter} from "./routes/admin";
 import {qiniuRouter} from "./routes/qiniu";
 
 import * as Auth from "./auth/auth";
-import Result from "./controller/result";
+import {initResultPlugin, Request, Response} from "./middleware/result";
 
 const app: express.Application = express();
 
 app.disable('x-powered-by');
+
+initResultPlugin(app);
 
 app.use(json());
 app.use(compression());
@@ -54,10 +56,9 @@ app.use(function (req: express.Request, res: express.Response, next) {
 
 // production error handler
 // no stacktrace leaked to user
-app.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
-
+app.use(function (err: any, req: Request, res: Response, next: express.NextFunction) {
     res.status(err.status || 500);
-    res.json(Result.failed(err.message));
+    res.failed(err.message);
 });
 
 export {app}

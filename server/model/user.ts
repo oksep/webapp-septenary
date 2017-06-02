@@ -1,6 +1,6 @@
-import mongoose from "../dbconnection";
-import {IPaginate, MongoosePaginate} from "./plugins/paginate";
-import autoIncrementPlugin from "./plugins/identity-counter";
+import mongoose from "../db/dbconnection";
+import {IPaginate, MongoosePaginate} from "../db/plugins/paginate";
+import autoIncrementPlugin from "../db/plugins/identity-counter";
 import Schema = mongoose.Schema;
 import Types = mongoose.Types;
 import ObjectId = Types.ObjectId;
