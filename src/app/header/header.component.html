@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link underline-anim" routerLink="/write">
+                <a class="nav-link underline-anim" routerLink="/article/create">
                     <i class="fa fa-edit"></i>&nbsp;写文章
                 </a>
             </li>
@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link" style="" routerLink="/user/me">
+                <a class="" style="margin-left: 1rem" routerLink="/user/me">
                     <img class="avatar" [src]="authAvatar" style="width: 40px; height: 40px"/>
                 </a>
             </li>

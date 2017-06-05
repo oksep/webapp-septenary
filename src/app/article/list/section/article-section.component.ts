@@ -12,6 +12,8 @@ import {Article} from "../../../model/article";
 export class ArticleSectionComponent implements OnInit {
 
     @Input() article: Article;
+    @Input() isHead: boolean;
+    @Input() isTail: boolean;
 
     constructor(private router: Router, public activeRoute: ActivatedRoute) {
 

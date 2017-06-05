@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Exo+2');
 
 .navbar {
-    transition: all 0.35s;
-    background-color: #40AEDB;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, .15);
+  transition: all 0.35s;
+  background-color: #40AEDB;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .15);
 }
 
 .brand-img {
@@ -13,44 +13,45 @@
 }
 
 .hollow.navbar {
-    background-color: transparent;
-    transition: all 0.35s;
-    box-shadow: none;
+  background-color: transparent;
+  transition: all 0.35s;
+  box-shadow: none;
 }
 
 .hollow.navbar .navbar-brand {
-    transition: all 0.35s;
+  transition: all 0.35s;
 }
 
 .pinned.navbar {
-    background-color: #40AEDB;
-    transition: all 0.35s;
-    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
-    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
+  background-color: #40AEDB;
+  transition: all 0.35s;
+  -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
 }
 
 .pinned.navbar .navbar-brand {
-    color: white;
+  color: white;
 }
 
 @media (min-width: 991px) {
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-}
-
-.underline-anim {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .navbar-nav {
+    align-items: center
+  }
+  .underline-anim {
     position: relative;
     /*color: #40AEDB;*/
     text-decoration: none;
-}
+  }
 
-.underline-anim:hover {
+  .underline-anim:hover {
     /*color: #000;*/
-}
+  }
 
-.underline-anim:before {
+  .underline-anim:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -63,16 +64,17 @@
     transform: scaleX(0);
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
-}
+  }
 
-.underline-anim:hover:before {
+  .underline-anim:hover:before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
+  }
 }
 
 .header-space {
-    height: 90px;
+  height: 90px;
 }
 
 .nav-item a {
@@ -85,10 +87,6 @@
 
 .nav-item a.active {
   color: white;
-}
-
-.navbar-nav {
-  align-items: center
 }
 
 .avatar {

@@ -2,21 +2,3 @@
     background: #1FA48D;
     border-color: #1FA48D;
 }
-
-.section-container {
-    background-color: white;
-    border-left: 1px #DFDFDF solid;
-    border-right: 1px #DFDFDF solid;
-}
-
-.first-section {
-    border-top: 1px #DFDFDF solid;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.last-section {
-    border-bottom: 1px #DFDFDF solid;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
