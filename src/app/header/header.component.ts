@@ -1,7 +1,8 @@
 import {AfterViewInit, Component, OnInit} from "@angular/core";
-import {AuthService} from "../auth/auth.service";
+import {AuthEvent, AuthService} from "../auth/auth.service";
 import {Router} from "@angular/router";
 import {HeaderEvent, HeaderService} from "./header.service";
+import User from "../model/user";
 
 const $ = jQuery;
 
@@ -14,7 +15,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     headerIsHollow: boolean;
 
-    constructor(private headerService: HeaderService, private authService: AuthService, private router: Router) {
+    loginUser: User;
+
+    constructor(private headerService: HeaderService,
+                private authService: AuthService,
+                private router: Router) {
         $(window).resize(() => this.onWindowSizeChange());
     }
 
@@ -22,6 +27,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         this.headerService.events.subscribe((event: HeaderEvent) => {
             this.headerIsHollow = event.isHollow;
         });
+
+        this.authService.events.subscribe((event: AuthEvent) => {
+            this.loginUser = event.loginUser;
+        });
+
+        this.authService.ensureLoggedIn();
     }
 
     ngAfterViewInit(): void {
@@ -32,25 +43,16 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
 
     get loggedIn() {
-        return this.authService.getLoggedIn();
-    }
-
-    get authName() {
-        return this.authService.getAuthName();
+        return this.loginUser != null;
     }
 
     get authAvatar() {
-        return this.authService.getAuthAvatar();
+        return this.loginUser ? this.loginUser.avatar : null;
     }
 
     onLogoutClick() {
-        let loggedIn = this.authService.getLoggedIn();
-        if (loggedIn) {
-            this.authService.logout();
-            this.router.navigateByUrl('');
-        } else {
-            this.router.navigateByUrl('/user/login');
-        }
+        this.authService.logout();
+        this.router.navigateByUrl('');
     }
 
     onWindowSizeChange() {

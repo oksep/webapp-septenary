@@ -41,24 +41,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     }
 
-    get loggedIn() {
-        return this.authService.getLoggedIn();
-    }
-
-    get authName() {
-        return this.authService.getAuthName();
-    }
-
-    onLogoutClick() {
-        let loggedIn = this.authService.getLoggedIn();
-        if (loggedIn) {
-            this.authService.logout();
-            this.router.navigateByUrl('');
-        } else {
-            this.router.navigateByUrl('/user/login');
-        }
-    }
-
     onWindowSizeChange() {
 
     }

@@ -2,11 +2,14 @@ import {Injectable} from "@angular/core";
 
 import {Http} from "@angular/http";
 
-import {tokenNotExpired} from "./angular-jwt.module";
+import {AuthHttp, tokenNotExpired} from "./angular-jwt.module";
 
 import {Credentials} from "../model/credentials";
 import JwtHelper from "../util/angular-jwt";
 import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
+import User from "app/model/user";
+import BaseHttpService from "../util/base.server";
 
 export const TOKEN_NAME = "@jwt-token";
 
@@ -24,26 +27,32 @@ class Payload {
     jti: string; // jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击。
 }
 
-@Injectable()
-export class AuthService {
-    loggedIn: boolean = false;
-    tokenPayload: Payload;
+export class AuthEvent {
+    loginUser: User;
 
-    constructor(private http: Http) {
-        this.ensureLoggedIn();
-        this.ensureTokenPayload();
+    constructor(payload: Payload) {
+        if (payload) {
+            this.loginUser = new User();
+            this.loginUser.avatar = payload.avatar;
+            this.loginUser._id = payload._id;
+            this.loginUser.name = payload.name;
+            this.loginUser.role = payload.role;
+        }
     }
+}
 
-    // static validateToken(token) {
-    //     let helper = new JwtHelper();
-    //     console.log(
-    //         'TOKEN',
-    //         helper.decodeToken(token),
-    //         helper.getTokenExpirationDate(token),
-    //         helper.isTokenExpired(token)
-    //     );
-    //     tokenNotExpired();
-    // }
+@Injectable()
+export class AuthService extends BaseHttpService {
+
+    private token: Payload = null;
+
+    private eventSource: Subject<AuthEvent> = new Subject<AuthEvent>();
+    public events: Observable<AuthEvent> = this.eventSource.asObservable();
+
+    constructor(http: Http, authHttp: AuthHttp) {
+        super(http, authHttp);
+        this.ensureLoggedIn();
+    }
 
     // 登录
     login(credentials: Credentials) {
@@ -51,10 +60,9 @@ export class AuthService {
             .post('/api/auth/login', credentials)
             .map(res => {
                 const result = res.json();
-                this.loggedIn = true;
                 if (result.success && result.data) {
                     localStorage.setItem(TOKEN_NAME, result.data.token);
-                    this.ensureTokenPayload();
+                    this.parseTokenToPayload();
                 }
                 return result;
             })
@@ -75,52 +83,41 @@ export class AuthService {
 
     // 检查登录是否过期
     ensureLoggedIn(): boolean {
-        this.loggedIn = tokenNotExpired(TOKEN_NAME);
-        if (!this.loggedIn) {
-            this.tokenPayload = null
+        if (tokenNotExpired(TOKEN_NAME)) {
+            this.parseTokenToPayload();
+            return true;
+        } else {
+            this.token = null;
+            return false;
         }
-        return this.loggedIn;
-    }
-
-    // 取登录状态
-    getLoggedIn() {
-        return this.loggedIn
     }
 
     getAuthName() {
-        return this.tokenPayload ? this.tokenPayload.name : null;
-    }
-
-    getAuthAvatar() {
-        return this.tokenPayload ? this.tokenPayload.avatar : null;
-    }
-
-    getAuthId() {
-        return this.tokenPayload ? this.tokenPayload._id : null;
+        return this.token ? this.token.name : null;
     }
 
     // 是否是 管理员
     isAdmin() {
-        return this.tokenPayload && this.tokenPayload.role == 'admin';
+        return this.token ? this.token.role == 'admin' : false;
     }
 
-    // token 携带信息
-    ensureTokenPayload() {
+    // 解析 token 携带信息
+    parseTokenToPayload() {
         const token: string = localStorage.getItem(TOKEN_NAME);
         if (token) {
             const jwtHelper = new JwtHelper();
             let payload = jwtHelper.decodeToken(token);
             if (payload) {
-                this.tokenPayload = payload as Payload;
-                console.log('Payload', payload);
+                this.token = payload as Payload;
+                this.eventSource.next(new AuthEvent(this.token));
             }
         }
     }
 
     // 退登
     logout() {
-        this.loggedIn = false;
-        this.tokenPayload = null;
+        this.token = null;
+        this.eventSource.next(new AuthEvent(null));
         localStorage.removeItem(TOKEN_NAME);
     }
 }
