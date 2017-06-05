@@ -8,6 +8,7 @@ import * as JWT from "jwt-simple";
 class Payload {
     _id: string;
     name: string; // 用户名称
+    avatar: string; // avatar
     role: string; // 用户角色
     iat: number; // jwt的签发时间
     exp: number; // jwt的过期时间，这个过期时间必须要大于签发时间
@@ -29,6 +30,7 @@ export function login(request: Request, response: Response, next: NextFunction) 
                 const payload = new Payload();
                 payload._id = doc._id;
                 payload.name = doc.name;
+                payload.avatar = doc.avatar;
                 payload.role = doc.role;
                 payload.iat = moment().unix();
                 payload.exp = moment().add(AuthConfig.JWTExpiration, 'minute').unix();
