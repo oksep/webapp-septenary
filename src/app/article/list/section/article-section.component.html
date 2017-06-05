@@ -1,19 +1,22 @@
-<section class="article-section" (click)="onSectionClick()"
-         [class.first-section]="isHead"
-         [class.last-section]="isTail">
-    <div class="content">
-        <h2 class="article-section-title">{{article.title}}</h2>
-        <div class="markdown-preview" *ngIf="article.summary" Markdown [data]="article.summary | summarycutter"></div>
+<div class="row article-section"
+     [class.first-section]="isHead"
+     [class.last-section]="isTail">
+    <div>
+        <img class="avatar" [src]="article.author.avatar" style="width: 60px; height: 60px; margin-right: .25rem">
     </div>
-    <div class="bottom">
-        <small class="text-muted" style="margin-right: 10px">
-            <i class="fa fa-calendar"></i> {{ article.createdTime | articledate | date:'yyyy年MM月dd日 HH:mm'}}
-        </small>
-        <div style="display: inline">
+    <div (click)="onSectionClick()" class="col article-container" style="padding-right: 0">
+        <div>
+            <h6>{{article.title}}
+                <small style="float: right; color: #636c72">5 min ago</small>
+            </h6>
+        </div>
+
+        <div class="markdown-preview" *ngIf="article.summary" Markdown [data]="article.summary | summarycutter"></div>
+
+        <div style="margin-top: 20px">
+            <!--<i class="fa fa-tag"></i>-->
             <article-tag *ngFor="let tag of article.tags" [tag]="tag"></article-tag>
         </div>
-        <div>
-            {{article.author | tostring}}
-        </div>
+
     </div>
-</section>
+</div>

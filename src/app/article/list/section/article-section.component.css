@@ -4,7 +4,7 @@
     border-left: 1px #DFDFDF solid;
     border-right: 1px #DFDFDF solid;
     border-bottom: 1px #DFDFDF solid;
-    /*padding: 1.5rem;*/
+    padding: 1.5rem;
 }
 
 .first-section {
@@ -21,10 +21,6 @@
 .content:hover, .markdown-preview:hover {
     color: #40AEDB;
     cursor: pointer;
-}
-
-.article-section-title {
-
 }
 
 .markdown-preview h1 {
@@ -46,9 +42,12 @@
     margin-top: 20px;
 }
 
-.markdown-preview h2 {
-    padding-bottom: 8px;
-    padding-top: 8px;
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview h6 {
     font-size: 1.5rem;
 }
 
@@ -56,6 +55,14 @@
     line-height: 1.8;
 }
 
-.bottom {
-    margin-bottom: 20px;
+.avatar {
+    border-radius: 50%;
+}
+
+.content {
+    font-family: '微软雅黑', "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+.article-container:hover {
+    color: #40AEDB
 }

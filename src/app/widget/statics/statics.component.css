@@ -4,3 +4,11 @@
     background-color: #63c883;
     border-color: #58af6c;
 }
+
+.root {
+    padding: 1rem;
+    color: #303233;
+    border: 1px #DFDFDF solid;
+    background-color: white;
+    border-radius: 5px
+}

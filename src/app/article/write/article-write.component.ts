@@ -83,10 +83,10 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
     }
 
     onPublishClick() {
-        if (this.bannerForm) {
-            this.bannerForm.doUpload(null);
-            return;
-        }
+        // if (this.bannerForm) {
+        //     this.bannerForm.doUpload(null);
+        //     return;
+        // }
         let available = this.article.content
             && this.article.title
             && this.article.category
