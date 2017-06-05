@@ -7,49 +7,55 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand underline-anim" routerLink="">Septenary</a>
+    <a class="nav-link" routerLink="" style="padding-left: 0">
+        <img class="brand-img" src="/assets/brand-white.png" alt="brand">
+    </a>
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
-            <!--<li class="nav-item">-->
-            <!--<a class="nav-link underline-anim" routerLink="/tags">TAGS</a>-->
-            <!--</li>-->
-            <!--<li class="nav-item">-->
-            <!--<a class="nav-link disabled" href="/">Disable</a>-->
-            <!--</li>-->
-        </ul>
-        <ul class="navbar-nav">
-            <li *ngIf="false" class="nav-item">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索
-                    </button>
-                </form>
+            <li class="nav-item">
+                <a class="nav-link underline-anim active" routerLink="">Home</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link underline-anim" routerLink="/category">Web</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link underline-anim" routerLink="/category">iOS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link underline-anim" routerLink="/category">Android</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link underline-anim" routerLink="/category">ELK</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link underline-anim" routerLink="/category">止不住的盈</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link underline-anim" routerLink="/category">精选</a>
+            </li>
+        </ul>
+        <div style="height: 1px; background-color: #e2e2e2"></div>
+        <ul class="navbar-nav">
             <li *ngIf="!loggedIn" class="nav-item">
-                <a class="nav-link" routerLink="/user/login">
+                <a class="nav-link underline-anim" routerLink="/user/login">
                     <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;登录
                 </a>
             </li>
-            <li *ngIf="loggedIn" class="nav-item dropdown">
-                            <span class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-user-o"></i>&nbsp;&nbsp;{{authName}}
-                            </span>
-                <div class="dropdown-menu dropdown-menu-right" style="top: 0;">
-                    <a class="dropdown-item" routerLink="/user/me">
-                        <i class="fa fa-cogs"></i>
-                        &nbsp;个人中心
-                    </a>
-                    <a class="dropdown-item" routerLink="/write">
-                        <i class="fa fa-edit"></i>
-                        &nbsp;写文章
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="javascript:void(0);"
-                       (click)="onLogoutClick()">
-                        <i class="fa fa-power-off"></i>
-                        &nbsp;登出
-                    </a>
-                </div>
+            <li *ngIf="loggedIn" class="nav-item">
+                <a class="nav-link underline-anim" routerLink="/write">
+                    <i class="fa fa-edit"></i>&nbsp;写文章
+                </a>
+            </li>
+            <li *ngIf="loggedIn" class="nav-item">
+                <a class="nav-link underline-anim" href="javascript:void(0);"
+                   (click)="onLogoutClick()">
+                    <i class="fa fa-power-off"></i>&nbsp;登出
+                </a>
+            </li>
+            <li *ngIf="loggedIn" class="nav-item">
+                <a class="nav-link" style="" routerLink="/user/me">
+                    <img class="avatar" [src]="authAvatar" style="width: 40px; height: 40px"/>
+                </a>
             </li>
         </ul>
     </div>

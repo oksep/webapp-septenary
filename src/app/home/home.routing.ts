@@ -15,7 +15,8 @@ const routes: Routes = [
     // {path: '', redirectTo: 'article', pathMatch: 'full'},
     {path: '', component: HomeComponent},
     {path: 'page/:page', component: ArticleListComponent, canActivate: [ArticleGuard]},
-    {path: 'write', component: ArticleWriteComponent, canActivate: [AuthGuard]},
+    {path: 'article/create', component: ArticleWriteComponent, canActivate: [AuthGuard]},
+    {path: 'article/modify/:id', component: ArticleWriteComponent, canActivate: [AuthGuard]},
     {path: 'article/:id', component: ArticleDetailComponent},
     {path: '**', component: PageNotFoundComponent}
 ];

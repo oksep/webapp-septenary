@@ -13,6 +13,7 @@ export const TOKEN_NAME = "@jwt-token";
 class Payload {
     _id: number;
     name: string; // 用户名称
+    avatar: string; // avatar
     role: string; // 用户角色
     iat: number; // jwt的签发时间
     exp: number; // jwt的过期时间，这个过期时间必须要大于签发时间
@@ -88,6 +89,10 @@ export class AuthService {
 
     getAuthName() {
         return this.tokenPayload ? this.tokenPayload.name : null;
+    }
+
+    getAuthAvatar() {
+        return this.tokenPayload ? this.tokenPayload.avatar : null;
     }
 
     getAuthId() {

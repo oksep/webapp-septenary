@@ -39,6 +39,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         return this.authService.getAuthName();
     }
 
+    get authAvatar() {
+        return this.authService.getAuthAvatar();
+    }
+
     onLogoutClick() {
         let loggedIn = this.authService.getLoggedIn();
         if (loggedIn) {

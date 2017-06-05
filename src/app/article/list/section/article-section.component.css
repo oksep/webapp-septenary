@@ -1,11 +1,11 @@
 .article-section {
     color: #404040;
     border-bottom: 1px #e6e6e6 solid;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
 
 .content:hover, .markdown-preview:hover {
-    color: #46bca3;
+    color: #40AEDB;
     cursor: pointer;
 }
 

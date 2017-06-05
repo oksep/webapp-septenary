@@ -7,18 +7,9 @@
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .15);
 }
 
-.navbar .navbar-brand {
-    color: white;
-    transition: all 0.35s;
-    font-weight: bold;
-    //font-family: "Times New Roman", Times, serif;
-    //font-family: 'Pacifico', cursive;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 1.5em;
-}
-
-.navbar .navbar-brand:hover {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 128);
+.brand-img {
+  width: 85px;
+  height: auto;
 }
 
 .hollow.navbar {
@@ -29,11 +20,10 @@
 
 .hollow.navbar .navbar-brand {
     transition: all 0.35s;
-    font-weight: bold;
 }
 
 .pinned.navbar {
-    background-color: #46bca3;
+    background-color: #40AEDB;
     transition: all 0.35s;
     -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
     -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
@@ -52,7 +42,7 @@
 
 .underline-anim {
     position: relative;
-    /*color: #46bca3;*/
+    /*color: #40AEDB;*/
     text-decoration: none;
 }
 
@@ -83,4 +73,24 @@
 
 .header-space {
     height: 90px;
+}
+
+.nav-item a {
+  color: rgba(256, 256, 256, 0.7);
+}
+
+.nav-item a:hover {
+  color: white;
+}
+
+.nav-item a.active {
+  color: white;
+}
+
+.navbar-nav {
+  align-items: center
+}
+
+.avatar {
+  border-radius: 50%;
 }
