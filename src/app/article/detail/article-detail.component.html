@@ -7,6 +7,8 @@
             <div *ngIf="article">
                 <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
             </div>
+            <!--TODO-->
+            <disqus-thread [page-identifier]="9999" [page-url]="'http://www.septenary.cn/article/test'"></disqus-thread>
         </div>
 
         <div class="col-lg-3 hidden-md-down">

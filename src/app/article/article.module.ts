@@ -26,6 +26,7 @@ import {ArticleService} from "./article.service";
 // guard
 import {ArticleGuard} from "./article.guard";
 import {UploadModule} from "../upload/upload.module";
+import {DisqusModule} from "./disqus/disqus.module";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {UploadModule} from "../upload/upload.module";
         BrowserAnimationsModule,
         UploadModule,
         MarkdownModule.forRoot(),
-        Ng2PageScrollModule.forRoot()
+        Ng2PageScrollModule.forRoot(),
+        DisqusModule
     ],
     declarations: [
         ArticleDetailComponent,
