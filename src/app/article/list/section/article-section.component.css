@@ -1,21 +1,7 @@
 .article-section {
     color: #404040;
-    background-color: white;
-    border-left: 1px #DFDFDF solid;
-    border-right: 1px #DFDFDF solid;
     border-bottom: 1px #DFDFDF solid;
     padding: 1.5rem;
-}
-
-.first-section {
-    border-top: 1px #DFDFDF solid;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.last-section {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
 }
 
 .content:hover, .markdown-preview:hover {

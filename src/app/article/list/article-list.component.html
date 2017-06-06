@@ -1,30 +1,14 @@
-<!--<article-header></article-header>-->
+<app-article-section
+        *ngFor="let article of articles; let first = first; let last = last"
+        [isHead]="first"
+        [isTail]="last"
+        [article]="article">
+</app-article-section>
 
-<div class="container">
-    <div class="row" style="margin-top: 1.5rem">
-
-        <div class="col-lg-9 col-md-12" style="padding-right: 3rem">
-            <app-article-section
-                    *ngFor="let article of articles; let first = first; let last = last"
-                    [isHead]="first"
-                    [isTail]="last"
-                    [article]="article">
-            </app-article-section>
-            <nav *ngIf="pagination" style="margin-top: 40px">
-                <ul class="pagination justify-content-center">
-                    <li *ngFor="let page of pagination.pages" class="page-item" [class.active]="currentPage == page">
-                        <a class="page-link" [routerLink]="'/page/' + page">{{page}}</a>
-                    </li>
-                </ul>
-            </nav>
-
-        </div>
-
-        <div class="col-lg-3 col-md-12">
-            <widget-statics></widget-statics>
-            <app-tag-cloud></app-tag-cloud>
-        </div>
-
-    </div>
-</div>
-
+<nav *ngIf="pagination" style="margin-top: 1.5rem">
+    <ul class="pagination justify-content-center">
+        <li *ngFor="let page of pagination.pages" class="page-item" [class.active]="currentPage == page">
+            <a class="page-link" [routerLink]="'/page/' + page">{{page}}</a>
+        </li>
+    </ul>
+</nav>

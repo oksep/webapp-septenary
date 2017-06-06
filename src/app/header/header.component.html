@@ -37,17 +37,17 @@
         <div style="height: 1px; background-color: #e2e2e2"></div>
         <ul class="navbar-nav">
             <li *ngIf="!loggedIn" class="nav-item">
-                <a class="nav-link underline-anim" routerLink="/user/login">
+                <a class="nav-link underline-anim active" routerLink="/user/login">
                     <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;登录
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link underline-anim" routerLink="/article/create">
+                <a class="nav-link underline-anim active" routerLink="/article/create">
                     <i class="fa fa-edit"></i>&nbsp;写文章
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link underline-anim" href="javascript:void(0);"
+                <a class="nav-link underline-anim active" href="javascript:void(0);"
                    (click)="onLogoutClick()">
                     <i class="fa fa-power-off"></i>&nbsp;登出
                 </a>
