@@ -23,3 +23,13 @@
 :-ms-input-placeholder {
     color: #858585;
 }
+
+
+.login-bg {
+    /*height: 100%;*/
+    position: absolute;
+    left: 0; right: 0;
+    top: 0; bottom: 0;
+    padding-top: 120px;
+    background-image: url(http://localhost:4200/assets/login_bg.jpg);
+}
