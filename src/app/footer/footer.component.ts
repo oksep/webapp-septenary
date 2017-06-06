@@ -18,8 +18,8 @@ export class FooterComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
         // Thanks for https://github.com/jnicol/particleground
         particleground(document.getElementById('particles'), {
-            dotColor: '#51bdb7',
-            lineColor: '#5CBDAA',
+            dotColor: '#70C1E3',
+            lineColor: '#70C1E3',
             minSpeedX: 0.3,
             maxSpeedX: 0.8,
             minSpeedY: 0.3,
