@@ -56,18 +56,33 @@ export function updateArticle(request: Request, response: Response) {
 // 按页查询
 export function paginateArticle(request: Request, response: Response) {
     const LIMIT = 8;
+    let query = null;
     let page = request.params.page;
+
+    let tag = request.params.tag;
+    if (tag) {
+        query = {tags: tag};
+    }
+
+    let category = request.params.category;
+    if (category) {
+        query = {category: category};
+    }
+
     let offset = LIMIT * page - LIMIT;
     let sort = {createdTime: 'desc'}; // 按时间倒排
     Article
-        .paginate({}, {
-            offset: offset,
-            limit: LIMIT,
-            sort: sort,
-            populate: [
-                {path: 'author', select: "_id name avatar"}
-            ]
-        })
+        .paginate(
+            query,
+            {
+                offset: offset,
+                limit: LIMIT,
+                sort: sort,
+                populate: [
+                    {path: 'author', select: "_id name avatar"}
+                ]
+            }
+        )
         .then(result => {
             response.success(result);
         })

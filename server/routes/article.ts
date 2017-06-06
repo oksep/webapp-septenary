@@ -14,4 +14,8 @@ articleRouter.get('/detail/:_id', ArticleController.findArticle);
 
 articleRouter.get('/tags', ArticleController.aggregateTags);
 
+articleRouter.get('/tag/:tag/:page', ArticleController.paginateArticle);
+
+articleRouter.get('/category/:category/:page', ArticleController.paginateArticle);
+
 export {articleRouter};
