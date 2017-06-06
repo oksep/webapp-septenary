@@ -22,6 +22,14 @@ export class ArticleService extends BaseHttpService {
         return this.httpGet(`/api/article/page/${page}`);
     }
 
+    listArticlesByTag(page: number, tag: string) {
+        return this.httpGet(`/api/article/tag/${tag}/${page}`);
+    }
+
+    listArticlesByCategory(page: number, category: string) {
+        return this.httpGet(`/api/article/category/${category}/${page}`);
+    }
+
     getTags() {
         return this.httpGet('/api/article/tags');
     }

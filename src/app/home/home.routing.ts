@@ -18,6 +18,10 @@ const routes: Routes = [
     {path: 'article/create', component: ArticleWriteComponent, canActivate: [AuthGuard]},
     {path: 'article/modify/:id', component: ArticleWriteComponent, canActivate: [AuthGuard]},
     {path: 'article/:id', component: ArticleDetailComponent},
+    {path: 'tag/:tag', component: HomeComponent},
+    {path: 'category/:category', component: HomeComponent},
+    {path: 'tag/:tag/:page', component: HomeComponent},
+    {path: 'category/:category/:page', component: HomeComponent},
     {path: '**', component: PageNotFoundComponent}
 ];
 
