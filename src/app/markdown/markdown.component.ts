@@ -109,7 +109,7 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
 	processRaw() {
 		this._md = this.prepare(this.el.nativeElement.innerHTML);
 		this.renderMarkdown(this._md, 'content-raw');
-		Prism.highlightAll(true);
+		// Prism.highlightAll(true);
 	}
 
 	/**
@@ -122,7 +122,7 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
 				data => {
 					this._md = this._ext !== 'md' ? '```' + this._ext + '\n' + data + '\n```' : data;
 					this.renderMarkdown(this.prepare(this._md), 'content-path');
-					Prism.highlightAll(true);
+					// Prism.highlightAll(true);
 				},
 				err => this.handleError);
 	}
