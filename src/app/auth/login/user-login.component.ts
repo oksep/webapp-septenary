@@ -12,7 +12,7 @@ import {NotificationsService} from "../../notification/simple-notifications/serv
 })
 export class UserLoginComponent implements OnInit {
 
-	credentials = new Credentials('seven__up@sina.cn', '123456'); // 凭证
+	credentials = new Credentials(); // 凭证
 	isLogging = false;
 
 	constructor(private authService: AuthService,
