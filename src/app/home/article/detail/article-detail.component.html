@@ -9,7 +9,7 @@
         <div class="mt-3 mb-3">
             By&nbsp;&nbsp;<a [routerLink]="'/user/' + article.author._id">{{article.author.name}}</a>
             &nbsp;&nbsp;/&nbsp;&nbsp;<small>{{article.createdTime | timeAgo}}</small>
-            &nbsp;&nbsp;<a *ngIf="isLoggedIn()" [routerLink]="'/article/edit/' + article._id" style="color: #fe606a">编辑</a>
+            &nbsp;&nbsp;<a *ngIf="isLoggedIn()" [routerLink]="'/article/' + article._id + '/edit'" style="color: #fe606a">编辑</a>
         </div>
     </div>
 </div>

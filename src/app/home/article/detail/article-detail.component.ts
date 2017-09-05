@@ -47,8 +47,11 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 		});
 
 		this.authService.events.subscribe((event: AuthEvent) => {
-			this.loginUser = event.loginUser;
-			console.log('AAA', this.loginUser);
+			if (event) {
+				this.loginUser = event.loginUser;
+			} else {
+				this.loginUser = null;
+			}
 		});
 	}
 

@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
 	ngOnInit(): void {
 		this.authService.events.subscribe((event: AuthEvent) => {
-			this.loginUser = event.loginUser;
+			this.loginUser = event ? event.loginUser : null;
 		});
 
 		this.authService.ensureLoggedIn();
