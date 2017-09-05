@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
 import {Credentials} from "../../model/credentials";
 import {NotificationsService} from "../../notification/simple-notifications/services/notifications.service";
+import {Result} from "../../util/base.server";
 
 @Component({
 	selector: 'app-user-login',
@@ -29,14 +30,15 @@ export class UserLoginComponent implements OnInit {
 		this.authService
 			.login(this.credentials)
 			.subscribe(
-				(result: any) => {
+				(result: Result<any>) => {
+					console.log(result);
 					this.isLogging = false;
 					if (result.success) {
 						this.notification.success('提示', '欢迎回来' + this.authService.getAuthName());
 						// this.router.navigate(['/user/me']);
 						this.location.back()
 					} else {
-						this.notification.error('提示', JSON.stringify(result.error));
+						this.notification.error('提示', result.error.message);
 					}
 				});
 	}

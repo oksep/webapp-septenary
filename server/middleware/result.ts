@@ -19,7 +19,7 @@ function success(data ?: object) {
 }
 
 function failed(error: string | Error) {
-    console.log(error);
+    console.warn(error);
     this.json(new Result(false, null, {message: error instanceof String ? error : JSON.stringify(error)}));
 }
 

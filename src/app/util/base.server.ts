@@ -70,7 +70,7 @@ export function handleError(res: Response) {
 
 export class Result<T> {
 	public success: boolean; 		// 请求是否成功处理
-	public error: any; 			// 失败信息
+	public error: { message: any }; 			// 失败信息
 	public data: T; 						// 成功处理返回的数据
 
 	private static parse<T>(res: Response): Result<T> {
@@ -79,13 +79,13 @@ export class Result<T> {
 		// 服务器返回 500
 		if (res.status >= 500) {
 			result.success = false;
-			result.error = '服务器错误';
+			result.error = {message: '服务器错误'};
 		}
 
 		// 服务器返回 400
 		else if (res.status >= 400) {
 			result.success = false;
-			result.error = `请求错误 ${res.status}`;
+			result.error = {message: `请求错误 ${res.status}`};
 		}
 
 		// 服务器正常返回
@@ -95,7 +95,7 @@ export class Result<T> {
 			} catch (ex) {
 				console.warn(ex);
 				result.success = false;
-				result.error = '请求成功，解析错误';
+				result.error = {message: '请求成功，解析错误'};
 			}
 		}
 

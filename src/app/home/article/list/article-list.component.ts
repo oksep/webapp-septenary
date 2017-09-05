@@ -4,6 +4,7 @@ import {Article} from "../../../model/article";
 
 import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterState, RouterStateSnapshot} from "@angular/router";
 import {Observable} from "rxjs/Observable";
+import {SlimLoadingBarService} from "../../../loading/slim-loading-bar.service";
 
 class Pagination {
 	limit: number;
@@ -28,7 +29,10 @@ export class ArticleListComponent implements OnInit {
 	articles: Article[];
 	currentPage: number = 1;
 
-	constructor(private articleService: ArticleService, private router: Router, public activeRoute: ActivatedRoute) {
+	constructor(private articleService: ArticleService,
+							private router: Router,
+							private slimLoadingService: SlimLoadingBarService,
+							public activeRoute: ActivatedRoute) {
 	}
 
 	ngOnInit() {
@@ -37,6 +41,8 @@ export class ArticleListComponent implements OnInit {
 		let routerStateSnapshot: RouterStateSnapshot = routerState.snapshot;
 
 		// console.log(activatedRouteSnapshot, routerState, routerStateSnapshot);
+		this.slimLoadingService.start();
+		this.slimLoadingService.progress = 25;
 
 		this.activeRoute.params.subscribe(params => {
 
@@ -56,12 +62,17 @@ export class ArticleListComponent implements OnInit {
 			}
 
 			observer.subscribe(result => {
-				let data = result.data;
-				this.articles = data.docs;
-				delete data.docs;
-				this.pagination = new Pagination(urlPrefix);
-				Object.assign(this.pagination, data);
-				this.pagination.pages = Array.from(Array(Math.ceil(this.pagination.total / this.pagination.limit)).keys()).map(page => page + 1);
+				if (result.success) {
+					let data = result.data;
+					this.articles = data.docs;
+					delete data.docs;
+					this.pagination = new Pagination(urlPrefix);
+					Object.assign(this.pagination, data);
+					this.pagination.pages = Array.from(Array(Math.ceil(this.pagination.total / this.pagination.limit)).keys()).map(page => page + 1);
+					this.slimLoadingService.complete();
+				} else {
+					this.slimLoadingService.reset();
+				}
 			});
 		});
 	}

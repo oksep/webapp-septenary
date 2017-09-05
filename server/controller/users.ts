@@ -23,7 +23,7 @@ class Payload {
 export function login(request: Request, response: Response, next: NextFunction) {
 	let email = request.body.email;
 	let password = request.body.password;
-	User.findOne({'email': email})
+	User.findOne({'email': email, 'password': password})
 		.exec()
 		.then(doc => {
 			if (password = doc.email) {
@@ -38,12 +38,10 @@ export function login(request: Request, response: Response, next: NextFunction) 
 					token: JWT.encode(payload, AuthConfig.JWTSecret) // jwt 签发
 				});
 			} else {
-				response.status(401);
 				response.failed('帐号或密码错误');
 			}
 		})
 		.catch(err => {
-			response.status(404);
 			response.failed('帐号或密码错误');
 		});
 }

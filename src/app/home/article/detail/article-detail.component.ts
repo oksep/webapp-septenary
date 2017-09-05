@@ -39,9 +39,7 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 			this.articleService.getArticleDetail(id).subscribe(result => {
 				if (result.success) {
 					this.article = result.data as Article;
-					setTimeout(() => {
-						this.slimLoadingService.complete();
-					}, 1500);
+					this.slimLoadingService.complete();
 				}
 			});
 		});
