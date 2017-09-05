@@ -6,7 +6,7 @@
     <div style="margin-top: 8px">
         <a *ngFor="let t of toc" class="toc" href="javascript:void(0)" (click)="onTocClick(t)"
            [style.margin-left]="30 * (t.level -1) + 'px'">
-            {{t.text}}
+            <div [innerHtml]="t.text"></div>
         </a>
     </div>
 </aside>
