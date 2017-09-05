@@ -10,7 +10,7 @@ const routes: Routes = [
 	{path: '', redirectTo: 'page/1', pathMatch: 'full'},
 	{path: 'page/:page', component: MainComponent, canActivate: [ArticleGuard]},
 	{path: 'article/create', component: ArticleWriteComponent, canActivate: [AuthGuard]},
-	{path: 'article/modify/:id', component: ArticleWriteComponent, canActivate: [AuthGuard]},
+	{path: 'article/edit/:id', component: ArticleWriteComponent, canActivate: [AuthGuard]},
 	{path: 'article/:id', component: ArticleDetailComponent},
 	{path: 'tag/:tag', component: MainComponent},
 	{path: 'category/:category', component: MainComponent},

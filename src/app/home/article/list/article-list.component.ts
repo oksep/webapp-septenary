@@ -39,7 +39,6 @@ export class ArticleListComponent implements OnInit {
 		// console.log(activatedRouteSnapshot, routerState, routerStateSnapshot);
 
 		this.activeRoute.params.subscribe(params => {
-			console.warn('Params', params);
 
 			this.currentPage = params.page || 1;
 			let observer: Observable<any> = null;

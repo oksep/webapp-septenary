@@ -14,6 +14,10 @@ export class ArticleService extends BaseHttpService {
         return this.authHttpPost('/api/article/create', article);
     }
 
+		modifyArticle(article: object) {
+			return this.authHttpPost('/api/article/update', article);
+		}
+
     getArticleDetail(id: number) {
         return this.httpGet(`/api/article/detail/${id}`);
     }

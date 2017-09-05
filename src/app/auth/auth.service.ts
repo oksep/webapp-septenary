@@ -7,9 +7,10 @@ import {AuthHttp, tokenNotExpired} from "./angular-jwt.module";
 import {Credentials} from "../model/credentials";
 import JwtHelper from "../util/angular-jwt";
 import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
 import BaseHttpService, {Result} from "../util/base.server";
 import {User} from "../model/user";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Subject} from "rxjs/Subject";
 
 export const TOKEN_NAME = "@jwt-token";
 
@@ -46,7 +47,7 @@ export class AuthService extends BaseHttpService {
 
 	private token: Payload = null;
 
-	private eventSource: Subject<AuthEvent> = new Subject<AuthEvent>();
+	private eventSource: Subject<AuthEvent> = new BehaviorSubject<AuthEvent>(null);
 	public events: Observable<AuthEvent> = this.eventSource.asObservable();
 
 	constructor(http: Http, authHttp: AuthHttp) {
