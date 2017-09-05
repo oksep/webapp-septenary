@@ -158,7 +158,6 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
 	 * Trim left whitespace
 	 */
 	private trimLeft(line: string) {
-		// return line.replace(/^\s+|\s+$/g, '');
-		return line;
+		return line.replace(/^\s+|\s+$/g, '');
 	}
 }

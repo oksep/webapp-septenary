@@ -15,7 +15,7 @@ export class SpinnerService {
 		// this._element.style['display'] = 'block';
 	}
 
-	public hide(delay: number = 3000): void {
+	public hide(delay: number = 1000): void {
 		setTimeout(
 			function removeLoadingScreen() {
 				// let preBootstrapContainer = this.document.getElementById("pre-bootstrap-container");
