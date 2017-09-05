@@ -1,0 +1,58 @@
+.pagination > li > a, .pagination > li > span {
+  background: transparent;
+}
+
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.pagination > li:last-child > a, .pagination > li:last-child > span {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  color: $default-text;
+  border-color: $border; //分页
+}
+
+.pagination > li:first-of-type > a,
+.pagination > li:first-of-type > span {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination > li:last-of-type > a,
+.pagination > li:last-of-type > span {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: $theme-color !important;
+  border-color: $border !important;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  background-color: $border-theme;
+  color: $default-text;
+}
+
+.page-item.disabled {
+  cursor: not-allowed;
+}
+
+.page-item.disabled .page-link, .page-item.disabled .page-link:focus, .page-item.disabled .page-link:hover {
+  background-color: rgba(255, 255, 255, .1);
+  color: $default-text;
+}

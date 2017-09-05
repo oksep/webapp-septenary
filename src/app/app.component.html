@@ -1,11 +1,6 @@
-<app-header></app-header>
-
-<div class="root-router">
+<main>
     <router-outlet></router-outlet>
-</div>
-
-<app-footer></app-footer>
-
-<simple-notifications [options]="notificationOptions"></simple-notifications>
-
-<slim-loading-bar [color]="'white'" [height]="'4px'"></slim-loading-bar>
+    <simple-notifications [options]="notificationOptions"></simple-notifications>
+    <slim-loading-bar [color]="'#42B983'" [height]="'2px'"></slim-loading-bar>
+    <app-back-top></app-back-top>
+</main>

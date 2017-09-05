@@ -1,0 +1,17 @@
+<div class="app-header">
+    <div *ngIf="article" class="container" style="height: 100%">
+        <div class="row" style="height: 100%; color: white">
+            <div class="col align-self-center">
+                <h1 class="text-center">{{article.title}}</h1>
+                <div class="text-center">
+                    <p class="time">{{article.createdTime | timeAgo}}</p>
+                    <article-tag *ngFor="let tag of article.tags" [tag]="tag"></article-tag>
+                </div>
+                <pre>
+                    {{article.author | json}}
+                </pre>
+            </div>
+            <!--/article/modify/1-->
+        </div>
+    </div>
+</div>

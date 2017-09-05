@@ -1,0 +1,6 @@
+<aside class="mt-4 aside pl-3">
+    <label class="label"><i class="fa fa-tags"></i>&nbsp;&nbsp;标签云</label>
+    <div>
+        <article-tag *ngFor="let tag of cloudTags" [tag]="tag.value" [weight]="tag.count"></article-tag>
+    </div>
+</aside>

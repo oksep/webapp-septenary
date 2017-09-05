@@ -1,0 +1,60 @@
+<nav id="nav-header"
+     class="navbar navbar-toggleable-md navbar-light fixed-top nav-header"
+     [class.hollow]="headerIsHollow"
+>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar">
+        <!--<span class="navbar-toggler-icon"></span>-->
+        <span><i class="fa fa-bars"></i></span>
+    </button>
+    <a class="nav-link" routerLink="">
+        <img alt="brand" class="brand-img" src="data:image/png;base64,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">
+    </a>
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item d-flex justify-content-between align-items-center">
+                <a class="nav-link underline-anim active" routerLink="">Home</a>
+            </li>
+            <li class="nav-item d-flex justify-content-between align-items-center">
+                <a class="nav-link underline-anim" routerLink="/category/Web">Web</a>
+            </li>
+            <li class="nav-item d-flex justify-content-between align-items-center">
+                <a class="nav-link underline-anim" routerLink="/category/iOS">iOS</a>
+            </li>
+            <li class="nav-item d-flex justify-content-between align-items-center">
+                <a class="nav-link underline-anim" routerLink="/category/Android">Android</a>
+            </li>
+            <li class="nav-item d-flex justify-content-between align-items-center">
+                <a class="nav-link underline-anim" routerLink="/category/ELK">ELK</a>
+            </li>
+            <li class="nav-item d-flex justify-content-between align-items-center">
+                <a class="nav-link underline-anim" routerLink="/category/精选">精选</a>
+            </li>
+            <li class="nav-item d-flex justify-content-between align-items-center">
+                <a class="nav-link underline-anim" routerLink="/category/盈">盈</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li *ngIf="!loggedIn" class="nav-item d-flex justify-content-between align-items-center">
+                <a class="nav-link underline-anim" routerLink="/auth/login">
+                    <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;登录
+                </a>
+            </li>
+            <li *ngIf="loggedIn" class="nav-item d-flex justify-content-between align-items-center">
+                <a class="nav-link underline-anim" routerLink="/article/create">
+                    <i class="fa fa-edit"></i>&nbsp;写文章
+                </a>
+            </li>
+            <li *ngIf="loggedIn" class="nav-item d-flex justify-content-between align-items-center">
+                <a class="nav-link underline-anim" href="javascript:void(0);"
+                   (click)="onLogoutClick()">
+                    <i class="fa fa-power-off"></i>&nbsp;登出
+                </a>
+            </li>
+            <li *ngIf="loggedIn" class="nav-item d-flex justify-content-between align-items-center">
+                <a class="" style="margin-left: 1rem" routerLink="/user/me">
+                    <img class="avatar" [src]="authAvatar" style="width: 40px; height: 40px"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

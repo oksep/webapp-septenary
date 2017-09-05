@@ -1,0 +1,238 @@
+.label {
+  border-radius: 0;
+}
+
+.label-primary {
+  background: $primary;
+}
+
+.label-info {
+  background: $primary-light;
+}
+
+.label-success {
+  background: $success;
+}
+
+.label-warning {
+  background: $warning;
+}
+
+.label-danger {
+  background: $danger;
+}
+
+.form-horizontal {
+  label {
+    color: $label-text;
+    line-height: 34px;
+    margin-bottom: 0;
+    padding-top: 0 !important;
+  }
+}
+
+.form-group {
+  label {
+    margin-bottom: 5px;
+    color: $label-text;
+    font-weight: $font-normal;
+    font-size: 13px;
+  }
+}
+
+.form-control {
+  color: $content-text;
+  @include placeholderStyle($content-text, 0.7);
+  border: 1px solid $input-border;
+  border-radius: 5px;
+  background-color: $input-background; //默认的input框的样式
+  box-shadow: none;
+  font-size: 14px;
+  &:focus {
+    color: $content-text;
+    box-shadow: none;
+    border-color: $primary-bg;
+    background: $input-background;
+  }
+}
+
+.form-control:focus {
+  border: 1px solid $input-border-focus;
+}
+
+select.form-control {
+  padding-left: 8px;
+}
+
+select.form-control:not([multiple]) option {
+  color: $default-text;
+}
+
+select.form-control[multiple] option {
+  color: $default-text;
+}
+
+textarea.form-control {
+  height: 96px;
+}
+
+.form-inline {
+  .form-group {
+    input {
+      width: 100%;
+    }
+    label {
+      color: $label-text;
+      margin-right: 12px;
+    }
+  }
+
+  button[type="submit"] {
+    margin-left: 12px;
+  }
+}
+
+@mixin setSwitchBorder($color) {
+  .bootstrap-switch.bootstrap-switch-on {
+    border-color: $color;
+  }
+}
+
+.switch-container {
+  display: inline-block;
+  &.primary {
+    @include setSwitchBorder($primary);
+  }
+  &.success {
+    @include setSwitchBorder($success);
+  }
+  &.warning {
+    @include setSwitchBorder($warning);
+  }
+  &.danger {
+    @include setSwitchBorder($danger);
+  }
+  &.info {
+    @include setSwitchBorder($primary-light);
+  }
+}
+
+.switches {
+  margin-left: -12px;
+  margin-bottom: -12px;
+  .switch-container {
+    float: left;
+    margin-left: 12px;
+    margin-bottom: 12px;
+  }
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 15px;
+  & > span {
+    border-radius: 0;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+@mixin customInput($color) {
+  & > span {
+    &:before {
+      color: $color;
+    }
+    &:hover {
+      &:before {
+        border-color: $color;
+      }
+    }
+  }
+}
+
+label.custom-input-primary {
+  @include customInput($primary);
+}
+
+label.custom-input-success {
+  @include customInput($success);
+}
+
+label.custom-input-warning {
+  @include customInput($warning)
+}
+
+label.custom-input-danger {
+  @include customInput($danger)
+}
+
+.form-horizontal {
+  .radio, .radio-inline {
+    padding-top: 0;
+  }
+}
+
+@mixin validationState($color, $focusColor) {
+  .control-label {
+    color: $content-text;
+  }
+  .form-control {
+    border: 1px solid $color;
+    &:focus {
+      box-shadow: none;
+      border-color: $focusColor;
+    }
+  }
+  label.custom-checkbox {
+    color: $color;
+    & > span {
+      &:before {
+        color: $color;
+      }
+      &:hover {
+        &:before {
+          border-color: $color;
+        }
+      }
+    }
+  }
+  .form-control-feedback {
+    color: $color;
+  }
+  .input-group-addon {
+    background-color: $color;
+    color: $label-text;
+  }
+}
+
+.input-group-addon {
+  line-height: inherit;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background-color: $input-background;
+  color: $disabled;
+  border-color: $disabled-bg;
+  @include placeholderStyle($default-text, 0.5);
+}
+
+.form-control-rounded {
+  border-radius: 16px;
+}
+
+.has-success {
+  @include validationState($success-bg, $success);
+  position: relative;
+}
+
+.has-warning {
+  @include validationState($warning-bg, $warning);
+  position: relative;
+}
+
+.has-error {
+  @include validationState($danger-bg, $danger);
+  position: relative;
+}

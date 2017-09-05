@@ -1,0 +1,22 @@
+<div class="row article-section" (click)="onSectionClick()">
+    <div class="ml-3">
+        <a [routerLink]="'/user/' + article.author._id">
+            <img class="avatar" [src]="article.author.avatar">
+        </a>
+    </div>
+    <div class="col d-flex flex-column justify-content-between" style="min-height: 50px">
+        <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+            <div class="title">
+                {{article.title}}
+            </div>
+            <small class="time">
+                {{article.createdTime | timeAgo}}
+            </small>
+        </div>
+        <div class="markdown-preview" *ngIf="article.summary" Markdown
+             [data]="article.summary | summarycutter"></div>
+        <div>
+            <article-tag *ngFor="let tag of article.tags" [tag]="tag"></article-tag>
+        </div>
+    </div>
+</div>

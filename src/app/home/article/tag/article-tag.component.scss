@@ -1,0 +1,20 @@
+@import "../../../theme/sass/conf/conf";
+
+.tag {
+  display: inline-block;
+  font-size: .75em;
+  border: 1px solid $border;
+  color: tint($default-text, 30%);
+  border-radius: 5px;
+  line-height: 17px;
+  padding: 0 6px;
+  margin: 3px 3px;
+  text-decoration: none;
+  transition: all 200ms ease-in;
+}
+
+.tag:hover {
+  color: $theme-color;
+  border-color: $theme-color;
+  text-decoration: none;
+}

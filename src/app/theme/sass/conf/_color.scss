@@ -1,0 +1,76 @@
+$theme-color: #42B983; // 主题色
+$default: #2c3e50; // 默认色
+$body-bg: white; // body
+$default-text: $default; // 默认字体色
+$content-text: $default-text; // 内容字体色
+
+$label-text: $theme-color; // 标签色
+$disabled: rgba(255, 255, 255, 0.4); // 不可用字体色
+$disabled-bg: tint($disabled, 15%); // 不可用背景色
+
+$border: rgba(0, 0, 0, 0.1); // border
+$border-light: #eee; // border light
+
+$border-theme: tint($theme-color, 50%); // border theme
+
+$input-border: $border; // input border
+$input-border-focus: $border-theme; // input border theme
+$input-background: rgba(255, 255, 255, 0.1); // input background
+
+$nav-link: tint($default, 50%);
+$nav-link-active: $default;
+
+// card panel styles
+$card-radius: 7px;
+$card-text: #333;
+$card-bg: white;
+$card-header-bg: transparent;
+$card-header-border: 1px solid $border-light;
+$card-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+
+// color scheme
+$primary: #5c9eff !default;
+$info: #35bff1 !default;
+$success: #3ad2c0 !default;
+$warning: #e7ba08 !default;
+$danger: #f94257 !default;
+
+$primary-light: tint($primary, 30%);
+$info-light: tint($info, 30%);
+$success-light: tint($success, 30%);
+$warning-light: tint($warning, 30%);
+$danger-light: tint($danger, 30%);
+
+$primary-dark: shade($primary, 15%);
+$info-dark: shade($info, 15%);
+$success-dark: shade($success, 15%);
+$warning-dark: shade($warning, 15%);
+$danger-dark: shade($danger, 15%);
+
+$primary-bg: tint($primary, 20%);
+$info-bg: tint($info, 20%);
+$success-bg: tint($success, 20%);
+$warning-bg: tint($warning, 20%);
+$danger-bg: tint($danger, 20%);
+
+// link colors
+$activelink: $theme-color;
+$hoverlink: darken($activelink, 10%);
+
+// main background
+@mixin body-bg() {
+  $mainBgUrl: 'https://img.taptapdada.com/market/images/f6448a2a67054c5a10fa266d5c8d205b.jpg';
+  &::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    //background: url($mainBgUrl) no-repeat center center;
+    background-color: $body-bg;
+    background-size: cover;
+    will-change: transform;
+    z-index: 0;
+  }
+}

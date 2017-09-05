@@ -7,6 +7,6 @@ const userRouter: Router = Router();
 
 userRouter.get("/list", Auth.authenticateJWT(), Auth.authenticateAdmin(), UserController.listUsers);
 
-userRouter.get("/me", Auth.authenticateJWT(), UserController.getProfile);
+userRouter.get("/profile/:id", UserController.getProfile);
 
 export {userRouter};

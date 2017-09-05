@@ -1,48 +1,28 @@
-import {AfterViewInit, Component, OnInit} from "@angular/core";
-import {AuthService} from "./auth/auth.service";
-import {NavigationEnd, Router} from "@angular/router";
-
-const $ = jQuery;
+import {Component, OnInit} from '@angular/core';
+import {SpinnerService} from "./services/spinner.service";
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss'],
+	providers: [SpinnerService]
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
+	title = 'app';
 
-    notificationOptions = {
-        timeOut: 1500,
-        showProgressBar: true,
-        pauseOnHover: false,
-        clickToClose: false,
-        position: ["top", "right"]
-    };
+	notificationOptions = {
+		timeOut: 1500,
+		showProgressBar: true,
+		pauseOnHover: false,
+		clickToClose: false,
+		position: ["top", "right"]
+	};
 
-    constructor(private authService: AuthService, private router: Router) {
-        $(window).resize(() => this.onWindowSizeChange());
-        router.events.subscribe((event: any) => {
-            if (event instanceof NavigationEnd) {
-                window.scrollTo(0, 0);
-            }
-            // NavigationStart
-            // NavigationEnd
-            // NavigationCancel
-            // NavigationError
-            // RoutesRecognized
-        });
-    }
+	constructor(private spinnerService: SpinnerService) {
 
-    ngOnInit(): void {
-        onBootstrap(1000);
-    }
+	}
 
-    ngAfterViewInit(): void {
-
-    }
-
-    onWindowSizeChange() {
-
-    }
-
+	ngOnInit(): void {
+		this.spinnerService.hide(1000);
+	}
 }

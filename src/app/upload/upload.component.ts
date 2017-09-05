@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import {OnUploadCallback, UploadService} from "app/upload/upload.service";
+import {OnUploadCallback, UploadService} from "./upload.service";
 import {NotificationsService} from "../notification/simple-notifications/services/notifications.service";
 
 @Component({

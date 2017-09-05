@@ -1,0 +1,12 @@
+<aside>
+    <strong class="title">
+        <i class="fa fa-anchor"></i> Contents
+    </strong>
+
+    <div style="margin-top: 8px">
+        <a *ngFor="let t of toc" class="toc" href="javascript:void(0)" (click)="onTocClick(t)"
+           [style.margin-left]="30 * (t.level -1) + 'px'">
+            {{t.text}}
+        </a>
+    </div>
+</aside>

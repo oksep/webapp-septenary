@@ -1,0 +1,11 @@
+@import "../../theme/sass/conf/conf";
+
+:host {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: $footer-height;
+  border-top: 1px solid $border;
+}

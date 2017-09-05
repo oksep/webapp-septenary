@@ -1,0 +1,13 @@
+@import "../../../theme/sass/conf/conf";
+
+.aside {
+    border-left: 1px solid $border;
+}
+
+.label {
+    font-weight: $font-bold;
+}
+
+.content {
+    line-height: 1.5;
+}

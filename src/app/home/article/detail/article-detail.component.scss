@@ -1,0 +1,40 @@
+@import "../../../theme/sass/conf/conf";
+
+.article-header {
+  .title {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+  border-bottom: 1px dashed $border;
+  margin-bottom: 1.25rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+blockquote {
+  border-left: 4px #66ddca solid;
+  padding: 20px;
+  background-color: #e2f2f9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+  line-height: 2.0;
+}
+
+p {
+  line-height: 1.8;
+}
+
+li {
+  margin: 0.1rem 0;
+  line-height: 1.8;
+}
+
+#gitment {
+  margin-top: 1.5rem;
+  border-top: 1px dashed $border;
+}

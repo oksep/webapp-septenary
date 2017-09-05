@@ -1,6 +1,10 @@
-declare let jQuery: any;
-declare let onBootstrap: any;
-declare let SimpleMDE: any;
-declare let particleground: any;
-declare let flatpickr: any;
-declare let Gitment: any;
+declare const SimpleMDE: any;
+declare const particleground: any;
+declare const flatpickr: any;
+declare const plupload: any;
+declare const jQuery: any;
+
+declare var module: NodeModule;
+interface NodeModule {
+  id: string;
+}

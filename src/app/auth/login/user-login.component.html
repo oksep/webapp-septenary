@@ -1,0 +1,35 @@
+<app-particle-ground>
+    <div class="container-fluid" style="height: 100%">
+        <div class="row" style="height: 100%;">
+            <div class="card animated fadeIn col-10 col-lg-8 col-xl-4 ml-auto mr-auto mt-auto mb-auto">
+                <div class="card-body">
+                    <form (ngSubmit)="onLoginSubmit()" #loginForm="ngForm">
+                        <div class="form-group">
+                            <label for="email" class="label"><i class="fa fa-user-o mr-2"></i>Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="email"
+                                   required
+                                   [(ngModel)]="credentials.email" name="email"
+                                   #name="ngModel">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="label"><i class="fa fa-unlock mr-2"></i>Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="password"
+                                   required
+                                   [(ngModel)]="credentials.password" name="password">
+                        </div>
+                        <button type="submit" class="btn btn-outline-success"
+                                [disabled]="isLogging || !loginForm.form.valid">
+                            登录 <i *ngIf="isLogging" class="fa fa-refresh fa-spin fa-fw"></i>
+                        </button>
+                        <button *ngIf="false" type="button" class="btn btn-outline-primary" style="float: right"
+                                (click)="loginForm.reset(); onRegistryClick()">注册
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #08D; height: 100%">
+
+        </div>
+    </div>
+</app-particle-ground>

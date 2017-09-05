@@ -6,24 +6,24 @@ import {HomeRoutingModule} from "./home.routing";
 
 import {AuthGuard} from "../auth/auth.guard";
 
-import {TagInputModule} from "ng2-tag-input";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {ArticleModule} from "../article/article.module";
+import {HeaderComponent} from "./header/header.component";
+import {FooterComponent} from './footer/footer.component';
+import {PageNotFoundComponent} from "./404.component";
 
 @NgModule({
-    imports: [
-        SharedModule,
-        ArticleModule,
-        HomeRoutingModule,
-        TagInputModule,
-        BrowserAnimationsModule
-    ],
-    declarations: [
-        HomeComponent,
-    ],
-    providers: [
-        AuthGuard
-    ]
+	imports: [
+		SharedModule,
+		HomeRoutingModule,
+	],
+	declarations: [
+		HomeComponent,
+		HeaderComponent,
+		FooterComponent,
+		PageNotFoundComponent
+	],
+	providers: [
+		AuthGuard,
+	]
 })
 export class HomeModule {
 }

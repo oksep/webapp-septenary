@@ -1,0 +1,16 @@
+@import "../../../theme/sass/conf/conf";
+.avatar {
+  width: 240px;
+  height: 240px;
+}
+
+.desc {
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 1.1rem;
+  border-bottom: 1px dashed $border;
+}
+
+.user-container {
+  background: url(https://www.toptal.com/designers/subtlepatterns/patterns/geometry2.png);
+}

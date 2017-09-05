@@ -1,49 +1,40 @@
-import "./rxjs-extensions";
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpModule} from '@angular/http';
+import {RouterModule} from '@angular/router';
 
-import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
-
-import {HttpModule} from "@angular/http";
-
-import {SharedModule} from "./shared/shared.module";
-
-import {HomeModule} from "./home/home.module";
-
-import {AppRoutingModule} from "./app.routing";
-// module
-import {AuthModule} from "./auth/auth.module";
-// component
-import {AppComponent} from "./app.component";
-import {HeaderComponent} from "./header/header.component";
-import {HeaderService} from "./header/header.service";
-import {FooterComponent} from "./footer/footer.component";
-import {NotificationsService} from "./notification/simple-notifications/services/notifications.service";
+import {AppComponent} from './app.component';
+import {AppTranslationModule} from './translation.module';
 import {SimpleNotificationsModule} from "./notification/simple-notifications.module";
 import {SlimLoadingBarModule} from "./loading/slim-loading-bar.module";
-
-// service
+import {SharedModule} from "./shared/shared.module";
+import {AppRoutingModule} from "./app.routing";
+import {AuthModule} from "./auth/auth.module";
+import {GlobalState} from "./services/global.state";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {HomeModule} from "./home/home.module";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HeaderComponent,
-        FooterComponent,
-    ],
-    imports: [
-        AppRoutingModule,
-        BrowserModule,
-        SharedModule,
-        HttpModule,
-        HomeModule,
-        AuthModule,
-        SimpleNotificationsModule.forRoot(),
-        SlimLoadingBarModule.forRoot()
-    ],
-    providers: [
-        HeaderService,
-        NotificationsService
-    ],
-    bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+	],
+	imports: [
+		SharedModule,
+		BrowserModule,
+		BrowserAnimationsModule,
+		AppTranslationModule,
+		HttpModule,
+		RouterModule,
+		SimpleNotificationsModule.forRoot(),
+		SlimLoadingBarModule.forRoot(),
+		AppRoutingModule,
+		AuthModule,
+		HomeModule
+	],
+	providers: [
+		GlobalState
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule {
 }

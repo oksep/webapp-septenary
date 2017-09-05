@@ -1,0 +1,28 @@
+.navbar-toggler {
+  border-radius: 3px;
+  border-color: $border;
+  color: $theme-color !important;
+  transition: all 150ms ease-in;
+  &:hover, &:focus {
+    color: tint($theme-color, 50%) !important;;
+    border-color: tint($theme-color, 50%) !important;;
+  }
+}
+
+.navbar-light {
+  background: white !important;
+  border-bottom: 1px solid $border !important;
+}
+
+.nav-item a,
+.nav-item a:link,
+.nav-item a:visited,
+.nav-item a:hover,
+.nav-item a:focus {
+  color: $nav-link;
+}
+
+.nav-item a.active {
+  color: $nav-link-active;
+  font-weight: $font-bold;
+}

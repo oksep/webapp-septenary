@@ -24,7 +24,7 @@ export class SlimLoadingBarEvent {
 }
 
 /**
- * SlimLoadingBar service helps manage Slim Loading bar on the top of screen or parent component
+ * SlimLoadingBar service helps manage Slim Loading bar on the top of screen or parent components
  */
 @Injectable()
 export class SlimLoadingBarService {
@@ -106,7 +106,7 @@ export class SlimLoadingBarService {
         this.visible = true;
         // Run the timer with milliseconds iterval
         this._intervalCounterId = setInterval(() => {
-            // Increment the progress and update view component
+            // Increment the progress and update view components
             this.progress++;
             // If the progress is 100% - call complete
             if (this.progress === 100) {

@@ -12,7 +12,7 @@ import {
 } from "./slim-loading-bar.service";
 
 /**
- * A Slim Loading Bar component shows message loading progress bar on the top of web page or parent component.
+ * A Slim Loading Bar components shows message loading progress bar on the top of web page or parent components.
  */
 @Component({
     selector: 'slim-loading-bar',

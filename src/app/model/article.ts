@@ -1,5 +1,5 @@
 // 文章
-import User from "./user";
+import {User} from "./user";
 export class Article {
     _id: number; // id
     title: string; // 标题

@@ -10,7 +10,7 @@ db.users.findAndModify({
             name: 'Septenary',
             email: 'seven__up@sina.cn',
             password: '123456',
-            avatar: '/assets/avatar.jpg',
+            avatar: 'www.septenary.cn/assets/avatar.jpg',
             createdTime: ISODate("2016-06-19T00:00:00Z"),
             lastLoginTime: ISODate("2016-06-19T00:00:00Z"),
             role: 'admin'

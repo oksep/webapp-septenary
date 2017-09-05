@@ -1,0 +1,15 @@
+@import "../../../theme/sass/conf/conf.scss";
+
+.flatpickr-input {
+  //background-color: $default-text;
+  border-color: $border;
+  color: $default-text;
+}
+
+.label {
+  border-left-color: $label-text;
+  border-left-width: 3px;
+  border-left-style: solid;
+  padding-left: 10px;
+  margin-top: 10px;
+}

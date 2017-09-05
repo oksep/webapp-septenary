@@ -1,0 +1,149 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family;
+  width: 100%;
+  margin-top: 0;
+}
+
+h1.color, h2.color, h3.color, h4.color, h5.color, h6.color {
+  color: $danger;
+}
+
+body a {
+  color: $activelink;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $hoverlink;
+  }
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+p {
+  margin-bottom: 12px;
+  font-family: $font-family;
+  font-size: 14px;
+}
+
+p.small-text {
+  color: $default-text;
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 8px;
+}
+
+.separator {
+  height: 1px;
+  background: $border-light;
+  width: 100%;
+  margin-bottom: 19px;
+  margin-top: 16px;
+}
+
+.section {
+  padding: 0 20px 50px 20px;
+}
+
+@media screen and (min-width: 1620px) {
+
+  .col-xlg-1 {
+    max-width: 8.33333333%;
+    flex: 0 0 8.33333333%;
+  }
+  .col-xlg-2 {
+    max-width: 16.66666667%;
+    flex: 0 0 16.66666667%;
+  }
+  .col-xlg-3 {
+    max-width: 25%;
+    flex: 0 0 25%;
+  }
+  .col-xlg-4 {
+    max-width: 33.33333333%;
+    flex: 0 0 33.33333333%;
+  }
+  .col-xlg-5 {
+    max-width: 41.66666667%;
+    flex: 0 0 41.66666667%;
+  }
+  .col-xlg-6 {
+    max-width: 50%;
+    flex: 0 0 50%;
+  }
+  .col-xlg-7 {
+    max-width: 58.33333333%;
+    flex: 0 0 58.33333333%;
+  }
+  .col-xlg-8 {
+    max-width: 66.66666667%;
+    flex: 0 0 66.66666667%;
+  }
+  .col-xlg-9 {
+    max-width: 75%;
+    flex: 0 0 75%;
+  }
+  .col-xlg-10 {
+    max-width: 83.33333333%;
+    flex: 0 0 83.33333333%;
+  }
+  .col-xlg-11 {
+    max-width: 91.66666667%;
+    flex: 0 0 91.66666667%;
+  }
+  .col-xlg-12 {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
+
+
+@media (min-width: 991px) {
+  .underline-anim {
+    position: relative;
+    text-decoration: none;
+  }
+
+  .underline-anim:hover {
+    /*color: #000;*/
+  }
+
+  .underline-anim:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $theme-color;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .underline-anim:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
