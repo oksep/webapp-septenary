@@ -2,8 +2,8 @@ import {Injectable} from "@angular/core";
 
 import {Headers, Http, RequestOptions} from "@angular/http";
 
-import {AuthHttp} from "../auth/angular-jwt.module";
-import BaseHttpService, {Result} from "../util/base.server";
+import {AuthHttp} from "../../auth/angular-jwt.module";
+import BaseHttpService, {Result} from "../../util/base.server";
 import {Observable} from "rxjs/Observable";
 
 export interface OnUploadCallback {
@@ -11,11 +11,12 @@ export interface OnUploadCallback {
 
 	onUploadError(err: Error);
 
-	onUploadComplete();
+	onUploadComplete(url: string);
 
-	onLoaded(result: object);
+	onLoaded();
 }
 
+export const ASSETS_DOMAIN = 'http://assets.septenary.cn/';
 
 @Injectable()
 export class UploadService extends BaseHttpService {
@@ -60,10 +61,22 @@ export class UploadService extends BaseHttpService {
 					// Unable to compute progress information since the total size is unknown
 				}
 			}, false);
-			request.upload.addEventListener("load", () => callback.onUploadComplete(), false);
+			request.upload.addEventListener("load", () => callback.onLoaded(), false);
 			request.upload.addEventListener("error", (evt) => callback.onUploadError(new Error('Upload error')), false);
 			request.upload.addEventListener("abort", (evt) => callback.onUploadError(new Error('Abort error')), false);
-			request.onload = (e) => callback.onLoaded(request.response ? JSON.parse(request.response) : null);
+			request.onload = (e) => {
+				if (request.response) {
+					try {
+						let result: { hash: string, key: string } = JSON.parse(request.response);
+						callback.onUploadComplete(ASSETS_DOMAIN + result.key);
+					} catch (e) {
+						console.error(e);
+						callback.onUploadError(new Error('Parse response error'))
+					}
+				} else {
+					callback.onUploadError(new Error('No response error'))
+				}
+			};
 			request.onerror = (e) => callback.onUploadError(new Error('Request error'));
 		}
 
@@ -95,19 +108,12 @@ export class UploadService extends BaseHttpService {
 			);
 	}
 
-	generateKey() {
-		// let key = Math.random().toString(36).substr(2) + this.file.name.match(/\.?[^.\/]+$/);
-		// return key;
-	}
-
-	guid() {
-		function s4() {
-			return Math.floor((1 + Math.random()) * 0x10000)
-				.toString(16)
-				.substring(1);
-		}
-
-		return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-			s4() + '-' + s4() + s4() + s4();
+	generateUUID() {
+		let d = new Date().getTime();
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+			let r = (d + Math.random() * 16) % 16 | 0;
+			d = Math.floor(d / 16);
+			return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+		});
 	}
 }

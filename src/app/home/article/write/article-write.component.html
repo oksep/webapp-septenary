@@ -1,16 +1,15 @@
 <div class="container">
     <div class="col-lg-9 m-auto pt-3 pb-3">
 
-        <div class="form-group">
-            <label class="label">图床</label>
-            <app-upload-form
-                    #bannerForm
-                    (onSelectFile)="onSelectFile($event)"
-                    [autoUpload]="false">
-            </app-upload-form>
-        </div>
+        <form class="form-horizontal" #articleForm="ngForm">
+            <div class="form-group">
+                <label class="label">图床</label>
+                <app-upload-group
+                        name="imageResources"
+                        [(ngModel)]="article.imageResources">
+                </app-upload-group>
+            </div>
 
-        <form>
             <div class="form-group">
                 <label class="label" for="title">标题</label>
                 <input name="title" id="title" class="form-control" type="text" placeholder="文章标题"
@@ -28,7 +27,7 @@
                 <label class="label" for="tags">标签</label>
                 <div style="border: 1px solid #D8D8D8; border-radius: 3px;">
                     <tag-input [(ngModel)]="article.tags" modelAsStrings="true" theme="minimal" name="tags"
-                               id="tags"></tag-input>
+                               id="tags" [placeholder]="'标签'" secondaryPlaceholder="文章标签"></tag-input>
                 </div>
             </div>
             <div class="form-group">

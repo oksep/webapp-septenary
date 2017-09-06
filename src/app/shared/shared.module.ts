@@ -12,10 +12,16 @@ import {ParticleGroundComponent} from './components/particle-ground/particle-gro
 import {BackTopComponent} from './components/back-top/back-top.component';
 import {ScrollPositionDirective} from "./directives/scroll-position.directive";
 import {InputLengthCounterDirective} from "./directives/input-length-counter.directive";
+import {BounceSpinnerComponent} from './components/bounce-spinner/bounce-spinner.component';
+import {UploadComponent} from "./upload/upload.component";
+import {UploadService} from "./upload/upload.service";
+import {UploadGroupComponent} from "./upload/upload-group.component";
 
 @NgModule({
 	imports: [
 		CommonModule,
+		FormsModule,
+		ReactiveFormsModule
 	],
 	declarations: [
 		DateFormatPipe,
@@ -29,8 +35,14 @@ import {InputLengthCounterDirective} from "./directives/input-length-counter.dir
 		ScrollPositionDirective,
 		ParticleGroundComponent,
 		BackTopComponent,
+		BounceSpinnerComponent,
+		UploadComponent,
+		UploadGroupComponent
 	],
 	exports: [
+		CommonModule,
+		FormsModule,
+		ReactiveFormsModule,
 		DateFormatPipe,
 		FileSizePipe,
 		SanitizeHtmlPipe,
@@ -40,13 +52,14 @@ import {InputLengthCounterDirective} from "./directives/input-length-counter.dir
 		ToStringPipe,
 		InputLengthCounterDirective,
 		ScrollPositionDirective,
-		CommonModule,
-		FormsModule,
-		ReactiveFormsModule,
 		ParticleGroundComponent,
-		BackTopComponent
+		BackTopComponent,
+		UploadComponent,
+		UploadGroupComponent,
 	],
-	providers: []
+	providers: [
+		UploadService
+	]
 })
 export class SharedModule {
 }

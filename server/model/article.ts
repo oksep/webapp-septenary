@@ -13,6 +13,7 @@ interface IArticle extends mongoose.Document {
     views: number; // 浏览数
     createdTime: Date; // 创建时间
     updatedTime: Date; // 更新时间
+		imageResources: string[] // 图床
     author: number
 
     log(): void
@@ -32,6 +33,7 @@ const ArticleSchema = new Schema({
     views: {type: Number, default: 0}, // 浏览数
     createdTime: {type: Date, default: Date.now}, // 创建时间
     updatedTime: {type: Date, default: Date.now}, // 更新时间
+		imageResources: [String], // 图床
     author: {type: Number, ref: 'User', required: true}
 });
 

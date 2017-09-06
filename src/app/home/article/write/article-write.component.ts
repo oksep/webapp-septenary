@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from "@angular/
 import {ArticleService} from "../article.service";
 import {Article} from "../../../model/article";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UploadComponent} from "../../../upload/upload.component";
+import {UploadComponent} from "../../../shared/upload/upload.component";
 import {SlimLoadingBarService} from "../../../loading/slim-loading-bar.service";
 import {Result} from "../../../util/base.server";
 import {NotificationsService} from "../../../notification/simple-notifications/services/notifications.service";
@@ -30,15 +30,13 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 
 	article = new Article(); // 文章
 
-	powers = ['App', 'Web', 'Server', 'Elastic'];
+	powers = ['App', 'Web', 'Server', 'Elastic', '精选'];
 
 	constructor(private articleService: ArticleService,
 							private router: Router,
 							private activeRoute: ActivatedRoute,
 							private notifyService: NotificationsService,
 							private slimLoadingService: SlimLoadingBarService) {
-		this.article.title = '暗影诗章';
-		this.article.tags = ['Shadowverse', 'RPG'];
 		this.article.category = this.powers[0];
 	}
 
@@ -113,10 +111,6 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 		} else {
 			this.notifyService.warn('提示', '请检查必填项.');
 		}
-	}
-
-	onSelectFile(file: File) {
-		console.warn('Onselec', file)
 	}
 
 }

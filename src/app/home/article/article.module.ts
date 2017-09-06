@@ -18,7 +18,6 @@ import {ArticleService} from "./article.service";
 import {ArticleGuard} from "./article.guard";
 import {ArticleDetailComponent} from "./detail/article-detail.component";
 import {ArticleWriteComponent} from "./write/article-write.component";
-import {UploadModule} from "../../upload/upload.module";
 import {TagInputModule} from "ng2-tag-input";
 import {MainComponent} from './main.component';
 import {StaticsComponent} from "./statics/statics.component";
@@ -29,7 +28,6 @@ import {ArticleRouting} from "./article.routing";
 		RouterModule,
 		SharedModule,
 		TagInputModule,
-		UploadModule,
 		MarkdownModule.forRoot(),
 		ArticleRouting,
 	],

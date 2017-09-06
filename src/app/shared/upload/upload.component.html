@@ -1,0 +1,27 @@
+<div class="upload-container">
+    <div class="uploader"
+         (click)="onRequestSelect()"
+         ondragover="return false;"
+         [class.uploader-hover]="!!_fileUrl"
+         [class.dragging]="dragging"
+         (dragenter)="handleDragEnter()"
+         (dragleave)="handleDragLeave()"
+         (drop)="handleDrop($event)">
+        <input #fileUpload type="file" name="file" accept="image/*" (change)="handleInputChange($event)">
+        <i *ngIf="!_fileUrl" class="fa fa-upload icon"></i>
+        <img *ngIf="_fileUrl" [src]="_fileUrl"
+             (load)="handleImageLoad()"
+             [class.loaded]="imageLoaded"/>
+        <i *ngIf="_fileUrl"
+           class="fa fa-times-circle-o close-btn"
+           (click)="onDeleteClick($event)"></i>
+        <i *ngIf="_fileUrl && false"
+           class="fa fa-clipboard copy-btn"
+           (click)="onCopyFileUrlClick()"></i>
+    </div>
+    <div class="progress" *ngIf="uploading" [style.width.%]="uploadProgress"></div>
+    <div class="spinner" *ngIf="uploading">
+        <app-bounce-spinner></app-bounce-spinner>
+    </div>
+
+</div>
