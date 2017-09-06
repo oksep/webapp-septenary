@@ -84,8 +84,12 @@ export class Result<T> {
 
 		// 服务器返回 400
 		else if (res.status >= 400) {
+			try {
+				result = res.json() as Result<T>
+			} catch (ex) {
+				result.error = {message: `请求错误 ${res.status}`};
+			}
 			result.success = false;
-			result.error = {message: `请求错误 ${res.status}`};
 		}
 
 		// 服务器正常返回
@@ -97,6 +101,10 @@ export class Result<T> {
 				result.success = false;
 				result.error = {message: '请求成功，解析错误'};
 			}
+		}
+
+		if (!result.success && !result.error) {
+			result.error = {message: 'Unknown Error!'};
 		}
 
 		return result;

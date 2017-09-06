@@ -8,6 +8,8 @@ articleRouter.post('/create', Auth.authenticateJWT(), ArticleController.createAr
 
 articleRouter.post('/update', Auth.authenticateJWT(), ArticleController.updateArticle);
 
+articleRouter.post('/delete', Auth.authenticateJWT(), ArticleController.deleteArticle);
+
 articleRouter.get('/page/:page', ArticleController.paginateArticle);
 
 articleRouter.get('/detail/:_id', ArticleController.findArticle);

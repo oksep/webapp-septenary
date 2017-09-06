@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {AuthHttp} from "../../auth/angular-jwt.module";
 import BaseHttpService from "../../util/base.server";
+import {Article} from "../../model/article";
 
 @Injectable()
 export class ArticleService extends BaseHttpService {
@@ -16,6 +17,10 @@ export class ArticleService extends BaseHttpService {
 
 		modifyArticle(article: object) {
 			return this.authHttpPost('/api/article/update', article);
+		}
+
+		deleteArticle(article: Article) {
+			return this.authHttpPost('/api/article/delete', {id: article._id});
 		}
 
     getArticleDetail(id: number) {

@@ -9,16 +9,21 @@
         <div class="mt-3 mb-3">
             By&nbsp;&nbsp;<a [routerLink]="'/user/' + article.author._id">{{article.author.name}}</a>
             &nbsp;&nbsp;/&nbsp;&nbsp;<small>{{article.createdTime | timeAgo}}</small>
-            &nbsp;&nbsp;<a *ngIf="isLoggedIn()" [routerLink]="'/article/' + article._id + '/edit'" style="color: #fe606a">编辑</a>
+            <span *ngIf="hasEditPermission()">
+                &nbsp;&nbsp;
+                <a [routerLink]="'/article/' + article._id + '/edit'" style="color: #41b883">编辑</a>
+                &nbsp;&nbsp;/&nbsp;&nbsp;
+                <a href="javascript:void(0)" style="color: #fe606a" (click)="deleteArticleClick()">删除</a>
+            </span>
         </div>
     </div>
 </div>
 
 
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="article">
         <div class="col-lg-9 col-md-12">
-            <div *ngIf="article">
+            <div>
                 <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
             </div>
             <div [style.display]="!!article ? 'block':'none'" id="gitment"></div>

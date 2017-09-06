@@ -18,7 +18,7 @@ class Payload {
 	_id: number;
 	name: string; // 用户名称
 	avatar: string; // avatar.jpg
-	role: string; // 用户角色
+	role: 'normal' | 'admin'; // 用户角色
 	iat: number; // jwt的签发时间
 	exp: number; // jwt的过期时间，这个过期时间必须要大于签发时间
 	iss: string; // jwt签发者

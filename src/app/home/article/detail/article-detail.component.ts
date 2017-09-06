@@ -7,6 +7,8 @@ import {SlimLoadingBarService} from "../../../loading/slim-loading-bar.service";
 import Gitment from 'gitment'
 import {AuthEvent, AuthService} from "../../../auth/auth.service";
 import {User} from "../../../model/user";
+import {NotificationsService} from "../../../notification/simple-notifications/services/notifications.service";
+import {Result} from "../../../util/base.server";
 
 @Component({
 	selector: 'app-article-detail',
@@ -26,6 +28,7 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 							private router: Router,
 							private authService: AuthService,
 							private activeRoute: ActivatedRoute,
+							private notifyService: NotificationsService,
 							private slimLoadingService: SlimLoadingBarService) {
 	}
 
@@ -36,10 +39,13 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 		this.slimLoadingService.progress = 25;
 		this.activeRoute.params.subscribe(params => {
 			let id = params.id;
-			this.articleService.getArticleDetail(id).subscribe(result => {
+			this.articleService.getArticleDetail(id).subscribe((result: Result<Article>) => {
 				if (result.success) {
 					this.article = result.data as Article;
 					this.slimLoadingService.complete();
+				} else {
+					this.slimLoadingService.reset();
+					this.notifyService.warn('提示', result.error.message);
 				}
 			});
 		});
@@ -81,7 +87,26 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 		});
 	}
 
-	isLoggedIn() {
-		return this.loginUser != null;
+	// 删除文章
+	deleteArticleClick() {
+		if (window.confirm('文章删除后将无法恢复,确定要删除吗')) {
+			this.articleService.deleteArticle(this.article).subscribe((result: Result<any>) => {
+				if (result.success) {
+					this.router.navigateByUrl('/');
+					this.notifyService.info('提示', '文章已被删除!');
+				} else {
+					this.notifyService.warn('提示', result.error.message);
+				}
+			});
+		}
+	}
+
+	// 本文作者 或 管理员 才有权限编辑文章
+	hasEditPermission() {
+		if (this.loginUser) {
+			return (this.article.author._id == this.loginUser._id) || this.loginUser.role == 'admin';
+		} else {
+			return false
+		}
 	}
 }
