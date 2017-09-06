@@ -15,22 +15,7 @@
                 <a class="nav-link underline-anim active" routerLink="">Home</a>
             </li>
             <li class="nav-item d-flex justify-content-between align-items-center">
-                <a class="nav-link underline-anim" routerLink="/category/Web">Web</a>
-            </li>
-            <li class="nav-item d-flex justify-content-between align-items-center">
-                <a class="nav-link underline-anim" routerLink="/category/iOS">iOS</a>
-            </li>
-            <li class="nav-item d-flex justify-content-between align-items-center">
-                <a class="nav-link underline-anim" routerLink="/category/Android">Android</a>
-            </li>
-            <li class="nav-item d-flex justify-content-between align-items-center">
-                <a class="nav-link underline-anim" routerLink="/category/ELK">ELK</a>
-            </li>
-            <li class="nav-item d-flex justify-content-between align-items-center">
-                <a class="nav-link underline-anim" routerLink="/category/精选">精选</a>
-            </li>
-            <li class="nav-item d-flex justify-content-between align-items-center">
-                <a class="nav-link underline-anim" routerLink="/category/盈">盈</a>
+                <a class="nav-link underline-anim" routerLink="/category/todo">Todo</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -51,7 +36,7 @@
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item d-flex justify-content-between align-items-center">
-                <a class="" style="margin-left: 1rem" routerLink="/user/me">
+                <a class="" style="margin-left: 1rem" [routerLink]="'/user/' + loginUser?._id">
                     <img class="avatar" [src]="authAvatar" style="width: 40px; height: 40px"/>
                 </a>
             </li>

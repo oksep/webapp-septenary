@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit} from "@angular/core";
 import {AuthEvent, AuthService} from "../../auth/auth.service";
 import {Router} from "@angular/router";
+import {User} from "../../model/user";
 // import {User} from "../model/user";
 
 // const $ = jQuery;
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
 	headerIsHollow: boolean;
 
-	loginUser: any;
+	loginUser: User;
 
 	constructor(private authService: AuthService,
 							private router: Router) {
