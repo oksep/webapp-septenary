@@ -43,6 +43,7 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 				if (result.success) {
 					this.article = result.data as Article;
 					this.slimLoadingService.complete();
+					this.renderComments();
 				} else {
 					this.slimLoadingService.reset();
 					this.notifyService.warn('提示', result.error.message);
@@ -71,20 +72,26 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 	}
 
 	ngAfterViewInit(): void {
-		// TODO
-		this.activeRoute.params.subscribe(params => {
-			let id = params.id;
-			const gitment = new Gitment({
-				id: 'testing' + id, // 可选。默认为 location.href
+		if (this.article) {
+			this.renderComments();
+		}
+	}
+
+	hasRenderComments = false;
+
+	renderComments() {
+		if (!this.hasRenderComments && this.article) {
+			new Gitment({
+				id: 'testing/' + this.article._id, // 可选。默认为 location.href
 				owner: 'ryfthink',
-				repo: 'webapp-septenary',
+				repo: 'webapp-septenary-comments',
 				oauth: {
-					client_id: '0a7b3a146d3395d6fb77',
-					client_secret: '96f80c247620b34390412f5054ea284d8e4e40d8',
+					client_id: '7886f1e96375b3549b03',
+					client_secret: '2542059d79beb3ce4bee03c43736718edcba5edf',
 				},
-			});
-			gitment.render('gitment')
-		});
+			}).render('gitment');
+			this.hasRenderComments = true;
+		}
 	}
 
 	// 删除文章
