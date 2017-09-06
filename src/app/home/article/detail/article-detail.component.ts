@@ -82,12 +82,12 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 	renderComments() {
 		if (!this.hasRenderComments && this.article) {
 			new Gitment({
-				id: 'testing/' + this.article._id, // 可选。默认为 location.href
+				id: 'article/' + this.article._id, // 可选。默认为 location.href
 				owner: 'ryfthink',
-				repo: 'webapp-septenary-comments',
+				repo: 'septenary-comments',
 				oauth: {
-					client_id: '7886f1e96375b3549b03',
-					client_secret: '2542059d79beb3ce4bee03c43736718edcba5edf',
+					client_id: '7ffb532fe208a1858c80',
+					client_secret: '7e82e54ac6943d5d53b7bccf4b8bae600c310765',
 				},
 			}).render('gitment');
 			this.hasRenderComments = true;
