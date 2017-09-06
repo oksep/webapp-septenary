@@ -6,6 +6,7 @@ import {UploadComponent} from "../../../shared/upload/upload.component";
 import {SlimLoadingBarService} from "../../../loading/slim-loading-bar.service";
 import {Result} from "../../../util/base.server";
 import {NotificationsService} from "../../../notification/simple-notifications/services/notifications.service";
+import {AuthService} from "../../../auth/auth.service";
 
 const MORE_TAG = '<!--more-->';
 
@@ -32,16 +33,19 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 
 	powers = ['App', 'Web', 'Server', 'Elastic', '精选'];
 
+	authId: number;
+
 	constructor(private articleService: ArticleService,
 							private router: Router,
 							private activeRoute: ActivatedRoute,
+							private authService: AuthService,
 							private notifyService: NotificationsService,
 							private slimLoadingService: SlimLoadingBarService) {
 		this.article.category = this.powers[0];
 	}
 
 	ngOnInit() {
-
+		this.authId = this.authService.getAuthId();
 	}
 
 	ngAfterViewInit() {

@@ -5,6 +5,8 @@
             <div class="form-group">
                 <label class="label">图床</label>
                 <app-upload-group
+                        *ngIf="authId"
+                        [keyPrefix]="'user/'+ authId"
                         name="imageResources"
                         [(ngModel)]="article.imageResources">
                 </app-upload-group>

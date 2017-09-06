@@ -12,6 +12,7 @@ export class UploadGroupComponent implements ControlValueAccessor {
 	@ViewChild('addButton') addButton: UploadComponent;
 	_urlList: string[] = [];
 	model: NgModel;
+	@Input() keyPrefix: string = 'public/';
 
 	@Input()
 	set urlList(value: string[]) {

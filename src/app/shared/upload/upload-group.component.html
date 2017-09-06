@@ -1,6 +1,7 @@
 <div>
     <div *ngFor="let url of _urlList; let i = index" class="mb-3">
         <app-upload
+                [keyPrefix]="keyPrefix"
                 [fileUrl]="url"
                 [enable]="false"
                 (onDeleteFile)="onFileDelete(i)">
@@ -8,6 +9,7 @@
     </div>
 
     <app-upload
+            [keyPrefix]="keyPrefix"
             *ngIf="_urlList?.length < 10"
             #addButton
             (onUploadFile)="onFileAdd($event)">

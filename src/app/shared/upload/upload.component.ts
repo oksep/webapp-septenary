@@ -25,6 +25,8 @@ export class UploadComponent implements OnInit, OnUploadCallback, ControlValueAc
 
 	@Input() enable: boolean = true;
 
+	@Input() keyPrefix: string = 'public';
+
 	@Input()
 	set fileUrl(url: string) {
 		this.writeValue(url);
@@ -120,7 +122,7 @@ export class UploadComponent implements OnInit, OnUploadCallback, ControlValueAc
 	doUpload(file: File) {
 		if (file) {
 			this.uploading = true;
-			let key = this.fileType + "/" + this.uploadService.generateUUID();
+			let key = this.keyPrefix + '/' + this.fileType + '/' + this.uploadService.generateUUID();
 			this.uploadService.uploadFile(key, file, this);
 		}
 	}
