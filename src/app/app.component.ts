@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SpinnerService} from "./services/spinner.service";
+import {NavigationEnd, Router} from "@angular/router";
+import {visitPage} from "./util/baidu";
 
 @Component({
 	selector: 'app-root',
@@ -18,8 +20,14 @@ export class AppComponent implements OnInit {
 		position: ["top", "right"]
 	};
 
-	constructor(private spinnerService: SpinnerService) {
-
+	constructor(private spinnerService: SpinnerService,
+							private router: Router) {
+		router.events.subscribe((event: any) => {
+			if (event instanceof NavigationEnd) {
+				visitPage(event.urlAfterRedirects);
+				window.scrollTo(0, 0);
+			}
+		});
 	}
 
 	ngOnInit(): void {
