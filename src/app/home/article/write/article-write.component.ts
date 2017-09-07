@@ -41,7 +41,6 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 							private authService: AuthService,
 							private notifyService: NotificationsService,
 							private slimLoadingService: SlimLoadingBarService) {
-		this.article.category = this.powers[0];
 	}
 
 	ngOnInit() {
@@ -90,7 +89,6 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 	onPublishClick() {
 		let available = this.article.content
 			&& this.article.title
-			&& this.article.category
 			&& this.article.tags
 			&& this.article.tags.length > 0;
 		if (available) {

@@ -18,7 +18,7 @@
                        [(ngModel)]="article.title"
                 >
             </div>
-            <div class="form-group">
+            <div class="form-group" *ngIf="false">
                 <label class="label" for="category">文章分类</label>
                 <select class="form-control" id="category" name="category" [(ngModel)]="article.category" required>
                     <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
