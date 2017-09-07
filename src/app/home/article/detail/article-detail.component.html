@@ -19,8 +19,8 @@
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-12" [class.col-lg-9]="!!toc && toc.length > 0" [class.col-12]="!toc">
+    <div class="row justify-content-center content-container">
+        <div class="col-md-12 col-lg-9">
             <div *ngIf="article">
                 <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
             </div>
