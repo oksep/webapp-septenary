@@ -13,9 +13,11 @@ const routes: Routes = [
 	{path: 'article/:id', component: ArticleDetailComponent},
 	{path: 'article/:id/edit', component: ArticleWriteComponent, canActivate: [AuthGuard]},
 	{path: 'tag/:tag', component: MainComponent},
-	{path: 'category/:category', component: MainComponent},
 	{path: 'tag/:tag/:page', component: MainComponent},
+	{path: 'category/:category', component: MainComponent},
 	{path: 'category/:category/:page', component: MainComponent},
+	{path: 'columnist/:columnist', component: MainComponent},
+	{path: 'columnist/:columnist/:page', component: MainComponent},
 ];
 
 @NgModule({

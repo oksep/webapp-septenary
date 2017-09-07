@@ -20,4 +20,6 @@ articleRouter.get('/tag/:tag/:page', ArticleController.paginateArticle);
 
 articleRouter.get('/category/:category/:page', ArticleController.paginateArticle);
 
+articleRouter.get('/columnist/:columnist/:page', ArticleController.paginateArticle);
+
 export {articleRouter};

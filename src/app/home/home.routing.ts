@@ -12,7 +12,7 @@ const routes: Routes = [
 		children: [
 			{path: '', loadChildren: './article/article.module#ArticleModule'},
 			{path: 'user', loadChildren: './user/user.module#UserModule'},
-			// {path: '**', component: PageNotFoundComponent}
+			{path: '**', component: PageNotFoundComponent}
 		]
 	},
 ];

@@ -43,4 +43,7 @@ export class ArticleService extends BaseHttpService {
         return this.httpGet('/api/article/tags');
     }
 
+		listArticlesByColumnist(page: number, columnist: number) {
+			return this.httpGet(`/api/article/columnist/${columnist}/${page}`);
+		}
 }

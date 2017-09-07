@@ -56,6 +56,9 @@ export class ArticleListComponent implements OnInit {
 			} else if (params.tag) {
 				observer = this.articleService.listArticlesByTag(this.currentPage, params.tag);
 				urlPrefix = `/tag/${params.tag}`;
+			} else if (params.columnist) {
+				observer = this.articleService.listArticlesByColumnist(this.currentPage, params.columnist);
+				urlPrefix = `/columnist/${params.columnist}`;
 			} else {
 				observer = this.articleService.listArticles(this.currentPage);
 				urlPrefix = `/page`;

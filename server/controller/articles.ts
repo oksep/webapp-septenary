@@ -74,6 +74,11 @@ export function paginateArticle(request: Request, response: Response) {
 		query = {category: category};
 	}
 
+	let columnist = request.params.columnist;
+	if(columnist) {
+		query = {author: columnist};
+	}
+
 	let offset = LIMIT * page - LIMIT;
 	let sort = {createdTime: 'desc'}; // 按时间倒排
 	Article

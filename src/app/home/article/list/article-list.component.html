@@ -3,6 +3,10 @@
         [article]="article">
 </app-article-section>
 
+<p *ngIf="!articles || articles.length == 0">
+    他太懒了，没有发表过任何文章~ :(
+</p>
+
 <nav *ngIf="pagination && pagination.pages.length > 1" class="mt-3">
     <ul class="pagination justify-content-center">
         <li *ngFor="let page of pagination.pages" class="page-item" [class.active]="currentPage == page">
