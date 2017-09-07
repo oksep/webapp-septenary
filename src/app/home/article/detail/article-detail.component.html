@@ -20,14 +20,14 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-9 col-md-12">
+        <div class="col-md-12" [class.col-lg-9]="!!toc && toc.length > 0" [class.col-12]="!toc">
             <div *ngIf="article">
                 <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
             </div>
             <div [style.display]="!!article ? 'block':'none'" id="gitment"></div>
         </div>
 
-        <div class="col-lg-3 hidden-md-down">
+        <div class="col-lg-3 hidden-md-down" *ngIf="!!toc && toc.length > 0">
             <div class="sticky-top" style="top: 70px;">
                 <app-article-toc [toc]="toc"></app-article-toc>
             </div>
