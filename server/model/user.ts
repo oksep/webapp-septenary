@@ -44,7 +44,7 @@ UserSchema.pre('save', false, function (next) {
 UserSchema.plugin(autoIncrementPlugin, {
     _model: 'User',
     field: '_id',
-    startAt: 2,
+    startAt: 3,
     incrementBy: 1
 });
 

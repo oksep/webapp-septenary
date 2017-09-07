@@ -19,8 +19,7 @@ function success(data ?: object) {
 }
 
 function failed(error: string | Error) {
-    console.warn(error);
-    this.json(new Result(false, null, {message: error instanceof String ? error : JSON.stringify(error)}));
+    this.json(new Result(false, null, {message: typeof error == 'string' ? error : error.message}));
 }
 
 export const initResultPlugin = function (app: Application) {

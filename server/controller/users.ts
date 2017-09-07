@@ -1,7 +1,7 @@
 import {NextFunction} from "express";
 import {Request, Response} from "../middleware/result";
 import User from "../model/user";
-import {AuthConfig} from "../config";
+import {AuthConfig, inviteCode} from "../config";
 import * as moment from "moment";
 import * as JWT from "jwt-simple";
 
@@ -48,15 +48,20 @@ export function login(request: Request, response: Response, next: NextFunction) 
 
 // 注册
 export function createUser(request: Request, response: Response, next: NextFunction) {
-	let user = new User(request.body);
-	user.save()
-		.then(doc => {
-			response.success(doc);
-		})
-		.catch(err => {
-			response.status(200);
-			response.failed(err);
-		});
+	if (request.body.inviteCode != inviteCode) {
+		response.status(200);
+		response.failed('邀请码错误');
+	} else {
+		let user = new User(request.body);
+		user.save()
+			.then(doc => {
+				response.success(doc);
+			})
+			.catch(err => {
+				response.status(200);
+				response.failed(err);
+			});
+	}
 }
 
 // 列出用户列表
@@ -78,4 +83,25 @@ export function getProfile(request: Request, response: Response, next: NextFunct
 			response.status(200);
 			response.failed(err);
 		});
+}
+
+// 更新用户信息
+export function uploadProfile(request: Request, response: Response, next: NextFunction) {
+	let body = request.body;
+	if (request.user._id != body._id) {
+		response.status(403);
+		response.failed('没有权限执行此操作');
+	} else {
+		User
+			.findByIdAndUpdate(body._id, body, {
+				"new": true
+			})
+			.then((result) => {
+				response.success(result);
+			})
+			.catch((error: Error) => {
+				response.status(404);
+				response.failed(error);
+			})
+	}
 }

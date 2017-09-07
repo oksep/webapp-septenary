@@ -9,4 +9,6 @@ userRouter.get("/list", Auth.authenticateJWT(), Auth.authenticateAdmin(), UserCo
 
 userRouter.get("/profile/:id", UserController.getProfile);
 
+userRouter.post("/profile/update",Auth.authenticateJWT(), UserController.uploadProfile);
+
 export {userRouter};
