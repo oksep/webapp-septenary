@@ -27,6 +27,10 @@ export class UploadComponent implements OnInit, OnUploadCallback, ControlValueAc
 
 	@Input() keyPrefix: string = 'public';
 
+	@Input() uploadIconClass = 'fa-upload';
+
+	@Input() canDelete = true;
+
 	@Input()
 	set fileUrl(url: string) {
 		this.writeValue(url);
@@ -156,7 +160,7 @@ export class UploadComponent implements OnInit, OnUploadCallback, ControlValueAc
 	}
 
 	onRequestSelect() {
-		if (!this._fileUrl) {
+		if (!this._fileUrl || this.enable) {
 			this.fileUpload.nativeElement.click();
 		} else {
 			this.onCopyFileUrlClick();

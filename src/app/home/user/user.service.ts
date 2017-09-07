@@ -4,6 +4,7 @@ import {Http} from "@angular/http";
 
 import {AuthHttp} from "../../auth/angular-jwt.module";
 import BaseHttpService from "../../util/base.server";
+import {User} from "../../model/user";
 
 
 @Injectable()
@@ -19,5 +20,9 @@ export class UserService extends BaseHttpService {
 
 	getProfileById(id: number) {
 		return this.httpGet(`/api/user/profile/${id}`);
+	}
+
+	uploadUser(user: User) {
+		return this.authHttpPost(`/api/user/profile/update`, user);
 	}
 }

@@ -1,6 +1,14 @@
 <div class="user-container p-3 mt-3">
     <div class="d-flex flex-row" *ngIf="profile">
-        <img *ngIf="profile.avatar" [src]="profile.avatar" alt="avatar" class="avatar rounded">
+        <img *ngIf="!!profile.avatar && !editable" [src]="profile.avatar" alt="avatar" class="profile-avatar profile-avatar-border">
+        <div *ngIf="editable" class="profile-avatar">
+            <app-upload [uploadIconClass]="'fa-camera'"
+                        [fileUrl]="profile.avatar"
+                        [keyPrefix]="'user/'+ authId"
+                        [canDelete]="false"
+                        (onUploadFile)="onChangeAvatar($event)">
+            </app-upload>
+        </div>
         <div class="col ml-3 d-flex flex-column justify-content-center">
             <div class="desc pb-4">
                 知识有重量，<br>但成就有光泽。<br>有人感觉到知识的力量，<br>但更多的人只看到成就的光泽。

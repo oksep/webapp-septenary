@@ -12,7 +12,7 @@
                                    #name="ngModel">
                         </div>
                         <div class="form-group">
-                            <label for="email" class="label"><i class="fa fa-id-card-o"></i> 邮箱</label>
+                            <label for="email" class="label"><i class="fa fa-envelope"></i> 邮箱</label>
                             <input type="email" class="form-control" id="email" placeholder="email"
                                    required
                                    [(ngModel)]="credentials.email" name="email"
@@ -23,6 +23,12 @@
                             <input type="password" class="form-control" id="password" placeholder="password"
                                    required
                                    [(ngModel)]="credentials.password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="inviteCode" class="label"><i class="fa fa-usd"></i> 邀请码</label>
+                            <input type="text" class="form-control" id="inviteCode"
+                                   required
+                                   [(ngModel)]="credentials.inviteCode" name="inviteCode">
                         </div>
                         <button type="submit" class="btn btn-secondary" style="float: right"
                                 [disabled]="!registerForm.form.valid">

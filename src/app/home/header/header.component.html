@@ -37,7 +37,7 @@
             </li>
             <li *ngIf="loggedIn" class="nav-item d-flex justify-content-between align-items-center">
                 <a class="" style="margin-left: 1rem" [routerLink]="'/user/' + loginUser?._id">
-                    <img class="avatar" [src]="authAvatar" style="width: 40px; height: 40px"/>
+                    <img class="rounded-circle" [src]="authAvatar" style="width: 40px; height: 40px"/>
                 </a>
             </li>
         </ul>

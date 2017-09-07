@@ -8,11 +8,11 @@
          (dragleave)="handleDragLeave()"
          (drop)="handleDrop($event)">
         <input #fileUpload type="file" name="file" accept="image/*" (change)="handleInputChange($event)">
-        <i *ngIf="!_fileUrl" class="fa fa-upload icon"></i>
+        <i *ngIf="!_fileUrl" class="fa icon {{uploadIconClass}}"></i>
         <img *ngIf="_fileUrl" [src]="_fileUrl"
              (load)="handleImageLoad()"
              [class.loaded]="imageLoaded"/>
-        <i *ngIf="_fileUrl"
+        <i *ngIf="_fileUrl && canDelete"
            class="fa fa-times-circle-o close-btn"
            (click)="onDeleteClick($event)"></i>
         <i *ngIf="_fileUrl && false"

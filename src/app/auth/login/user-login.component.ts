@@ -36,7 +36,8 @@ export class UserLoginComponent implements OnInit {
 					if (result.success) {
 						this.notification.success('提示', '欢迎回来' + this.authService.getAuthName());
 						// this.router.navigate(['/user/me']);
-						this.location.back()
+						// this.location.back()
+						this.router.navigateByUrl('/');
 					} else {
 						this.notification.error('提示', result.error.message);
 					}
