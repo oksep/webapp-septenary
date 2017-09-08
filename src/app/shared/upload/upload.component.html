@@ -7,7 +7,9 @@
          (dragenter)="handleDragEnter()"
          (dragleave)="handleDragLeave()"
          (drop)="handleDrop($event)">
-        <input #fileUpload type="file" name="file" accept="image/*" (change)="handleInputChange($event)">
+        <input #fileUpload type="file" name="file"
+               accept="image/gif, image/png, image/jpeg, image/bmp, image/webp"
+               (change)="handleInputChange($event)">
         <i *ngIf="!_fileUrl" class="fa icon {{uploadIconClass}}"></i>
         <img *ngIf="_fileUrl" [src]="_fileUrl"
              (load)="handleImageLoad()"
