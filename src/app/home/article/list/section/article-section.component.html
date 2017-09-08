@@ -1,4 +1,4 @@
-<div class="row article-section" (click)="onSectionClick()">
+<div class="row article-section animated" [ngClass]="randomInClass" (click)="onSectionClick()">
     <div class="ml-3">
         <a [routerLink]="'/user/' + article.author._id">
             <img class="avatar" [src]="article.author.avatar">

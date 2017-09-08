@@ -7,7 +7,7 @@ import {ArticleDetailComponent} from "./detail/article-detail.component";
 import {ArticleGuard} from "./article.guard";
 
 const routes: Routes = [
-	{path: '', redirectTo: 'page/1', pathMatch: 'full'},
+	{path: '', component: MainComponent},
 	{path: 'page/:page', component: MainComponent, canActivate: [ArticleGuard]},
 	{path: 'article/create', component: ArticleWriteComponent, canActivate: [AuthGuard]},
 	{path: 'article/:id', component: ArticleDetailComponent},

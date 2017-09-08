@@ -6,7 +6,7 @@
         <article-tag *ngFor="let tag of article.tags" [tag]="tag"></article-tag>
         <div class="mt-3 mb-3">
             By&nbsp;&nbsp;<a [routerLink]="'/user/' + article.author._id">{{article.author.name}}</a>
-            &nbsp;&nbsp;/&nbsp;&nbsp;<small>{{article.createdTime | timeAgo}}</small>
+            &nbsp;&nbsp;/&nbsp;&nbsp;<small>{{article.createdTime | date:'yyyy/MM/dd hh:mm'}}</small>
             <span *ngIf="hasEditPermission()">
                 &nbsp;&nbsp;
                 <a [routerLink]="'/article/' + article._id + '/edit'" style="color: #41b883">编辑</a>
@@ -18,21 +18,17 @@
 </div>
 
 
-<div class="container">
-    <div class="row justify-content-center content-container">
-        <div class="col-md-12 col-lg-9">
-            <div *ngIf="article">
-                <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
-            </div>
-            <div [style.display]="!!article ? 'block':'none'" id="gitment"></div>
+<div class="row justify-content-center content-container">
+    <div class="col-md-12 col-lg-7 offset-lg-2">
+        <div *ngIf="article">
+            <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
         </div>
-
-        <div class="col-lg-3 hidden-md-down" *ngIf="!!toc && toc.length > 0">
-            <div class="sticky-top" style="top: 70px;">
-                <app-article-toc [toc]="toc"></app-article-toc>
-            </div>
-        </div>
+        <div [style.display]="!!article ? 'block':'none'" id="gitment"></div>
     </div>
 
+    <div class="col-lg-2 hidden-md-down" *ngIf="!!toc && toc.length > 0">
+        <div class="sticky-top" style="top: 70px;">
+            <app-article-toc [toc]="toc"></app-article-toc>
+        </div>
+    </div>
 </div>
-

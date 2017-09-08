@@ -31,6 +31,6 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.spinnerService.hide(50);
+		this.spinnerService.hide(150);
 	}
 }

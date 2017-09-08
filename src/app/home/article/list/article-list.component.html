@@ -3,7 +3,7 @@
         [article]="article">
 </app-article-section>
 
-<p *ngIf="!articles || articles.length == 0">
+<p *ngIf="hasLoadData && (!articles || articles.length == 0)">
     他太懒了，没有发表过任何文章~ :(
 </p>
 

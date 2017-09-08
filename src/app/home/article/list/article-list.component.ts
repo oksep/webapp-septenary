@@ -28,6 +28,7 @@ export class ArticleListComponent implements OnInit {
 	pagination: Pagination;
 	articles: Article[];
 	currentPage: number = 1;
+	hasLoadData: boolean = false;
 
 	constructor(private articleService: ArticleService,
 							private router: Router,
@@ -65,6 +66,7 @@ export class ArticleListComponent implements OnInit {
 			}
 
 			observer.subscribe(result => {
+				this.hasLoadData = true;
 				if (result.success) {
 					let data = result.data;
 					this.articles = data.docs;

@@ -2,6 +2,7 @@ import {Component, Input, OnInit, ViewEncapsulation} from "@angular/core";
 
 import {Router} from "@angular/router";
 import {Article} from "../../../../model/article";
+import {randomInClass} from "../../../../util/animate";
 
 @Component({
 	selector: 'app-article-section',
@@ -13,8 +14,10 @@ export class ArticleSectionComponent implements OnInit {
 
 	@Input() article: Article;
 
-	constructor(private router: Router) {
+	randomInClass: string;
 
+	constructor(private router: Router) {
+		this.randomInClass = randomInClass();
 	}
 
 	ngOnInit() {
