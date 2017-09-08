@@ -5,11 +5,8 @@
     font-size: 2rem;
     line-height: 1.3;
   }
-}
-
-.content-container {
-  border-top: 1px dashed $border;
-  padding-top: 1.25rem;
+  border-bottom: 1px dashed $border;
+  margin-bottom: 1.25rem;
 }
 
 img {
