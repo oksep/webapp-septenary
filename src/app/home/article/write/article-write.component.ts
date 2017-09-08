@@ -35,6 +35,8 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 
 	authId: number;
 
+	isSubmitting = false;
+
 	constructor(private articleService: ArticleService,
 							private router: Router,
 							private activeRoute: ActivatedRoute,
@@ -87,6 +89,7 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 	}
 
 	onPublishClick() {
+		this.isSubmitting = true;
 		let available = this.article.content
 			&& this.article.title
 			&& this.article.tags
@@ -104,6 +107,7 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 				subscription = this.articleService.createArticle(this.article);
 			}
 			subscription.subscribe((result: Result<any>) => {
+				this.isSubmitting = false;
 				if (result.success) {
 					this.router.navigateByUrl(`/article/${result.data._id}`)
 				} else {
