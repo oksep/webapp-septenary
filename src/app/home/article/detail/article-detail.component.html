@@ -19,15 +19,18 @@
 
 
 <div class="row justify-content-center content-container">
-    <div class="col-md-12 col-lg-7 offset-lg-2">
+
+    <div class="col-lg-2 hidden-md-down"></div>
+
+    <div class="col-md-12 col-lg-7">
         <div *ngIf="article">
             <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
         </div>
         <div [style.display]="!!article ? 'block':'none'" id="gitment"></div>
     </div>
 
-    <div class="col-lg-2 hidden-md-down" *ngIf="!!toc && toc.length > 0">
-        <div class="sticky-top" style="top: 70px;">
+    <div class="col-lg-2 hidden-md-down">
+        <div class="sticky-top" style="top: 70px;" *ngIf="!!toc && toc.length > 0">
             <app-article-toc [toc]="toc"></app-article-toc>
         </div>
     </div>
