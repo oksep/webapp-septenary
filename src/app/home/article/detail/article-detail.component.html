@@ -30,7 +30,7 @@
 
     <div class="col-lg-2 hidden-md-down">
         <div class="sticky-top" style="top: 70px;" *ngIf="!!toc && toc.length > 0">
-            <app-article-toc [toc]="toc"></app-article-toc>
+            <app-article-toc [toc]="toc" [title]="article?.title"></app-article-toc>
         </div>
     </div>
 </div>

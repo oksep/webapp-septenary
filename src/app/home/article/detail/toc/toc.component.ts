@@ -13,6 +13,7 @@ import {DOCUMENT} from "@angular/common";
 export class ArticleTocComponent {
 
 	@Input() toc: Toc[];
+	@Input() title: string;
 
 	constructor(@Inject(DOCUMENT) private document: any) {
 	}

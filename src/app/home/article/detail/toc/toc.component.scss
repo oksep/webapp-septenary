@@ -11,5 +11,9 @@
 
 .title {
   font-weight: $font-bold;
-  font-size: 1.2rem;
+  line-height: 1.1;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

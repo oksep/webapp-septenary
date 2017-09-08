@@ -1,11 +1,11 @@
 <aside>
-    <strong class="title" *ngIf="toc && toc.length > 0">
-        <i class="fa fa-anchor"></i> Contents
-    </strong>
+    <div class="title" *ngIf="toc && toc.length > 0">
+        {{title}}{{title}}{{title}}{{title}}
+    </div>
 
     <div style="margin-top: 8px">
         <a *ngFor="let t of toc" class="toc" href="javascript:void(0)" (click)="onTocClick(t)"
-           [style.margin-left]="30 * (t.level -1) + 'px'">
+           [style.margin-left]="30 * (t.level - 1) + 'px'">
             <div [innerHtml]="t.text"></div>
         </a>
     </div>
