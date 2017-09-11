@@ -8,6 +8,7 @@ export class Article {
     category: string; // 分类
     content: string; // 正文
     summary: string; // 摘要
+		summaryImages: string[]; // 摘要贴图
     views: number; // 浏览数
     createdTime: string; // 创建时间
     updatedTime: string; // 更新时间

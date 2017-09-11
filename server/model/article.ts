@@ -10,6 +10,7 @@ interface IArticle extends mongoose.Document {
     category: string; // 分类
     content: string; // 正文
     summary: string; // 摘要
+		summaryImages: string[]; // 摘要贴图
     views: number; // 浏览数
     createdTime: Date; // 创建时间
     updatedTime: Date; // 更新时间
@@ -30,6 +31,7 @@ const ArticleSchema = new Schema({
     category: String, // 分类
     content: String, // 正文
     summary: String, // 摘要
+		summaryImages: {type: [String], default: null}, // 摘要贴图
     views: {type: Number, default: 0}, // 浏览数
     createdTime: {type: Date, default: Date.now}, // 创建时间
     updatedTime: {type: Date, default: Date.now}, // 更新时间

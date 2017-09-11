@@ -3,18 +3,33 @@ import {Request, Response} from "../middleware/result";
 
 const MORE_TAG = '<!--more-->';
 
-export function createArticle(request: Request, response: Response) {
-	const body = request.body;
-	body.updatedTime && (body.updatedTime = new Date(body.updatedTime));
-	body.createdTime && (body.createdTime = new Date(body.createdTime));
-	body.author = request.user._id; // //toObjectId(request.user._id);
+// 设置文章 time 、summary
+function resolveArticle(article: any) {
+	article.updatedTime && (article.updatedTime = new Date(article.updatedTime));
+	article.createdTime && (article.createdTime = new Date(article.createdTime));
 
-	let article = new Article(body);
-	const index = article.content.indexOf(MORE_TAG);
-	if (index > 0) {
-		article.summary = article.content.substring(0, index);
+	const imgUrls = article.content.match(/!\[.*?\]\((.*?)\)/);
+	if (imgUrls && imgUrls.length > 1) {
+		article.summaryImages = [imgUrls[1]];
+	} else {
+		article.summaryImages = null;
 	}
 
+	const index = article.content.indexOf(MORE_TAG);
+	if (index > 0) {
+		let summary = article.content.substring(0, index);
+		if (article.summaryImages) {
+			article.summary = summary.replace(article.summaryImages[0], '')
+		}
+	}
+}
+
+// 创建文章
+export function createArticle(request: Request, response: Response) {
+	const body = request.body;
+	body.author = request.user._id; // //toObjectId(request.user._id);
+	resolveArticle(body);
+	let article = new Article(body);
 	article.save().then(doc => {
 		response.success(doc);
 	}).catch(err => {
@@ -23,6 +38,7 @@ export function createArticle(request: Request, response: Response) {
 
 }
 
+// 查找文章
 export function findArticle(request: Request, response: Response) {
 	// var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
 	Article.findById(request.params._id)
@@ -41,10 +57,10 @@ export function findArticle(request: Request, response: Response) {
 		});
 }
 
+// 修改文章
 export function updateArticle(request: Request, response: Response) {
 	let body = request.body;
-	body.updatedTime && (body.updatedTime = new Date(body.updatedTime));
-	body.createdTime && (body.createdTime = new Date(body.createdTime));
+	resolveArticle(body);
 	Article
 		.findByIdAndUpdate(body._id, body, {
 			"new": true
@@ -75,7 +91,7 @@ export function paginateArticle(request: Request, response: Response) {
 	}
 
 	let columnist = request.params.columnist;
-	if(columnist) {
+	if (columnist) {
 		query = {author: columnist};
 	}
 

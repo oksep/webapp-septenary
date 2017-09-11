@@ -89,12 +89,12 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 	}
 
 	onPublishClick() {
-		this.isSubmitting = true;
 		let available = this.article.content
 			&& this.article.title
 			&& this.article.tags
 			&& this.article.tags.length > 0;
 		if (available) {
+			this.isSubmitting = true;
 			const index = this.article.content.indexOf(MORE_TAG);
 			if (index > 0) {
 				this.article.summary = this.article.content.substring(0, index);
@@ -116,6 +116,7 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 			});
 		} else {
 			this.notifyService.warn('提示', '请检查必填项.');
+			this.isSubmitting = false;
 		}
 	}
 

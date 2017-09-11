@@ -46,6 +46,7 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
 	changeLog: string[] = [];
 
 	@Output() tocUpdate = new EventEmitter();
+	@Input() renderAsHtml = true;
 
 	hasRendered = false;
 
@@ -91,6 +92,9 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
 			this.hasRendered = true;
 			this.toc = [];
 			this.el.nativeElement.innerHTML = this.mdService.compile(data);
+			if (!this.renderAsHtml) {
+				this.el.nativeElement.innerHTML = this.el.nativeElement.innerText;
+			}
 			this.tocUpdate.emit(new TocEvent(from, this.toc));
 		}
 	}
