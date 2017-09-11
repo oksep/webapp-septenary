@@ -16,9 +16,13 @@
                  [renderAsHtml]="false"
                  [data]="article.summary">
             </div>
-            <img *ngIf="article.summary && article.summaryImages && article.summaryImages.length > 0"
-                 [src]="article.summaryImages[0]"
-                 class="summary_img">
+            <div *ngIf="article.summary && article.summaryImages && article.summaryImages.length > 0" style="position: relative">
+                <div class="summary_img_container">
+                    <img [src]="article.summaryImages[0]"
+                         (load)="imageLoaded = true"
+                         [class.loaded]="imageLoaded">
+                </div>
+            </div>
         </div>
 
         <div class="d-flex justify-content-between align-items-center mt-2">

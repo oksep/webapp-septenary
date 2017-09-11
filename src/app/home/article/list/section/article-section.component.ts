@@ -16,6 +16,8 @@ export class ArticleSectionComponent implements OnInit {
 
 	randomInClass: string;
 
+	imageLoaded: false;
+
 	constructor(private router: Router) {
 		this.randomInClass = randomInClass();
 	}
