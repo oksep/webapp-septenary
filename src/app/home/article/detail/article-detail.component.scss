@@ -37,6 +37,19 @@ li {
   line-height: 1.8;
 }
 
+.img-alt {
+  min-width: 20%;
+  max-width: 80%;
+  min-height: 22px;
+  display: inline-block;
+  padding: 6px;
+  margin: 0 auto;
+  border-bottom: 1px solid $border;
+  font-size: 14px;
+  color: shade($border, 30%);
+  line-height: 1.2;
+}
+
 #gitment {
   margin-top: 1.5rem;
   border-top: 1px dashed $border;
