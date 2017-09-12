@@ -18,7 +18,6 @@ export class ArticleSectionComponent implements OnInit {
 	imageLoaded: false;
 
 	constructor(private router: Router) {
-		this.randomInClass = 'fadeInUp';
 	}
 
 	ngOnInit() {
