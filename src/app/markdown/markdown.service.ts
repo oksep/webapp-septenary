@@ -80,7 +80,6 @@ export class MarkdownService {
             }
         };
 				this._renderer.image = function (href: string, title: string, text: string) {
-						console.log(href, title, text);
 						let alt = text ? `<br><div class="img-alt">${text}</div>` : '';
 						return `
 									<div style="text-align: center"><img src="${href}">
