@@ -9,8 +9,7 @@
         </div>
 
         <div class="long-and-truncated title">
-            {{article.title}}{{article.title}}{{article.title}}{{article.title}}
-
+            {{article.title}}
         </div>
 
     </div>
@@ -24,7 +23,7 @@
             </div>
             <div *ngIf="article.summary && article.summaryImages && article.summaryImages.length > 0"
                  class="hidden-sm-down ml-3"
-                 style="position: relative">
+                 style="position: relative;">
                 <div class="summary_img_container">
                     <img [src]="article.summaryImages[0] | qiniuImg:'sm'"
                          (load)="imageLoaded = true"
