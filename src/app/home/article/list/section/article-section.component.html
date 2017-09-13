@@ -1,22 +1,30 @@
-<div class="article-section row"
+<div class="article-section"
      (click)="onSectionClick()">
-    <div class="ml-3">
-        <a [routerLink]="'/user/' + article.author._id">
-            <img class="avatar" [src]="article.author.avatar">
-        </a>
-    </div>
-    <div class="col">
-        <div class="title">
-            {{article.title}}
+    <div class="d-flex flex-row align-items-center">
+
+        <div class="nowrap">
+            <a [routerLink]="'/user/' + article.author._id">
+                <img class="avatar" [src]="article.author.avatar">
+            </a>
         </div>
-        <div class="row mt-2">
+
+        <div class="long-and-truncated title">
+            {{article.title}}{{article.title}}{{article.title}}{{article.title}}
+
+        </div>
+
+    </div>
+    <div class="mt-2 content">
+        <div class="d-flex flex-row">
             <div *ngIf="article.summary"
-                 class="markdown-preview col"
+                 class="markdown-preview"
                  Markdown
                  [renderAsHtml]="false"
                  [data]="article.summary">
             </div>
-            <div *ngIf="article.summary && article.summaryImages && article.summaryImages.length > 0" style="position: relative">
+            <div *ngIf="article.summary && article.summaryImages && article.summaryImages.length > 0"
+                 class="hidden-sm-down ml-3"
+                 style="position: relative">
                 <div class="summary_img_container">
                     <img [src]="article.summaryImages[0] | qiniuImg:'sm'"
                          (load)="imageLoaded = true"
