@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from "@angular/core";
+import {AfterViewInit, Component, HostListener, OnDestroy, OnInit} from "@angular/core";
 import {AuthEvent, AuthService} from "../../auth/auth.service";
 import {NavigationEnd, Router} from "@angular/router";
 import {User} from "../../model/user";
@@ -14,7 +14,7 @@ import {Subscription} from "rxjs/Subscription";
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
-	headerIsHollow: boolean;
+	headerHide: boolean;
 
 	loginUser: User;
 
@@ -72,6 +72,20 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 		} else {
 			return defaultActive;
 		}
+	}
+
+	preScrollY = 0;
+
+	@HostListener('window:scroll')
+	_onWindowScroll(): void {
+		let hide = false;
+		if (window.scrollY > 100) {
+			hide = window.scrollY > this.preScrollY;
+		} else {
+			hide = false;
+		}
+		this.preScrollY = window.scrollY;
+		if (this.headerHide != hide) this.headerHide = hide;
 	}
 
 
