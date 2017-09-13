@@ -16,6 +16,7 @@ import {BounceSpinnerComponent} from './components/bounce-spinner/bounce-spinner
 import {UploadComponent} from "./upload/upload.component";
 import {UploadService} from "./upload/upload.service";
 import {UploadGroupComponent} from "./upload/upload-group.component";
+import { QiniuImgPipe } from './pipes/qiniu-img.pipe';
 
 @NgModule({
 	imports: [
@@ -37,7 +38,8 @@ import {UploadGroupComponent} from "./upload/upload-group.component";
 		BackTopComponent,
 		BounceSpinnerComponent,
 		UploadComponent,
-		UploadGroupComponent
+		UploadGroupComponent,
+		QiniuImgPipe
 	],
 	exports: [
 		CommonModule,
@@ -50,6 +52,7 @@ import {UploadGroupComponent} from "./upload/upload-group.component";
 		SummaryPipe,
 		TimeAgoPipe,
 		ToStringPipe,
+		QiniuImgPipe,
 		InputLengthCounterDirective,
 		ScrollPositionDirective,
 		ParticleGroundComponent,
