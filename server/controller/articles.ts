@@ -76,7 +76,7 @@ export function updateArticle(request: Request, response: Response) {
 
 // 按页查询
 export function paginateArticle(request: Request, response: Response) {
-	const LIMIT = 8;
+	const LIMIT = 10;
 	let query = null;
 	let page = request.params.page;
 
@@ -146,7 +146,7 @@ export function deleteArticle(request: Request, response: Response) {
 		.populate('author', '_id')
 		.then(doc => {
 			if (doc) {
-				if ((<any>doc.author)._id != request.user._id || request.user.role == 'admin') {
+				if ((<any>doc.author)._id == request.user._id || request.user.role == 'admin') {
 					Article.findByIdAndRemove(request.body.id)
 						.then((doc) => {
 							response.success(doc);
