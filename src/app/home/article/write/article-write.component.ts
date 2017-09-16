@@ -37,6 +37,8 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 
 	isSubmitting = false;
 
+	canDeactivate = false;
+
 	constructor(private articleService: ArticleService,
 							private router: Router,
 							private activeRoute: ActivatedRoute,
@@ -94,6 +96,7 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 			&& this.article.tags
 			&& this.article.tags.length > 0;
 		if (available) {
+			this.canDeactivate = true;
 			this.isSubmitting = true;
 			const index = this.article.content.indexOf(MORE_TAG);
 			if (index > 0) {
@@ -118,6 +121,12 @@ export class ArticleWriteComponent implements OnInit, AfterViewInit {
 			this.notifyService.warn('提示', '请检查必填项.');
 			this.isSubmitting = false;
 		}
+	}
+
+	ensureNotChanged() {
+		return new Promise<boolean>(resolve => {
+			return resolve(this.canDeactivate || window.confirm('确认离开？'));
+		});
 	}
 
 }

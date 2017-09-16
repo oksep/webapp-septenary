@@ -22,6 +22,7 @@ import {TagInputModule} from "ng2-tag-input";
 import {MainComponent} from './main.component';
 import {StaticsComponent} from "./statics/statics.component";
 import {ArticleRouting} from "./article.routing";
+import {EditArticleGuard} from "./write/guard";
 
 @NgModule({
 	imports: [
@@ -56,7 +57,8 @@ import {ArticleRouting} from "./article.routing";
 	],
 	providers: [
 		ArticleService,
-		ArticleGuard
+		ArticleGuard,
+		EditArticleGuard
 	]
 })
 export class ArticleModule {
