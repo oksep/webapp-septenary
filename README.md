@@ -1,6 +1,6 @@
 # Septenary
 
-Blog website
+![Blog website](https://github.com/Ryfthink/webapp-septenary/raw/master/art/impress.gif)
 
 ## Development server
 
