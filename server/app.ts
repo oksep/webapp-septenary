@@ -8,6 +8,7 @@ import {authRouter} from "./routes/auth";
 import {articleRouter} from "./routes/article";
 import {adminRouter} from "./routes/admin";
 import {qiniuRouter} from "./routes/qiniu";
+import {statisticsRouter} from "./routes/statistics";
 
 import * as Auth from "./auth/auth";
 import {initResultPlugin, Request, Response} from "./middleware/result";
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/article', articleRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/qiniu', qiniuRouter);
+app.use('/api/statistics', statisticsRouter);
 
 // if (app.get('env') === 'production') {
 
