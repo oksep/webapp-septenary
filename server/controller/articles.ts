@@ -41,7 +41,7 @@ export function createArticle(request: Request, response: Response) {
 // 查找文章
 export function findArticle(request: Request, response: Response) {
 	// var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
-	Article.findById(request.params._id)
+	Article.findByIdAndUpdate(request.params._id, {$inc: {views: 1}})
 		.populate('author', '_id name avatar')
 		.then(doc => {
 			if (doc) {

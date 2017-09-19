@@ -1,14 +1,12 @@
 export const serverPort = 8080;
-export const secret = 'RbBQqA6uF#msRF8s7h*?@=95HUm&DgMDd6zLFn4XzWQ6dtwXSJwBX#?gL2JWf!';
 export const length = 128;
-export const digest = 'sha256';
-export const inviteCode = 'septenary-friend';
+export const inviteCode = 'renyufeng-friend';
 export const AuthConfig = {
-    JWTSecret: 'jwt-septenary-secret',
+    JWTSecret: 'e3rrs63w-1c1n-51eyt26we1ewps3acy1tsrty-satcteste',
     JWTSession: {
         session: false
     },
-    JWTExpiration: 60 * 24 // 1 day
+    JWTExpiration: 60 * 24 * 7 // 1 week
 };
 
 export const DBConfig = {
@@ -16,7 +14,7 @@ export const DBConfig = {
 };
 
 export const QiniuConfig = {
-    ACCESS_KEY: 'i7tA1tYs5KYuN6-nwpsPbUAN2JmI4viHPoNWxUNr',
-    SECRET_KEY: 'LD5TqXn0gleXDsmU6fiZA6Ias54Wa0To0183LHkA',
+    ACCESS_KEY: 'f6kMhs1Ed64D6oCFIk-vDnNaNPpDk9mX_U--mCbk',
+    SECRET_KEY: 'RzlF2ZaQmsKJNQgDCElwDqUkZSKDDj4w0_uvX-o3',
     BUCKET_NAME: 'assets'
 };

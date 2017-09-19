@@ -14,6 +14,7 @@
     "server-build": "tsc -p ./server && cp -R ./server/public ./dist/server",
     "server-run": "npm run server-build && concurrently \"tsc -w -p ./server\" \"nodemon dist/server/bin/www.js\" ",
     "build": "ng build --prod --sm=false --aot=true --output-path=dist/client && npm run server-build",
+    "build-to-septenary": "npm run build && scp -i ~/.ssh/aliyun_septenary_rsa -r dist root@106.14.195.38:/root/home/workspace",
     "ng4.0-ng": "ng",
     "ng4.0-start": "ng serve",
     "ng4.0-build": "ng build",
