@@ -2,8 +2,8 @@
     <label class="label"><i class="fa fa-bar-chart"></i>&nbsp;&nbsp;统计</label>
     <div class="statics-content">
         <div>时间:&nbsp;{{currentTime.getTime() + tick * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</div>
-        <div>来访:&nbsp;10388</div>
-        <div>文章:&nbsp;92&nbsp;篇 </div>
-        <div>作者:&nbsp;4</div>
+        <div>来访:&nbsp;{{overview?.visits}}</div>
+        <div>文章:&nbsp;{{overview?.articles}}&nbsp;篇</div>
+        <div>作者:&nbsp;{{overview?.users}}</div>
     </div>
 </aside>

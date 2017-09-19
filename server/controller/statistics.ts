@@ -10,7 +10,8 @@ export function overview(request: Request, response: Response) {
 	]).then((result: number[]) => {
 		response.success({
 			users: result[0],
-			articles: result[1]
+			articles: result[1],
+			visits: 10272
 		});
 	}).catch(err => {
 		response.failed(err.message);

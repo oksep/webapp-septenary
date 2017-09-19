@@ -20,7 +20,7 @@ import {ArticleDetailComponent} from "./detail/article-detail.component";
 import {ArticleWriteComponent} from "./write/article-write.component";
 import {TagInputModule} from "ng2-tag-input";
 import {MainComponent} from './main.component';
-import {StaticsComponent} from "./statics/statics.component";
+import {StatisticsComponent} from "./statistics/statistics.component";
 import {ArticleRouting} from "./article.routing";
 import {EditArticleGuard} from "./write/guard";
 
@@ -42,7 +42,7 @@ import {EditArticleGuard} from "./write/guard";
 		ArticleTagComponent,
 		TagsComponent,
 		MainComponent,
-		StaticsComponent
+		StatisticsComponent
 	],
 	exports: [
 		ArticleDetailComponent,
@@ -53,7 +53,7 @@ import {EditArticleGuard} from "./write/guard";
 		ArticleSectionComponent,
 		ArticleTagComponent,
 		TagsComponent,
-		StaticsComponent
+		StatisticsComponent
 	],
 	providers: [
 		ArticleService,

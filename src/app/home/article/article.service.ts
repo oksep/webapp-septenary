@@ -4,24 +4,31 @@ import {AuthHttp} from "../../auth/angular-jwt.module";
 import BaseHttpService, {Result} from "../../util/base.server";
 import {Article} from "../../model/article";
 import {Observable} from "rxjs/Observable";
+import {StatisticsOverview} from "./statistics/statistics.component";
 
 @Injectable()
 export class ArticleService extends BaseHttpService {
 	private tags: { _id: string, count: number }[] = [];
+	private statisticsOverview: StatisticsOverview;
 
 	constructor(http: Http, authHttp: AuthHttp) {
 		super(http, authHttp);
 	}
 
 	createArticle(article: object) {
+		this.tags = [];
+		this.statisticsOverview = null;
 		return this.authHttpPost('/api/article/create', article);
 	}
 
 	modifyArticle(article: object) {
+		this.tags = [];
 		return this.authHttpPost('/api/article/update', article);
 	}
 
 	deleteArticle(article: Article) {
+		this.tags = [];
+		this.statisticsOverview = null;
 		return this.authHttpPost('/api/article/delete', {id: article._id});
 	}
 
@@ -42,20 +49,29 @@ export class ArticleService extends BaseHttpService {
 	}
 
 	getTags(cache: boolean = false) {
-		if (cache) {
+		if (cache && this.tags && this.tags.length > 0) {
 			return Observable.of(this.tags);
-		} else {
-			return this.httpGet('/api/article/tags')
-				.map((result: Result<{ _id: string, count: number }[]>) => {
-					if (result) {
-						this.tags = result.data;
-					}
-					return this.tags;
-				});
 		}
+		return this.httpGet('/api/article/tags')
+			.map((result: Result<{ _id: string, count: number }[]>) => {
+				if (result) {
+					this.tags = result.data;
+				}
+				return this.tags;
+			});
 	}
 
 	listArticlesByColumnist(page: number, columnist: number) {
 		return this.httpGet(`/api/article/columnist/${columnist}/${page}`);
+	}
+
+	getStatisticsOverview(cache: boolean = false) {
+		if (cache && this.statisticsOverview) {
+			return Observable.of(this.statisticsOverview);
+		}
+		return this.httpGet('/api/statistics/overview').map((result: Result<StatisticsOverview>) => {
+			this.statisticsOverview = result.data;
+			return result.success ? result.data : null;
+		});
 	}
 }
