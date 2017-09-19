@@ -5,14 +5,20 @@
         <div class="text-center">
             <article-tag *ngFor="let tag of article.tags" [tag]="tag"></article-tag>
             <div class="mt-3 mb-3">
-                By&nbsp;&nbsp;<a [routerLink]="'/user/' + article.author._id">{{article.author.name}}</a>
-                &nbsp;&nbsp;/&nbsp;&nbsp;<small>{{article.createdTime | date:'yyyy/MM/dd hh:mm'}}</small>
-                <span *ngIf="hasEditPermission()">
-                &nbsp;&nbsp;
-                <a [routerLink]="'/article/' + article._id + '/edit'" style="color: #41b883">编辑</a>
-                &nbsp;&nbsp;/&nbsp;&nbsp;
-                <a href="javascript:void(0)" style="color: #fe606a" (click)="deleteArticleClick()">删除</a>
-            </span>
+                By
+                <span class="ml-1">
+                    <a [routerLink]="'/user/' + article.author._id">{{article.author.name}}</a>
+                </span>
+                <span class="mr-2 ml-2">/</span>
+                <span>{{article.views}}&nbsp;次浏览</span>
+                <span class="mr-2 ml-2">/</span>
+                <span>{{article.createdTime | date:'yyyy-MM-dd hh:mm'}}</span>
+                <span *ngIf="hasEditPermission() && false">
+                    <span class="mr-2 ml-2">/</span>
+                    <a [routerLink]="'/article/' + article._id + '/edit'" style="color: #41b883">编辑</a>
+                    <span class="ml-1 mr-1">·</span>
+                    <a href="javascript:void(0)" style="color: #fe606a" (click)="deleteArticleClick()">删除</a>
+                </span>
             </div>
         </div>
     </div>

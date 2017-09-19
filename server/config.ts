@@ -1,8 +1,8 @@
 export const serverPort = 8080;
 export const length = 128;
-export const inviteCode = 'renyufeng-friend';
+export const inviteCode = 'septenary-friend';
 export const AuthConfig = {
-    JWTSecret: 'e3rrs63w-1c1n-51eyt26we1ewps3acy1tsrty-satcteste',
+    JWTSecret: 'jwt-septenary-secret',
     JWTSession: {
         session: false
     },
@@ -14,7 +14,7 @@ export const DBConfig = {
 };
 
 export const QiniuConfig = {
-    ACCESS_KEY: 'f6kMhs1Ed64D6oCFIk-vDnNaNPpDk9mX_U--mCbk',
-    SECRET_KEY: 'RzlF2ZaQmsKJNQgDCElwDqUkZSKDDj4w0_uvX-o3',
+    ACCESS_KEY: '',
+    SECRET_KEY: '',
     BUCKET_NAME: 'assets'
 };

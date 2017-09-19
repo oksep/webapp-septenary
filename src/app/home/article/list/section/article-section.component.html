@@ -37,6 +37,7 @@
                 <article-tag *ngFor="let tag of article.tags" [tag]="tag"></article-tag>
             </div>
             <small class="time">
+                <span class="mr-2 ml-2">{{article.views}}&nbsp;次浏览</span>
                 {{article.createdTime | timeAgo}}
             </small>
         </div>

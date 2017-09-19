@@ -9,7 +9,7 @@ db.users.findAndModify({
         $setOnInsert: {
             name: 'Septenary',
             email: 'seven__up@sina.cn',
-            password: 'PBKJxFZFP3j4',
+            password: '123456',
             avatar: 'http://assets.septenary.cn/user/1/image/avatar.jpg',
             createdTime: ISODate("2016-06-19T00:00:00Z"),
             lastLoginTime: ISODate("2016-06-19T00:00:00Z"),
@@ -19,20 +19,3 @@ db.users.findAndModify({
     new: true,
     upsert: true
 });
-
-db.users.findAndModify({
-    query: { _id: 2 },
-    update: {
-        $setOnInsert: {
-            name: '0sland',
-            email: '448988975@qq.com',
-            password: '0sland',
-            avatar: 'http://assets.septenary.cn/user/2/image/avatar.png',
-            createdTime: ISODate("2016-06-19T00:00:00Z"),
-            lastLoginTime: ISODate("2016-06-19T00:00:00Z"),
-            role: 'normal'
-        }
-    },
-    new: true,
-    upsert: true
-})
