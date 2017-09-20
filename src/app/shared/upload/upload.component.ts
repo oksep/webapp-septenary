@@ -89,7 +89,7 @@ export class UploadComponent implements OnInit, OnUploadCallback, ControlValueAc
 	// 文件预览
 	previewFile(file: File) {
 		if (!file.type.match(/image-*/)) {
-			this.notificationsService.warn('提示', '请选择正确的文件格式');
+			this.notificationsService.error('提示', '请选择正确的文件格式');
 			return;
 		}
 		let reader = new FileReader();
@@ -106,7 +106,7 @@ export class UploadComponent implements OnInit, OnUploadCallback, ControlValueAc
 
 	// 上传失败
 	onUploadError(err) {
-		this.notificationsService.warn('图片上传失败');
+		this.notificationsService.error('图片上传失败');
 		this.reset();
 	}
 

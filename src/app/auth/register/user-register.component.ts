@@ -35,7 +35,7 @@ export class UserRegisterComponent implements OnInit {
 				this.notifyService.success('提示', '注册成功，请登录');
 				this.router.navigate(['/auth/login']);
 			} else {
-				this.notifyService.warn('提示', result.error.message);
+				this.notifyService.error('提示', result.error.message);
 			}
 		});
 	}

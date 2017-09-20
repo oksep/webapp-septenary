@@ -8,6 +8,7 @@
     color: #fff;
     cursor: pointer;
     transition: all 0.5s;
+    border-radius: 6px;
 }
 
 .simple-notification .sn-title {
@@ -57,11 +58,11 @@
     right: auto;
 }
 
-.simple-notification.error { background: #F44336; }
-.simple-notification.success { background: #8BC34A; }
+.simple-notification.error { background: #f16459; }
+.simple-notification.success { background: #39c075; }
 .simple-notification.alert { background: #ffdb5b; }
-.simple-notification.info { background: #03A9F4; }
-.simple-notification.warn { background: #ffdb5b; }
+.simple-notification.info { background: #2cb8f7; }
+.simple-notification.warn { background: #ffe20d; }
 
 .simple-notification .sn-progress-loader {
     position: absolute;
@@ -69,19 +70,16 @@
     left: 0;
     width: 100%;
     height: 5px;
+    overflow: hidden;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 .simple-notification .sn-progress-loader span {
     float: left;
     height: 100%;
+    background: rgba(255, 255, 255, 0.25);
 }
-
-.simple-notification.success .sn-progress-loader span { background: #689F38; }
-.simple-notification.error .sn-progress-loader span { background: #D32F2F; }
-.simple-notification.alert .sn-progress-loader span { background: #edc242; }
-.simple-notification.info .sn-progress-loader span { background: #0288D1; }
-.simple-notification.warn .sn-progress-loader span { background: #edc242; }
-.simple-notification.bare .sn-progress-loader span { background: #ccc; }
 
 .simple-notification.warn div .sn-title { color: #444; }
 .simple-notification.warn div .sn-content { color: #444; }
