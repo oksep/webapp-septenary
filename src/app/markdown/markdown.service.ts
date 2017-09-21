@@ -86,6 +86,11 @@ export class MarkdownService {
         						${alt}
         					</div>
         		`;
-				}
+				};
+				this._renderer.link = function (href: string, title: string, text: string) {
+					return `
+						<a target="_blank" href="${href}">${text}</a>
+					`;
+				};
     }
 }
