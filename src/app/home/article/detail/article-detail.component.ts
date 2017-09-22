@@ -15,7 +15,20 @@ import {Result} from "../../../util/base.server";
 	templateUrl: './article-detail.component.html',
 	styleUrls: [
 		'./article-detail.component.scss',
-		'./prism_themes/prism-cb.css',
+		'./prism_themes/prism-atom-dark.css',
+		// './prism_themes/prism-base16-ateliersulphurpool.light.css',
+		// './prism_themes/prism-cb.css',
+		// './prism_themes/prism-duotone-dark.css',
+		// './prism_themes/prism-duotone-earth.css',
+		// './prism_themes/prism-duotone-forest.css',
+		// './prism_themes/prism-duotone-light.css',
+		// './prism_themes/prism-duotone-sea.css',
+		// './prism_themes/prism-duotone-space.css',
+		// './prism_themes/prism-ghcolors.css',
+		// './prism_themes/prism-hopscotch.css',
+		// './prism_themes/prism-pojoaque.css',
+		// './prism_themes/prism-vs.css',
+		// './prism_themes/prism-xonokai.css',
 	],
 	encapsulation: ViewEncapsulation.None // 很重要，使对 marked 渲染的 innerHtml 的 css 生效
 })
