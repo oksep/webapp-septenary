@@ -1,0 +1,41 @@
+@import "../../../theme/sass/conf/conf";
+
+:host {
+  display: block;
+  border-top: 1px dashed $border;
+  padding: 1.5rem 0;
+}
+
+.total {
+  font-size: 1.35rem;
+  line-height: 2.3;
+}
+
+label {
+  display: block;
+}
+
+.form-control {
+  display: inline;
+}
+
+input {
+  width: 100%;
+}
+
+.comment-content {
+  width: 100%;
+  min-height: 120px;
+}
+
+@media (min-width: 991px) {
+  .comment-content {
+    width: 70%
+  }
+}
+
+@media (min-width: 991px) {
+  input {
+    width: 30%
+  }
+}

@@ -3,6 +3,7 @@ import {Http} from "@angular/http";
 import {AuthHttp} from "../../auth/angular-jwt.module";
 import BaseHttpService, {Result} from "../../util/base.server";
 import {Article} from "../../model/article";
+import {Comment} from "../../model/comment";
 import {Observable} from "rxjs/Observable";
 import {StatisticsOverview} from "./statistics/statistics.component";
 
@@ -73,5 +74,26 @@ export class ArticleService extends BaseHttpService {
 			this.statisticsOverview = result.data;
 			return result.success ? result.data : null;
 		});
+	}
+
+	listComments(article: number, page: number) {
+		return this.httpGet(`/api/comment/${article}/${page}`);
+	}
+
+	createComment(comment: Comment) {
+		return this.httpPost(`/api/comment/create`, comment);
+	}
+
+	deleteComment(comment: Comment) {
+		return this.authHttpPost(`/api/comment/delete`, {id: comment._id});
+	}
+
+	getLastComment(): Comment {
+		let comment = localStorage.getItem("@last-comment");
+		return comment ? JSON.parse(comment) : null;
+	}
+
+	setLastComment(comment: Comment) {
+		localStorage.setItem("@last-comment", comment ? JSON.stringify(comment) : null);
 	}
 }

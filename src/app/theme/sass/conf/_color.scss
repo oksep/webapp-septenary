@@ -8,7 +8,7 @@ $label-text: $theme-color; // 标签色
 $disabled: rgba(255, 255, 255, 0.4); // 不可用字体色
 $disabled-bg: tint($disabled, 15%); // 不可用背景色
 
-$border: rgba(0, 0, 0, 0.1); // border
+$border: rgba(0, 0, 0, 0.2); // border
 $border-light: #eee; // border light
 
 $border-theme: tint($theme-color, 50%); // border theme

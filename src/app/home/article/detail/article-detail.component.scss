@@ -50,7 +50,11 @@ li {
   line-height: 1.2;
 }
 
-#comments {
-  margin-top: 1.5rem;
-  border-top: 1px dashed $border;
+.copyright {
+  background: #f8f8f8;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin: 2rem 0 1rem 0;
+  line-height: 1.8;
 }

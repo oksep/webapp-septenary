@@ -23,6 +23,8 @@ import {MainComponent} from './main.component';
 import {StatisticsComponent} from "./statistics/statistics.component";
 import {ArticleRouting} from "./article.routing";
 import {EditArticleGuard} from "./write/guard";
+import { CommentsComponent } from './comments/comments.component';
+import { CommentsCreateComponent } from './comments-create/comments-create.component';
 
 @NgModule({
 	imports: [
@@ -42,7 +44,9 @@ import {EditArticleGuard} from "./write/guard";
 		ArticleTagComponent,
 		TagsComponent,
 		MainComponent,
-		StatisticsComponent
+		StatisticsComponent,
+		CommentsComponent,
+		CommentsCreateComponent
 	],
 	exports: [
 		ArticleDetailComponent,

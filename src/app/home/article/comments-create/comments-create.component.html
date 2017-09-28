@@ -1,0 +1,41 @@
+<!--<span class="total">我要发表看法</span>-->
+
+<form (ngSubmit)="onSubmitComment(commentForm.form.value)" #commentForm="ngForm">
+    <div class="form-group">
+        <label for="comment-content">您的留言：</label>
+        <textarea id="comment-content" name="content" class="form-control comment-content" required
+                  maxlength="800"
+                  [(ngModel)]="comment.content"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="comment-author">您的大名：</label>
+        <input id="comment-author" name="name" size="30" value="" class="form-control" required
+               [(ngModel)]="comment.name">
+        <span class="hint ml-2 hidden-md-down"> «-必填</span>
+    </div>
+    <div class="form-group">
+        <label for="comment-email">电子邮件：</label>
+        <input id="comment-email" name="email" type="email" size="30" value="" class="form-control" required
+               [(ngModel)]="comment.email">
+        <span class="hint ml-2 hidden-md-down"> «-必填，不公开</span>
+    </div>
+    <div class="form-group" *ngIf="false">
+        <label for="comment-url">个人网址：</label>
+        <input id="comment-url" name="website" size="30" value="" class="form-control" required
+               [(ngModel)]="comment.website">
+        <span class="hint ml-2 hidden-md-down"> «-我信任你，不会填写广告链接</span>
+    </div>
+    <div class="form-group">
+        <label for="comment-bake-cookie" class="d-inline">记住个人信息？</label>
+        <input type="checkbox" id="comment-bake-cookie"
+               class="form-control"
+               style="width: auto"
+               required
+               [checked]="rememberComment"
+               (change)="rememberMe($event.target.checked)"
+               accesskey="r">
+    </div>
+    <button type="submit" class="btn btn-outline-success" [disabled]="isSubmitting || !commentForm.form.valid">
+        发表评论 <i *ngIf="isSubmitting" class="fa fa-refresh fa-spin fa-fw"></i>
+    </button>
+</form>

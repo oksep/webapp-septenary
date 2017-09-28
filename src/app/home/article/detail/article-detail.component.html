@@ -27,11 +27,20 @@
 
     <div class="col-lg-2 hidden-md-down"></div>
 
-    <div class="col-md-12 col-lg-7">
-        <div *ngIf="article">
-            <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
+    <div class="col-md-12 col-lg-7" *ngIf="article">
+        <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
+
+        <div class="copyright">
+            作者：{{article.author?.name}} <br>
+            链接：{{ref}} <br>
+            來源：Septenary <br>
+            © 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。<br>
         </div>
-        <div [style.display]="!!article ? 'block':'none'" id="comments"></div>
+
+        <app-comments #appComments [article]="article" id="comments"></app-comments>
+
+        <app-comments-create [article]="article" (onRequestAppendComment)="appComments.appendComment($event)"></app-comments-create>
+
     </div>
 
     <div class="col-lg-2 hidden-md-down">

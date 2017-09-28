@@ -13,7 +13,7 @@ export function createComment(request: Request, response: Response) {
 
 // 按页查询评论
 export function paginateComments(request: Request, response: Response) {
-	const LIMIT = 20;
+	const LIMIT = 100;
 	let page = request.params.page;
 	let offset = LIMIT * page - LIMIT;
 	let sort = {createdTime: 'desc'}; // 按时间倒排

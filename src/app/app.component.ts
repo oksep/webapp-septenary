@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SpinnerService} from "./services/spinner.service";
 import {NavigationEnd, Router} from "@angular/router";
 import {visitPage} from "./util/baidu";
+import {environment} from "../environments/environment";
 
 @Component({
 	selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit {
 							private router: Router) {
 		router.events.subscribe((event: any) => {
 			if (event instanceof NavigationEnd) {
-				visitPage(event.urlAfterRedirects);
+				environment.production && visitPage(event.urlAfterRedirects);
 				window.scrollTo(0, 0);
 			}
 		});

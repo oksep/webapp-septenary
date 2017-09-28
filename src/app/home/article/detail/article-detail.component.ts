@@ -14,7 +14,7 @@ import {Result} from "../../../util/base.server";
 	templateUrl: './article-detail.component.html',
 	styleUrls: [
 		'./article-detail.component.scss',
-		'./prism_themes/prism-atom-dark.css',
+		// './prism_themes/prism-atom-dark.css',
 		// './prism_themes/prism-base16-ateliersulphurpool.light.css',
 		// './prism_themes/prism-cb.css',
 		// './prism_themes/prism-duotone-dark.css',
@@ -23,7 +23,7 @@ import {Result} from "../../../util/base.server";
 		// './prism_themes/prism-duotone-light.css',
 		// './prism_themes/prism-duotone-sea.css',
 		// './prism_themes/prism-duotone-space.css',
-		// './prism_themes/prism-ghcolors.css',
+		'./prism_themes/prism-ghcolors.css',
 		// './prism_themes/prism-hopscotch.css',
 		// './prism_themes/prism-pojoaque.css',
 		// './prism_themes/prism-vs.css',
@@ -46,7 +46,10 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 
 	loginUser: User;
 
+	ref: string;
+
 	ngOnInit() {
+		this.ref = window.location.href;
 		this.slimLoadingService.start();
 		this.slimLoadingService.progress = 25;
 		this.activeRoute.params.subscribe(params => {

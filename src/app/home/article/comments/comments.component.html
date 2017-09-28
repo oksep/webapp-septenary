@@ -1,0 +1,14 @@
+<div class="total mb-3" *ngIf="comments?.length > 0">{{comments?.length}}&nbsp;条评论</div>
+
+<div class="total" *ngIf="!comments || comments.length == 0">暂无评论</div>
+
+<div *ngFor="let comment of comments" class="mb-2 comment-content">
+    <div class="d-flex justify-content-between">
+        <a style="color: inherit" [href]="'mailto:' + comment.email">
+            <span class="comment-author">{{comment.name}}</span>&nbsp;说:
+        </a>
+        <a *ngIf="hasEditPermission()" href="javascript:void(0)" style="color: #fe606a"
+           (click)="deleteCommentClick(comment)">删除</a>
+    </div>
+    <p class="mt-1 m-0" style="color: #999" [innerHtml]="comment.content"></p>
+</div>
