@@ -15,7 +15,7 @@ interface IArticle extends mongoose.Document {
     createdTime: Date; // 创建时间
     updatedTime: Date; // 更新时间
 		imageResources: string[] // 图床
-    author: number
+    author: number // 作者
 
     log(): void
 }
