@@ -31,7 +31,7 @@
         <div *ngIf="article">
             <div Markdown [data]="article.content" (tocUpdate)="onTocUpdate($event)"></div>
         </div>
-        <div [style.display]="!!article ? 'block':'none'" id="gitment"></div>
+        <div [style.display]="!!article ? 'block':'none'" id="comments"></div>
     </div>
 
     <div class="col-lg-2 hidden-md-down">

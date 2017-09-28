@@ -4,7 +4,6 @@ import {ArticleService} from "../article.service";
 import {Article} from "../../../model/article";
 import {Toc, TocEvent} from "../../../markdown/markdown.component";
 import {SlimLoadingBarService} from "../../../loading/slim-loading-bar.service";
-import Gitment from 'gitment'
 import {AuthEvent, AuthService} from "../../../auth/auth.service";
 import {User} from "../../../model/user";
 import {NotificationsService} from "../../../notification/simple-notifications/services/notifications.service";
@@ -56,7 +55,6 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 				if (result.success) {
 					this.article = result.data as Article;
 					this.slimLoadingService.complete();
-					this.renderComments();
 				} else {
 					this.slimLoadingService.reset();
 					this.notifyService.warn('提示', result.error.message);
@@ -85,26 +83,7 @@ export class ArticleDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 	}
 
 	ngAfterViewInit(): void {
-		if (this.article) {
-			this.renderComments();
-		}
-	}
 
-	hasRenderComments = false;
-
-	renderComments() {
-		if (!this.hasRenderComments && this.article) {
-			new Gitment({
-				id: 'article/' + this.article._id, // 可选。默认为 location.href
-				owner: 'ryfthink',
-				repo: 'septenary-comments',
-				oauth: {
-					client_id: '7ffb532fe208a1858c80',
-					client_secret: '7e82e54ac6943d5d53b7bccf4b8bae600c310765',
-				},
-			}).render('gitment');
-			this.hasRenderComments = true;
-		}
 	}
 
 	// 删除文章
