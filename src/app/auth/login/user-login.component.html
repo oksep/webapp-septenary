@@ -3,7 +3,7 @@
         <div class="row" style="height: 100%;">
             <div class="card animated fadeIn col-10 col-lg-8 col-xl-4 ml-auto mr-auto mt-auto mb-auto">
                 <div class="card-body">
-                    <form (ngSubmit)="onLoginSubmit()" #loginForm="ngForm">
+                    <form (ngSubmit)="onLoginSubmit(loginForm.form.value)" #loginForm="ngForm">
                         <div class="form-group">
                             <label for="email" class="label"><i class="fa fa-user-o mr-2"></i>Email</label>
                             <input type="email" class="form-control" id="email" placeholder="email"

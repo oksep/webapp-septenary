@@ -25,10 +25,10 @@ export class UserLoginComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	onLoginSubmit() {
+	onLoginSubmit(value: Credentials) {
 		this.isLogging = true;
 		this.authService
-			.login(this.credentials)
+			.login(value)
 			.subscribe(
 				(result: Result<any>) => {
 					this.isLogging = false;

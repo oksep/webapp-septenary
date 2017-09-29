@@ -26,7 +26,7 @@ export function login(request: Request, response: Response, next: NextFunction) 
 	User.findOne({'email': email, 'password': password})
 		.exec()
 		.then(doc => {
-			if (password = doc.email) {
+			if (doc) {
 				const payload = new Payload();
 				payload._id = doc._id;
 				payload.name = doc.name;
