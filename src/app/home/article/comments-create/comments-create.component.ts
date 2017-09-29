@@ -53,6 +53,7 @@ export class CommentsCreateComponent implements OnInit {
 			});
 
 			this.comment = this.rememberComment ? comment : new Comment();
+			this.comment.content = null;
 			this.articleService.setLastComment(this.rememberComment ? comment : null);
 		}
 	}

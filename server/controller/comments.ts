@@ -19,20 +19,22 @@ export function createComment(request: Request, response: Response) {
 
 function sendEmail(comment: IComment) {
 	Article.findById(comment.article)
-		.populate('author', '_id name')
+		.populate('author', '_id name email')
 		.then(doc => {
-			let author = <any>doc.author as IUser;
+			let author: IUser = <any>doc.author as IUser;
 			const mailOptions = {
-				to: 'seven__up@sina.cn',
+				to: author.email,
 				subject: `Hi~ ${author.name}，您的文章 "${doc.title}" 有了新的评论!`,
 				text: '',
 				html: `
 					<p><span style="font-weight: 900">${comment.name}</span>&nbsp;说:</p>
-					<p style="color: #555">${comment.content}</p>
-					<br><br>
+					<p style="color: #555; margin-top: 12px">${comment.content}</p>
+					<br>
 					<a href="http://www.septenary.cn/article/${doc._id}">文章链接：http://www.septenary.cn/article/${doc._id}</a>
 				`
 			};
+
+			console.log(mailOptions);
 
 			mailer.sendAdminEmail(mailOptions);
 		});
