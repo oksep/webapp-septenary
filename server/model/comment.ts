@@ -3,7 +3,7 @@ import {IPaginate, MongoosePaginate} from "../db/plugins/paginate";
 import autoIncrementPlugin from "../db/plugins/identity-counter";
 import Schema = mongoose.Schema;
 
-interface IComment extends mongoose.Document {
+export interface IComment extends mongoose.Document {
 	name: string,  // 评论者名字
 	email: string,  // 评论者邮箱
 	content: string,  // 评论内容

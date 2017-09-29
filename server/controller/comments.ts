@@ -1,14 +1,41 @@
-import Comment from "../model/comment";
+import Comment, {IComment} from "../model/comment";
 import {Request, Response} from "../middleware/result";
+import {mailer} from "../email/mailer";
+import Article from "../model/article";
+import {IUser} from "../model/user";
 
 // 创建评论
 export function createComment(request: Request, response: Response) {
-	const body = request.body;
-	new Comment(body).save().then(doc => {
-		response.success(doc);
-	}).catch(err => {
-		response.failed(err.message);
-	});
+	const comment = request.body as IComment;
+	new Comment(comment).save()
+		.then(doc => {
+			response.success(doc);
+			sendEmail(doc);
+		})
+		.catch(err => {
+			response.failed(err.message);
+		});
+}
+
+function sendEmail(comment: IComment) {
+	Article.findById(comment.article)
+		.populate('author', '_id name')
+		.then(doc => {
+			let author = <any>doc.author as IUser;
+			const mailOptions = {
+				to: 'seven__up@sina.cn',
+				subject: `Hi~ ${author.name}，您的文章 "${doc.title}" 有了新的评论!`,
+				text: '',
+				html: `
+					<p><span style="font-weight: 900">${comment.name}</span>&nbsp;说:</p>
+					<p style="color: #555">${comment.content}</p>
+					<br><br>
+					<a href="http://www.septenary.cn/article/${doc._id}">文章链接：http://www.septenary.cn/article/${doc._id}</a>
+				`
+			};
+
+			mailer.sendAdminEmail(mailOptions);
+		});
 }
 
 // 按页查询评论

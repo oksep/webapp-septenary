@@ -5,7 +5,7 @@ import Schema = mongoose.Schema;
 import Types = mongoose.Types;
 import ObjectId = Types.ObjectId;
 
-interface IUser extends mongoose.Document {
+export interface IUser extends mongoose.Document {
     name: string,  // 昵称
     email: string,  // 邮箱
     password: string,  // 密钥
