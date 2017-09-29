@@ -58,13 +58,11 @@ export class UploadComponent implements OnInit, OnUploadCallback, ControlValueAc
 	// 拖动进入
 	handleDragEnter() {
 		this.dragging = true;
-		console.log('Drag enter')
 	}
 
 	// 拖动离开
 	handleDragLeave() {
 		this.dragging = false;
-		console.log('Drag leave')
 	}
 
 	// 拖动命中

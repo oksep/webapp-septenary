@@ -34,8 +34,6 @@ function sendEmail(comment: IComment) {
 				`
 			};
 
-			console.log(mailOptions);
-
 			mailer.sendAdminEmail(mailOptions);
 		});
 }

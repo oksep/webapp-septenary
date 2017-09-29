@@ -31,7 +31,6 @@ export class UserLoginComponent implements OnInit {
 			.login(this.credentials)
 			.subscribe(
 				(result: Result<any>) => {
-					console.log(result);
 					this.isLogging = false;
 					if (result.success) {
 						this.notification.success('提示', '欢迎回来' + this.authService.getAuthName());
