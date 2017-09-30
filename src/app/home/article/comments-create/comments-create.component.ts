@@ -17,6 +17,8 @@ export class CommentsCreateComponent implements OnInit {
 
 	rememberComment: boolean = false;
 
+	showForm = false;
+
 	@Input() article: Article;
 	@Output() onRequestAppendComment = new EventEmitter<Comment>();
 
@@ -45,6 +47,7 @@ export class CommentsCreateComponent implements OnInit {
 			this.articleService.createComment(comment).subscribe(result => {
 				this.isSubmitting = false;
 				if (result.success) {
+					this.showForm = false;
 					this.notifyService.success('提示', '提交成功');
 					this.onRequestAppendComment.next(result.data as Comment);
 				} else {
