@@ -4,6 +4,6 @@ import * as Auth from "../auth/auth";
 
 const qiniuRouter: Router = Router();
 
-qiniuRouter.get("/uptoken", Auth.authenticateJWT(), QiniuController.getUptoken);
+qiniuRouter.post("/uptoken", Auth.authenticateJWT(), QiniuController.getUptoken);
 
 export {qiniuRouter};
